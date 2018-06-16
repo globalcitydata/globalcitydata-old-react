@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import HelloWorld from './HelloWorld'
+import Home from './Home'
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<HelloWorld />, document.getElementById('root'));
+ReactDOM.render(<Home />, document.getElementById('root'));
 registerServiceWorker();
