@@ -9,6 +9,11 @@
 # production
 /build
 
+# for use with firebase
+secret.json
+firebase.json
+.firebaserc
+
 # misc
 .DS_Store
 .env.local

@@ -3,8 +3,10 @@ import { PropTypes } from 'prop-types';
 
 export default class Data extends Component {
     render() {
+        
         let friends = this.props.datas.filter(data => data.friend === true);
         let nonFriends = this.props.datas.filter(data => data.friend !== true);
+        let db = this.props.db;
 
         return (
             <div>
@@ -13,7 +15,7 @@ export default class Data extends Component {
                     {/* key must be unique */}
                     {friends.map(data => <li key={data.name}> My friend is {data.name}</li>)}
                 </ul>
-                <hr/>
+                <hr />
                 <h2>Non Friends Data</h2>
                 <ul>
                     {/* key must be unique */}
