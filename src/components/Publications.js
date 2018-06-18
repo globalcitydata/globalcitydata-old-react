@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {Button} from '@material-ui/core';
 
-export default class Publications extends Component {
-    render() {
-        return (
-            <h1>I am a publication</h1>
-        )
-    }
+export default function Publications() {
+    return (
+        <Button variant="contained" color="primary">I am a publication</Button>
+    )
 }

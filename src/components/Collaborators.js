@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {Button} from '@material-ui/core';
 
-export default class Collaborators extends Component {
-    render() {
-        return (
-            <h1>I am a collaborator</h1>
-        )
-    }
+export default function Collaborators() {
+    return (
+        <Button variant="contained" color="primary">I am the collaborators</Button>
+    )
 }

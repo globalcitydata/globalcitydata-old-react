@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 
-export default class Data extends Component {
+export default class DataDetail extends Component {
     render() {
+
+        let dataList = this.props.dataList;
         
         let friends = this.props.datas.filter(data => data.friend === true);
         let nonFriends = this.props.datas.filter(data => data.friend !== true);
-        let db = this.props.db;
 
         return (
             <div>
@@ -26,7 +27,7 @@ export default class Data extends Component {
     }
 }
 
-Data.propTypes = {
+DataDetail.propTypes = {
     type: PropTypes.string.isRequired,
     tags: {
         params: PropTypes.array.isRequired,
