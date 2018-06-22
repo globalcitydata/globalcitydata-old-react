@@ -3,6 +3,7 @@ import '../assets/css//App.css';
 import Nav from './Nav';
 import Home from './Home';
 import Footer from './Footer';
+import DataSubmitForm from './DataSubmitForm';
 // import Publications from './Publications';
 // import Collaborators from './Collaborators';
 // import Contact from './Contact';
@@ -15,7 +16,8 @@ class App extends Component {
         {/* <Publications />
         <Collaborators />
         <Contact /> */}
-        <Home />
+        {/* <Home /> */}
+        <DataSubmitForm />
         <Footer />
       </div>
     );
