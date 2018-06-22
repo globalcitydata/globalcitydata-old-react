@@ -10,7 +10,6 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
-    "rxjs": "^6.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
