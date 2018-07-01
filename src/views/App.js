@@ -1,8 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
-
-import { fetchDataList } from '../utils/api';
 
 // Components
 import Nav from '../components/Nav/Nav';
@@ -13,11 +10,18 @@ import Home from './Home/Home';
 import Collaborators from './Collaborators/Collaborators';
 import Publications from './Publications/Publications';
 import Contact from './Contact/Contact';
+import DataSubmit from './DataSubmit/DataSubmit';
+
+// CSS
+import './App.css';
+
+// API
+import { fetchDataList } from '../utils/api';
 
 // Main App
 class App extends React.Component {
   state = {
-    dataList: null,
+    dataList: null
   };
 
   async componentDidMount() {
@@ -27,7 +31,7 @@ class App extends React.Component {
 
   updateDataList(dataList) {
     this.setState({
-      dataList,
+      dataList
     });
   }
 
@@ -35,17 +39,15 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          {/* Nav */}
           <Nav />
           <hr />
-
           {/* Main Page */}
           <Route
             exact
             path="/"
-            render={props => (
+            render={({ props }) => (
               <Home
-                {...props}
+                {...{ props }}
                 dataList={this.state.dataList}
                 updateDataList={this.state.dataList}
               />
@@ -54,7 +56,7 @@ class App extends React.Component {
           <Route exact path="/collaborators" component={Collaborators} />
           <Route exact path="/publications" component={Publications} />
           <Route exact path="/contact" component={Contact} />
-
+          <Route exact path="/submit-data" component={DataSubmit} />
           {/* Footer */}
           <hr />
           <Footer />

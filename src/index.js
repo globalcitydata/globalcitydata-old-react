@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'normalize.css';
-import App from './views/App';
 import registerServiceWorker from './registerServiceWorker';
+
+// CSS
+import 'normalize.css';
+
+// Views
+import App from './views/App';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

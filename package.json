@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "private": false,
   "dependencies": {
-    "axios": "^0.18.0",
     "firebase": "^5.2.0",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-materialize": "^2.3.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-select": "^2.0.0-beta.6"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "firebase deploy",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint .",
