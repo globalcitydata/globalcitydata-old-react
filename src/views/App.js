@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
-import {fetchDataList} from '../utils/api';
+import { fetchDataList } from '../utils/api';
 
 // Components
 import Nav from '../components/Nav/Nav';
@@ -20,14 +20,14 @@ class App extends React.Component {
     dataList: null,
   };
 
-  componentDidMount() {
-    const dataList = fetchDataList();
+  async componentDidMount() {
+    const dataList = await fetchDataList();
     this.updateDataList(dataList);
   }
 
   updateDataList(dataList) {
     this.setState({
-      dataList: dataList,
+      dataList,
     });
   }
 

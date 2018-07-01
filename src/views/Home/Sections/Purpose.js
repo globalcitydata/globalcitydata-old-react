@@ -16,9 +16,7 @@ function Purpose() {
         </p>
         <p>
           Interested in contributing to Global City Data? Learn more{' '}
-          <Link exact to="/collaborators">
-            here.
-          </Link>
+          <Link to="/collaborators">here.</Link>
         </p>
       </div>
     </section>

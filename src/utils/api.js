@@ -1,4 +1,3 @@
-import axios from 'axios';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -13,11 +12,12 @@ const dataListRef = db.collection('dataList');
 
 export async function fetchDataList() {
   const dataList = [];
-  await dataListRef
-    .get()
-    .then(snapshot => snapshot.docs.map(doc => dataList.push(doc)))
-    .catch(err => console.log('Error getting documents', err));
-  console.log(dataList);
+  const snapshot = await dataListRef.get();
+  try {
+    snapshot.docs.map(doc => dataList.push(doc.data()));
+  } catch (err) {
+    throw new Error('Error getting documents', err);
+  }
 
   return dataList;
 }
@@ -25,33 +25,3 @@ export async function fetchDataList() {
 export function fetchFilteredDataList(query) {
   return query;
 }
-
-// function getFriends() {
-//   const friends = [];
-//   const friendsRef = db.collection('friends');
-//   friendsRef
-//     .get()
-//     .then(snapshot => snapshot.forEach(doc => friends.push(doc)))
-//     .catch(err => console.log('Error getting documents', err));
-//   // console.log(friends);
-//   return friends;
-// }
-
-// async function getFriends() {
-//   const friends = [];
-//   const friendsRef = db.collection('friends');
-//   const friendsSnapshot = await friendsRef.get();
-//   // console.log(friendsSnapshot);
-//   return friendsSnapshot;
-// }
-
-// If using async while getting friends
-// try {
-//     let friends = getFriends();
-// }
-// catch(err) {
-//     console.log('Error getting documents', err)
-// }
-
-// If using normal getFriends
-// let friends = getFriends();
