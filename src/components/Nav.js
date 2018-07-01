@@ -5,7 +5,7 @@ import { Navbar } from 'react-materialize';
 function Nav() {
   return (
     <header>
-      <Navbar brand="Global City Data" right className="nav">
+      <Navbar brand="Global City Data" right className="nav blue">
         <li>
           <NavLink exact activeClassName="active" to="/">
             Home

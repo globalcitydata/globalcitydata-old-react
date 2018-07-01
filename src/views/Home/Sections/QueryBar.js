@@ -22,7 +22,7 @@ class QueryBar extends React.Component {
       //   <Select isMulti closeMenuOnSelect={false} options={options} placeholder="World Region" />
       // </div>
       <Row>
-        <Input s={12} type='select' label="Materialize Select" defaultValue='2'>
+        <Input s={12} type='select' label="Filter for datasets and models">
           <option value='1'>Option 1</option>
           <option value='2'>Option 2</option>
           <option value='3'>Option 3</option>

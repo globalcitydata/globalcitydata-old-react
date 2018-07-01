@@ -67,15 +67,21 @@ export default class DataSubmitForm extends Component {
 
   render() {
     return (
-      <form>
-        <Row>
-          <Input s={12} name="title" label="title" value={this.state.title} onChange={this.handleChange} />
-          <Input s={12} type="textarea" name="description" label="description" value={this.state.description} onChange={this.handleChange} />
-          <Input s={12} name="owner" label="owner" value={this.state.owner} onChange={this.handleChange} />
-          <Input s={12} name="applicableModels" label="applicableModels" value={this.state.applicableModels} onChange={this.handleChange} />
-          <Button s={12} waves="light" onClick={this.handleSubmit}>Submit</Button>
-        </Row>
-      </form>
+      <section className="dataSubmit">
+        <div className="container">
+          <h1>Submit Data</h1>
+          <form>
+            <Row>
+              <Input s={12} name="title" label="title" value={this.state.title} onChange={this.handleChange} />
+              <Input s={12} type="textarea" name="description" label="description" value={this.state.description} onChange={this.handleChange} />
+              <Input s={12} name="owner" label="owner" value={this.state.owner} onChange={this.handleChange} />
+              <Input s={12} name="applicableModels" label="applicableModels" value={this.state.applicableModels} onChange={this.handleChange} />
+              <Button s={12} waves="light" onClick={this.handleSubmit}>Submit</Button>
+            </Row>
+          </form>
+        </div>
+      </section>
+
     );
   }
 }

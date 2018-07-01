@@ -40,24 +40,24 @@ class App extends React.Component {
       <Router>
         <div>
           <Nav />
-          {/* Main Page */}
-          <Route
-            exact
-            path="/"
-            render={({ props }) => (
-              <Home
-                {...{ props }}
-                dataList={this.state.dataList}
-                updateDataList={this.state.dataList}
-              />
-            )}
-          />
-          <Route exact path="/collaborators" component={Collaborators} />
-          <Route exact path="/publications" component={Publications} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/submit-data" component={DataSubmit} />
-          {/* Footer */}
-          <hr />
+          <main className="main">
+            <Route
+              exact
+              path="/"
+              render={({ props }) => (
+                <Home
+                  {...{ props }}
+                  dataList={this.state.dataList}
+                  updateDataList={this.state.dataList}
+                />
+              )}
+            />
+            <Route exact path="/collaborators" component={Collaborators} />
+            <Route exact path="/publications" component={Publications} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/submit-data" component={DataSubmit} />
+          </main>
+
           <Footer />
         </div>
       </Router>

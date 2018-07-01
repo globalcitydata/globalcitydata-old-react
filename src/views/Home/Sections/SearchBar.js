@@ -21,8 +21,8 @@ class QueryBar extends React.Component {
       <div>
         <form>
           <Row>
-            <Input s={10} label="Search for datasets and models" name="value" value={this.state.value} onChange={this.handleChange} />
-            <Button s={2} waves="light" onClick={this.handleSubmit}>Search</Button>
+            <Input s={12} m={10} label="Search for datasets and models" name="value" value={this.state.value} onChange={this.handleChange} />
+            <Button s={12} m={2} waves="light" onClick={this.handleSubmit}>Search</Button>
           </Row>
         </form>
       </div>

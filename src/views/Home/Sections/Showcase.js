@@ -5,11 +5,15 @@ import QueryBar from './QueryBar';
 
 function Showcase() {
   return (
-    <div>
-      <h1>Global City Data</h1>
-      <SearchBar />
-      <br />
-      <QueryBar />
+    <div className="showcase">
+      <div className="">
+        <div className="container">
+          <h1>Global City Data</h1>
+          <SearchBar />
+          <br />
+          <QueryBar />
+        </div>
+      </div>
     </div>
   );
 }
