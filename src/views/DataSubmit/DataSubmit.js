@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row, Input, Button } from 'react-materialize';
 
 export default class DataSubmitForm extends Component {
   state = {
@@ -66,12 +67,14 @@ export default class DataSubmitForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" name="title" placeholder="title" value={this.state.title} onChange={this.handleChange} />
-        <textarea type="text" name="description" placeholder="description" value={this.state.description} onChange={this.handleChange} />
-        <input type="text" name="owner" placeholder="owner" value={this.state.owner} onChange={this.handleChange} />
-        <input type="text" name="applicableModels" placeholder="applicable models" value={this.state.applicableModels} onChange={this.handleChange} />
-        <input type="submit" value="Submit" />
+      <form>
+        <Row>
+          <Input s={12} name="title" label="title" value={this.state.title} onChange={this.handleChange} />
+          <Input s={12} type="textarea" name="description" label="description" value={this.state.description} onChange={this.handleChange} />
+          <Input s={12} name="owner" label="owner" value={this.state.owner} onChange={this.handleChange} />
+          <Input s={12} name="applicableModels" label="applicableModels" value={this.state.applicableModels} onChange={this.handleChange} />
+          <Button s={12} waves="light" onClick={this.handleSubmit}>Submit</Button>
+        </Row>
       </form>
     );
   }

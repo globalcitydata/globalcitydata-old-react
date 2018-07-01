@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Components
-import Nav from '../components/Nav/Nav';
-import Footer from '../components/Footer/Footer';
+import Nav from '../components/Nav';
+import Footer from '../components/Footer';
 
 // Views
 import Home from './Home/Home';
@@ -12,11 +12,11 @@ import Publications from './Publications/Publications';
 import Contact from './Contact/Contact';
 import DataSubmit from './DataSubmit/DataSubmit';
 
-// CSS
-import './App.css';
-
 // API
 import { fetchDataList } from '../utils/api';
+
+// CSS
+import './App.css';
 
 // Main App
 class App extends React.Component {
@@ -40,7 +40,6 @@ class App extends React.Component {
       <Router>
         <div>
           <Nav />
-          <hr />
           {/* Main Page */}
           <Route
             exact

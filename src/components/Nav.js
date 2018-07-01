@@ -1,15 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'; // eslint-disable-line no-unused-vars
-import { NavBar } from 'react-materialize';
-
-// CSS
-import './Nav.css';
+import { Navbar } from 'react-materialize';
 
 function Nav() {
   return (
     <header>
-      {/* <NavBar brand="Global City Data" right> */}
-      <ul>
+      <Navbar brand="Global City Data" right className="nav">
         <li>
           <NavLink exact activeClassName="active" to="/">
             Home
@@ -35,8 +31,7 @@ function Nav() {
             Submit Data
           </NavLink>
         </li>
-      </ul>
-      {/* </NavBar> */}
+      </Navbar>
     </header>
   );
 }

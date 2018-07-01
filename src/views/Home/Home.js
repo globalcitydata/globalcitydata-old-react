@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// CSS
+import './Home.css';
+
 // Sections
 import DataList from './Sections/DataList';
 import Purpose from './Sections/Purpose';
@@ -9,7 +12,7 @@ import Showcase from './Sections/Showcase';
 function Home(props) {
   const { dataList, updateDataList } = props;
   return (
-    <div>
+    <div className="home">
       <Showcase />
       <Purpose />
       <DataList dataList={dataList} />

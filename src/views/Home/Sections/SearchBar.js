@@ -1,15 +1,16 @@
 import React from 'react';
+import { Row, Input, Button } from 'react-materialize';
 
 class QueryBar extends React.Component {
   state = {
     value: ''
   };
 
-  handleChange(e) {
+  handleChange = e => {
     this.setState({ value: e.target.value });
   }
 
-  handleSubmit(e) {
+  handleSubmit = e => {
     const { value } = this.state;
     alert(`Something was submitted: ${value}`);
     e.preventDefault();
@@ -18,12 +19,11 @@ class QueryBar extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Search:
-            <input type="text" value="search for datasets and models" onChange={this.handleChange} />
-          </label>
-          <input type="submit" />
+        <form>
+          <Row>
+            <Input s={10} label="Search for datasets and models" name="value" value={this.state.value} onChange={this.handleChange} />
+            <Button s={2} waves="light" onClick={this.handleSubmit}>Search</Button>
+          </Row>
         </form>
       </div>
     );

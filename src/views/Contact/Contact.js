@@ -6,7 +6,7 @@ function Contact() {
     <div>
       <h1>Contact</h1>
       <Row>
-        <Input s={6} m={12} placeholder="Placeholder" label="First Name" />
+        <Input s={6} m={12} label="First Name" />
         <Input s={6} m={12} label="Last Name" />
         <Input s={6} m={12} type="password" label="password" />
         <Input s={6} m={12} type="email" label="Email" />
