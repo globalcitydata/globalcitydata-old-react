@@ -6,14 +6,13 @@ import QueryBar from './QueryBar';
 function Showcase() {
   return (
     <div className="showcase">
-      <div className="">
+      <div className="bg-image"></div>
         <div className="container">
           <h1>Global City Data</h1>
           <SearchBar />
           <br />
           <QueryBar />
         </div>
-      </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function DataCard(props) {
   const { data } = props;
   return (
-    <Card className='' textClassName='' title={data.name} actions={[<Link to='#'><Button waves="light">Detail</Button></Link>]}>
+    <Card className='w3-spin' textClassName='' title={data.name} actions={[<Link to='#'><Button waves="light">Detail</Button></Link>]}>
       <p>I am a very simple card. I am good at containing small bits of information</p>
     </Card>
   );

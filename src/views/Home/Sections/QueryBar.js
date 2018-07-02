@@ -1,6 +1,6 @@
 import React from 'react';
 import Select, { components } from 'react-select';
-import {Row, Input} from 'react-materialize';
+import {Row, Input, Button} from 'react-materialize';
 
 class QueryBar extends React.Component {
   state = {};
@@ -22,11 +22,12 @@ class QueryBar extends React.Component {
       //   <Select isMulti closeMenuOnSelect={false} options={options} placeholder="World Region" />
       // </div>
       <Row>
-        <Input s={12} type='select' label="Filter for datasets and models">
+        <Input s={12} m={10} type='select' label="Filter for datasets and models">
           <option value='1'>Option 1</option>
           <option value='2'>Option 2</option>
           <option value='3'>Option 3</option>
         </Input>
+        <Button s={12} m={2} waves="light" onClick={this.handleSubmit}>Filter</Button>
       </Row>
     );
   }

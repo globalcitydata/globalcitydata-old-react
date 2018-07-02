@@ -6,7 +6,7 @@ function Nav() {
   return (
     <nav>
       <div className="nav-wrapper">
-        <Navbar brand="Global City Data" right className="nav blue">
+        <Navbar brand="Global City Data" right options={{ closeOnClick: true }} className="nav blue">
           <li>
             <NavLink exact activeClassName="active" to="/">
               Home
