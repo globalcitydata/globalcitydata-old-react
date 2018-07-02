@@ -7,6 +7,10 @@ h4 { font-size: 2.25rem; }
 h5 { font-size: 2rem; }
 h6 { font-size: 1.5rem; }
 
+p {
+  line-height: 1.7rem;
+}
+
 .container {
   padding: 75px 0;
   margin: 0 auto;
@@ -16,9 +20,17 @@ h6 { font-size: 1.5rem; }
   min-height: 69vh;
 }
 
+.btn {
+  background-color: blue;
+}
+
 /* Nav */
 .active {
   font-weight: bold;
+}
+
+.nav{
+  padding: 0 5%; 
 }
 
 /* Home */
@@ -54,8 +66,12 @@ h6 { font-size: 1.5rem; }
   color: white;
 }
 
-.dataCard {
+.card {
   text-align: left;
+}
+
+.card-action .btn {
+  width: inherit;
 }
 
 /* Footer */

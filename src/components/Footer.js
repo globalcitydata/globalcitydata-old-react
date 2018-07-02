@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="blue">
       <div className="container">
-        <p>Shoutout NSF</p>
+        <img src="../assets/img/nsf_logo.jpeg" alt="nsf logo" />
       </div>
     </footer>
   );

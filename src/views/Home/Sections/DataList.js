@@ -1,15 +1,14 @@
 import React from 'react';
-import { Row, Col, Card } from 'react-materialize';
+import { Row, Col, Card, Button } from 'react-materialize';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function DataCard(props) {
   const { data } = props;
   return (
-    <div className="dataCard">
-      <Card className='' textClassName='' title={data.name} actions={[<a href='#'>This is a link</a>]}>
-        <p>I am a very simple card. I am good at containing small bits of information</p>
-      </Card>
-    </div>
+    <Card className='' textClassName='' title={data.name} actions={[<Link to='#'><Button waves="light">Detail</Button></Link>]}>
+      <p>I am a very simple card. I am good at containing small bits of information</p>
+    </Card>
   );
 }
 
