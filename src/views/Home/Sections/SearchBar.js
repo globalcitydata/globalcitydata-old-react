@@ -13,6 +13,7 @@ class QueryBar extends React.Component {
   handleSubmit = e => {
     const { value } = this.state;
     alert(`Something was submitted: ${value}`);
+    this.setState({ value: ''});
     e.preventDefault();
   }
 

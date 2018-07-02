@@ -1,13 +1,27 @@
 import React from 'react';
-import { Row, Col, Card, Button } from 'react-materialize';
+import {
+ Row, Col, Card, Button 
+} from 'react-materialize';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function DataCard(props) {
   const { data } = props;
   return (
-    <Card className='w3-spin' textClassName='' title={data.name} actions={[<Link to='#'><Button waves="light">Detail</Button></Link>]}>
-      <p>I am a very simple card. I am good at containing small bits of information</p>
+    <Card
+      className="w3-spin"
+      textClassName=""
+      title={data.name}
+      actions={[
+        <Link to="#">
+          <Button waves="light">Detail</Button>
+        </Link>
+      ]}
+    >
+      <p>
+        I am a very simple card. I am good at containing small bits of
+        information
+      </p>
     </Card>
   );
 }
@@ -22,17 +36,18 @@ function DataList(props) {
         {!dataList ? (
           <p>Loading</p>
         ) : (
-            <ul className="dataListCards">
-              <Row>
-                {dataList.map(data => (
-                  <Col s={12} m={6} xl={4}><li key={data.name}>
+          <ul className="dataListCards">
+            <Row>
+              {dataList.map(data => (
+                <Col s={12} m={6} xl={4}>
+                  <li key={data.name}>
                     <DataCard data={data} />
-                  </li></Col>
-                ))}
-              </Row>
-            </ul>
-          )
-        }
+                  </li>
+                </Col>
+              ))}
+            </Row>
+          </ul>
+        )}
       </div>
     </section>
   );

@@ -46,6 +46,11 @@ p {
 	text-align: center;
 }
 
+.queryBar {
+  color: black;
+  text-align: left;
+}
+
 .showcase .bg-image {
   position: absolute;
   background: #333 url('../assets/img/city.jpeg');
