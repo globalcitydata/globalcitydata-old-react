@@ -13,7 +13,7 @@ import Contact from './Contact/Contact';
 import DataSubmit from './DataSubmit/DataSubmit';
 
 // API
-import { fetchDataList } from '../utils/api';
+import { fetchDataList, addData } from '../utils/api';
 
 // CSS
 import './App.css';
@@ -27,6 +27,12 @@ class App extends React.Component {
   async componentDidMount() {
     const dataList = await fetchDataList();
     this.updateDataList(dataList);
+  }
+
+  async onAddData(data) {
+    await addData(data);
+    const { dataList } = this.state;
+    this.updateDataList([data, ...dataList]);
   }
 
   updateDataList(dataList) {
@@ -45,17 +51,19 @@ class App extends React.Component {
               exact
               path="/"
               render={({ props }) => (
-                <Home
-                  {...{ props }}
-                  dataList={this.state.dataList}
-                  updateDataList={this.state.dataList}
-                />
+                <Home {...{ props }} dataList={this.state.dataList} />
               )}
             />
             <Route exact path="/collaborators" component={Collaborators} />
             <Route exact path="/publications" component={Publications} />
             <Route exact path="/contact" component={Contact} />
-            <Route exact path="/submit-data" component={DataSubmit} />
+            <Route
+              exact
+              path="/submit-data"
+              render={({ props }) => (
+                <DataSubmit {...{ props }} onAddData={this.addData} />
+              )}
+            />
           </main>
 
           <Footer />

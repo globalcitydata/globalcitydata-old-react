@@ -1,7 +1,5 @@
 import React from 'react';
-import {
- Row, Col, Card, Button 
-} from 'react-materialize';
+import { Row, Col, Card, Button } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -11,17 +9,14 @@ function DataCard(props) {
     <Card
       className="w3-spin"
       textClassName=""
-      title={data.name}
+      title={data.title}
       actions={[
-        <Link to="#">
+        <Link to="#" key={data.title}>
           <Button waves="light">Detail</Button>
         </Link>
       ]}
     >
-      <p>
-        I am a very simple card. I am good at containing small bits of
-        information
-      </p>
+      <p>{data.description}</p>
     </Card>
   );
 }
@@ -39,8 +34,8 @@ function DataList(props) {
           <ul className="dataListCards">
             <Row>
               {dataList.map(data => (
-                <Col s={12} m={6} xl={4}>
-                  <li key={data.name}>
+                <Col key={data.title} s={12} m={6} xl={4}>
+                  <li>
                     <DataCard data={data} />
                   </li>
                 </Col>

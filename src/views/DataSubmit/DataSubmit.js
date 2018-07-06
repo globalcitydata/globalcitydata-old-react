@@ -10,10 +10,13 @@ export default class DataSubmitForm extends Component {
   };
 
   handleRadioChange = (e) => {
-    let parameters, outcomes, spatialScales, temporalScales, worldRegions;
-    const val = e.target.value;
-    const name = e.target.name;
-    const foo = { ...this.state[name] }
+    let parameters;
+    let outcomes;
+    let spatialScales;
+    let temporalScales;
+    let worldRegions;
+    const { name, val } = e.target;
+    const foo = { ...this.state[name] };
     foo[val] = !foo[val];
     switch (name) {
       case 'parameters':
@@ -37,22 +40,23 @@ export default class DataSubmitForm extends Component {
         this.setState({ worldRegions });
         break;
       default:
-        alert("Error with the submit form. Please contact globalcitydata and try again in a couple days.");
+        alert(
+          'Error with the submit form. Please contact globalcitydata and try again in a couple days.'
+        );
     }
   };
 
   handleSubmit = (e) => {
-    const { onSubmitDataDetail } = this.props;
     const value = this.state;
-
-    onSubmitDataDetail(value);
-
+    const { onAddData } = this.props;
+    onAddData(value);
+    console.log('Added data: ', value);
     // clear state
-    for (const input of e.target) {
-      this.setState({
-        [input.name]: ''
-      });;
-    }
+    // for (const input of e.target) {
+    //   this.setState({
+    //     [input.name]: ''
+    //   });;
+    // }
     e.preventDefault();
   };
 
@@ -75,14 +79,13 @@ export default class DataSubmitForm extends Component {
       worldRegions
     } = this.state;
 
-    const isEnabled =
-      title.length > 0 &&
+    const isEnabled = title.length > 0 &&
       description.length > 0 &&
       context.length > 0 &&
-      keyTakeaways.length > 0 && 
+      keyTakeaways.length > 0 &&
       usesAndVisualizations.length > 0 &&
-      technicalDetails.length > 0 && 
-      applicableData.length > 0 && 
+      technicalDetails.length > 0 &&
+      applicableData.length > 0 &&
       relevantPublications.length > 0 &&
       owner.length > 0 &&
       contact.length > 0;
@@ -92,24 +95,28 @@ export default class DataSubmitForm extends Component {
     const spatialScaleKeys = Object.keys(spatialScales);
     const temporalScaleKeys = Object.keys(temporalScales);
     const worldRegionKeys = Object.keys(worldRegions);
+
     return (
       <section className="dataSubmit">
         <div className="container">
           <h1>Submit Data</h1>
           <form>
             <Row>
+              {/* Content Type */}
               <Input
                 s={12}
                 type="select"
                 name="contentType"
                 label="Content Type"
-                defaultValue="1"
+                defaultValue="dataset"
+                onChange={this.handleChange}
                 required
               >
-                <option value='1'>Dataset</option>
-                <option value='2'>Model</option>
-                <option value='3'>Tutorial</option>
+                <option value="dataset">Dataset</option>
+                <option value="model">Model</option>
+                <option value="tutorial">Tutorial</option>
               </Input>
+              {/* Title */}
               <Input
                 s={12}
                 name="title"
@@ -118,6 +125,7 @@ export default class DataSubmitForm extends Component {
                 onChange={this.handleChange}
                 required
               />
+              {/* Description */}
               <Input
                 s={12}
                 type="textarea"
@@ -127,6 +135,7 @@ export default class DataSubmitForm extends Component {
                 onChange={this.handleChange}
                 required
               />
+              {/* Context */}
               <Input
                 s={12}
                 type="textarea"
@@ -136,6 +145,7 @@ export default class DataSubmitForm extends Component {
                 onChange={this.handleChange}
                 required
               />
+              {/* Key Takeaways */}
               <Input
                 s={12}
                 name="keyTakeaways"
@@ -144,6 +154,7 @@ export default class DataSubmitForm extends Component {
                 onChange={this.handleChange}
                 required
               />
+              {/* Sample Uses and Visualizations */}
               <Input
                 s={12}
                 name="usesAndVisualizations"
@@ -152,6 +163,7 @@ export default class DataSubmitForm extends Component {
                 onChange={this.handleChange}
                 required
               />
+              {/* Technical Details */}
               <Input
                 s={12}
                 name="technicalDetails"
@@ -160,6 +172,7 @@ export default class DataSubmitForm extends Component {
                 onChange={this.handleChange}
                 required
               />
+              {/* Applicable Data */}
               <Input
                 s={12}
                 name="applicableData"
@@ -168,75 +181,87 @@ export default class DataSubmitForm extends Component {
                 onChange={this.handleChange}
                 required
               />
+              {/* Relevant Publications */}
               <Input
-                type="textarea"
                 s={12}
+                type="textarea"
                 name="relevantPublications"
                 label="Relevant Publications - if multiple please separate by semicolon (;)"
                 value={relevantPublications}
                 onChange={this.handleChange}
                 required
               />
+              {/* Parameters */}
               <Row>
                 <h4>Parameters</h4>
-                {parameterKeys.map((val) => {
-                  return <Input
+                {parameterKeys.map(val => (
+                  <Input
                     name="parameters"
                     type="checkbox"
+                    key={val}
                     value={val}
                     label={val}
                     onChange={this.handleRadioChange}
                   />
-                })}
+                ))}
               </Row>
+              {/* Outcomes */}
               <Row>
                 <h4>Outcomes</h4>
-                {outcomeKeys.map((val) => {
-                  return <Input
+                {outcomeKeys.map(val => (
+                  <Input
                     name="outcomes"
                     type="checkbox"
+                    key={val}
                     value={val}
                     label={val}
                     onChange={this.handleRadioChange}
                   />
-                })}
+                ))}
               </Row>
+              {/* Spatial Scales */}
               <Row>
                 <h4>Spatial Scales</h4>
-                {spatialScaleKeys.map((val) => {
-                  return <Input
+                {spatialScaleKeys.map(val => (
+                  <Input
                     name="spatialScales"
                     type="checkbox"
+                    key={val}
                     value={val}
                     label={val}
                     onChange={this.handleRadioChange}
                   />
-                })}
+                ))}
               </Row>
+              {/* Temporal Scales */}
               <Row>
                 <h4>Temporal Scales</h4>
-                {temporalScaleKeys.map((val) => {
-                  return <Input
+                {temporalScaleKeys.map(val => (
+                  <Input
                     name="temporalScales"
                     type="checkbox"
+                    key={val}
                     value={val}
                     label={val}
                     onChange={this.handleRadioChange}
                   />
-                })}
+                ))}
               </Row>
+              {/* World Regions */}
               <Row>
                 <h4>World Regions</h4>
-                {worldRegionKeys.map((val) => {
-                  return <Input
+                {worldRegionKeys.map(val => (
+                  <Input
                     name="worldRegions"
                     type="checkbox"
+                    key={val}
                     value={val}
                     label={val}
                     onChange={this.handleRadioChange}
                   />
-                })}
+                ))}
               </Row>
+              {/* Owner */}
               <Input
                 s={12}
                 name="owner"
@@ -245,6 +270,7 @@ export default class DataSubmitForm extends Component {
                 onChange={this.handleChange}
                 required
               />
+              {/* Contact */}
               <Input
                 s={12}
                 name="contact"
@@ -253,7 +279,12 @@ export default class DataSubmitForm extends Component {
                 onChange={this.handleChange}
                 required
               />
-              <Button s={12} waves="light" disabled={!isEnabled} onClick={this.handleSubmit}>
+              <Button
+                s={12}
+                waves="light"
+                disabled={!isEnabled}
+                onClick={this.handleSubmit}
+              >
                 Submit
               </Button>
             </Row>

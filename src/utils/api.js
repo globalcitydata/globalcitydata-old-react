@@ -12,14 +12,22 @@ const dataListRef = db.collection('dataList');
 
 export async function fetchDataList() {
   const dataList = [];
-  const snapshot = await dataListRef.get();
   try {
+    const snapshot = await dataListRef.get();
     snapshot.docs.map(doc => dataList.push(doc.data()));
   } catch (err) {
     throw new Error('Error getting documents', err);
   }
 
   return dataList;
+}
+
+export async function addData(data) {
+  try {
+    await dataListRef.doc(data.title).set(data);
+  } catch (err) {
+    throw new Error('Error getting documents', err);
+  }
 }
 
 export function fetchFilteredDataList(query) {

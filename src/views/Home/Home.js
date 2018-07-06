@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-materialize';
 
 // CSS
 import './Home.css';
@@ -11,7 +10,7 @@ import Purpose from './Sections/Purpose';
 import Showcase from './Sections/Showcase';
 
 function Home(props) {
-  const { dataList, updateDataList } = props;
+  const { dataList } = props;
   return (
     <div className="home">
       <Showcase />
