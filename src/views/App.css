@@ -12,8 +12,12 @@ p {
 }
 
 .container {
-  padding: 50px 0;
+  padding: 25px 0;
   margin: 0 auto;
+}
+
+.container.content-wrap {
+  padding: 80px 0;
 }
 
 .main {
@@ -83,6 +87,12 @@ p {
 
 .card-action .btn {
   width: inherit;
+}
+
+/* Data Submit */
+.dataSubmit h4 {
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
 }
 
 /* Footer */

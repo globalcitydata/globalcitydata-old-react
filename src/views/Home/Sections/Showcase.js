@@ -7,7 +7,7 @@ function Showcase() {
   return (
     <div className="showcase">
       <div className="bg-image"></div>
-        <div className="container">
+        <div className="container content-wrap">
           <h1>Global City Data</h1>
           <SearchBar />
           <br />

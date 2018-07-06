@@ -4,7 +4,7 @@ import {Router, Link} from 'react-router-dom';
 function Purpose() {
   return (
     <section className="purpose">
-      <div className="container">
+      <div className="container content-wrap">
         <h2>Our Purpose</h2>
         <p>Global City Data hosts descriptions of open access urban systems data sets and models collected and vetted by
         a network of international researchers. To learn more about the data sets and models featured on
