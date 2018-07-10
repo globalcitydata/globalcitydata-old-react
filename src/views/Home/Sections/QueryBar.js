@@ -1,11 +1,11 @@
 import React from 'react';
 import Select, { components } from 'react-select';
 import { Row, Input, Button, Col } from 'react-materialize';
+import { tagState } from '../../../utils/data';
+import { query } from '../../../utils/searchAndFilter'
 
 class QueryBar extends React.Component {
-  state = {
-    selectedOptions: []
-  };
+  state = tagState;
 
   handleChange = selectedOptions => {
     this.setState({
@@ -14,46 +14,93 @@ class QueryBar extends React.Component {
   };
 
   handleSubmit = e => {
+    const value = this.state;
     const { selectedOptions } = this.state;
-    alert(`Something was submitted: ${selectedOptions}`);
-    this.setState({  selectedOptions: []  });
+    const { dataList, updateDataList } = this.props;
+
+    for (let tag of selectedOptions) {
+      value[tag.group][tag.value] = true;
+    }
+
+    let filteredData;
+    if (selectedOptions.length == 0) filteredData = dataList;
+    else {
+      filteredData = query(dataList, value);
+      if (!filteredData) filteredData = [];
+    }
+    
+    updateDataList(filteredData);
+
+    // should clear query state at this point
     e.preventDefault();
   };
-
   render() {
-    const colourOptions = [
-      { value: 'ocean', label: 'Ocean', color: '#00B8D9' },
-      {
-        value: 'blue',
-        label: 'Blue',
-        color: '#0052CC',
-        disabled: true
-      },
-      { value: 'purple', label: 'Purple', color: '#5243AA' },
-      { value: 'red', label: 'Red', color: '#FF5630' },
-      { value: 'orange', label: 'Orange', color: '#FF8B00' },
-      { value: 'yellow', label: 'Yellow', color: '#FFC400' },
-      { value: 'green', label: 'Green', color: '#36B37E' },
-      { value: 'forest', label: 'Forest', color: '#00875A' },
-      { value: 'slate', label: 'Slate', color: '#253858' },
-      { value: 'silver', label: 'Silver', color: '#666666' }
+
+    const typeOptions = [
+      { value: 'dataset', label: 'Dataset', group: 'contentType' },
+      { value: 'model', label: 'Modal', group: 'contentType' },
+      { value: 'tutorial', label: 'Tutorial', group: 'contentType' },
     ];
 
-    const flavourOptions = [
-      { value: 'vanilla', label: 'Vanilla', rating: 'safe' },
-      { value: 'chocolate', label: 'Chocolate', rating: 'good' },
-      { value: 'strawberry', label: 'Strawberry', rating: 'wild' },
-      { value: 'salted-caramel', label: 'Salted Caramel', rating: 'crazy' }
+    const outcomeOptions = [
+      { value: 'environmentalImpacts', label: 'Environmental Impacts', group: 'outcomes' },
+      { value: 'equity', label: 'Equity', group: 'outcomes' },
+      { value: 'health', label: 'Health', group: 'outcomes' },
+      { value: 'livability', label: 'Livability', group: 'outcomes' },
+      { value: 'wellBeing', label: 'Well Being', group: 'outcomes' },
     ];
+
+    const parameterOptions = [
+      { value: 'social', label: 'Social', group: 'parameters' },
+      { value: 'environment', label: 'Environment', group: 'parameters' },
+      { value: 'infrastructure', label: 'Infrastructure', group: 'parameters' },
+      { value: 'urbanDesign', label: 'Urban Design', group: 'parameters' },
+    ];
+
+    const spatialOptions = [
+      { value: 'intraUrban', label: 'Intra Urban', group: 'spatialScales' },
+      { value: 'wholeCity', label: 'Whole City', group: 'spatialScales' },
+      { value: 'nationalUrban', label: 'National Urban', group: 'spatialScales' },
+    ];
+
+    const temporalOptions = [
+      { value: 'singleYearSnapshot', label: 'Single Year Snapshot', group: 'temporalScales' },
+      { value: 'timeSeries', label: 'Time Series', group: 'temporalScales' },
+      { value: 'futuresModeling', label: 'Futures Modeling', group: 'temporalScales' },
+    ];
+
+    const worldOptions = [
+      { value: 'northAmerica', label: 'North America', group: 'worldRegions' },
+      { value: 'southAmerica', label: 'South America', group: 'worldRegions' },
+      { value: 'europe', label: 'Europe', group: 'worldRegions' },
+      { value: 'africa', label: 'Africa', group: 'worldRegions' },
+      { value: 'asia', label: 'Asia', group: 'worldRegions' },
+    ]; 
 
     const groupedOptions = [
       {
-        label: 'Colours',
-        options: colourOptions
+        label: 'Content Type',
+        options: typeOptions
       },
       {
-        label: 'Flavours',
-        options: flavourOptions
+        label: 'Outcomes',
+        options: outcomeOptions
+      },
+      {
+        label: 'Parameters',
+        options: parameterOptions
+      },
+      {
+        label: 'Spatial Scales',
+        options: spatialOptions
+      },
+      {
+        label: 'Temporal Scales',
+        options: temporalOptions
+      },
+      {
+        label: 'World Regions',
+        options: worldOptions
       }
     ];
 

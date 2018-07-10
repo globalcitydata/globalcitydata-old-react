@@ -3,7 +3,8 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import QueryBar from './QueryBar';
 
-function Showcase() {
+function Showcase(props) {
+  const { dataList, updateDataList } = props;
   return (
     <div className="showcase">
       <div className="bg-image"></div>
@@ -11,7 +12,7 @@ function Showcase() {
           <h1>Global City Data</h1>
           <SearchBar />
           <br />
-          <QueryBar />
+          <QueryBar dataList={dataList} updateDataList={updateDataList}/>
         </div>
     </div>
   );

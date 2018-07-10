@@ -20,13 +20,24 @@ import './App.css';
 
 // Main App
 class App extends React.Component {
-  state = {
-    dataList: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataList: null,
+      shownDataList: null,
+      showPurpose: true
+    };
+    this.updateDataList = this.updateDataList.bind(this);
+    this.updateShownDataList = this.updateShownDataList.bind(this);
+  }
+  
 
   async componentDidMount() {
     const dataList = await fetchDataList();
-    this.updateDataList(dataList);
+    this.setState({
+      dataList: dataList,
+      shownDataList: dataList
+    })
   }
 
   async onAddData(data) {
@@ -38,6 +49,13 @@ class App extends React.Component {
   updateDataList(dataList) {
     this.setState({
       dataList
+    });
+  } 
+
+  updateShownDataList(shownDataList) {
+    this.setState({
+      shownDataList: shownDataList,
+      showPurpose: false
     });
   }
 
@@ -51,7 +69,11 @@ class App extends React.Component {
               exact
               path="/"
               render={({ props }) => (
-                <Home {...{ props }} dataList={this.state.dataList} />
+                <Home {...{ props }} 
+                dataList={this.state.dataList} 
+                shownDataList={this.state.shownDataList} 
+                updateDataList={this.updateShownDataList}
+                showPurpose={this.state.showPurpose}/>
               )}
             />
             <Route exact path="/collaborators" component={Collaborators} />

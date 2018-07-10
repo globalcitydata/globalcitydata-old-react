@@ -76,6 +76,11 @@ p {
   color: white;
 }
 
+.dataList p {
+  color: white;
+  text-align: left;
+}
+
 .card {
   text-align: left;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */

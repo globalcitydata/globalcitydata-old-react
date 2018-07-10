@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, Button } from 'react-materialize';
+import { Row, Col, Card, Button, Preloader } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -23,13 +23,13 @@ function DataCard(props) {
 
 function DataList(props) {
   const { dataList } = props;
-  // const dataList = [{ name: 'test 1' }, { name: 'test 2' }];
+  if (!dataList) return <Preloader flashing/>;
   return (
     <section className="dataList">
       <div className="container content-wrap">
         <h2>Datasets and Models</h2>
-        {!dataList ? (
-          <p>Loading</p>
+        {dataList.length == 0 ? (
+          <p>There is no data matching your query :(</p>
         ) : (
           <ul className="dataListCards">
             <Row>

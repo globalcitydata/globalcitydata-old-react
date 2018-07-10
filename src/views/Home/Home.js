@@ -10,12 +10,18 @@ import Purpose from './Sections/Purpose';
 import Showcase from './Sections/Showcase';
 
 function Home(props) {
-  const { dataList } = props;
+  const { dataList, shownDataList, updateDataList, showPurpose } = props;
   return (
     <div className="home">
-      <Showcase />
-      <Purpose />
-      <DataList dataList={dataList} />
+      <Showcase dataList={dataList} updateDataList={updateDataList} />
+      {showPurpose ? (
+        <div>
+          <Purpose />
+          <DataList dataList={shownDataList} />
+        </div>
+      ) :
+        <DataList dataList={shownDataList} />
+      }
     </div>
   );
 }

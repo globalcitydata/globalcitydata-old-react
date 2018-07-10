@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Input, Button } from 'react-materialize';
-import dataState from '../../utils/data';
+import {dataState} from '../../utils/data';
 
 export default class DataSubmitForm extends Component {
   state = dataState;
