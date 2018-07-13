@@ -1,42 +1,47 @@
 import React, { Component } from 'react';
 import { Row, Input, Button } from 'react-materialize';
-import {dataState} from '../../utils/data';
+import PropTypes from 'prop-types';
+import { dataState } from '../../utils/data';
+import { addData } from '../../utils/api';
 
 export default class DataSubmitForm extends Component {
-  state = dataState;
+  constructor(props) {
+    super(props);
+    this.state = dataState;
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleRadioChange = this.handleRadioChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   handleRadioChange = (e) => {
-    let parameters;
-    let outcomes;
-    let spatialScales;
-    let temporalScales;
-    let worldRegions;
-    const { name, val } = e.target;
-    const foo = { ...this.state[name] };
-    foo[val] = !foo[val];
+    let parameters, outcomes, spatialScales, temporalScales, worldRegions; // eslint-disable-line
+    const { name, value } = e.target;
+    const oldState = { ...this.state[name] };
+    oldState[value] = !oldState[value];
     switch (name) {
       case 'parameters':
-        parameters = foo;
+        parameters = oldState;
         this.setState({ parameters });
         break;
       case 'outcomes':
-        outcomes = foo;
+        outcomes = oldState;
         this.setState({ outcomes });
         break;
       case 'spatialScales':
-        spatialScales = foo;
+        spatialScales = oldState;
         this.setState({ spatialScales });
         break;
       case 'temporalScales':
-        temporalScales = foo;
+        temporalScales = oldState;
         this.setState({ temporalScales });
         break;
       case 'worldRegions':
-        worldRegions = foo;
+        worldRegions = oldState;
         this.setState({ worldRegions });
         break;
       default:
@@ -46,19 +51,28 @@ export default class DataSubmitForm extends Component {
     }
   };
 
-  handleSubmit = (e) => {
+  async handleSubmit(e) {
+    e.preventDefault();
     const value = this.state;
     const { onAddData } = this.props;
-    onAddData(value);
-    console.log('Added data: ', value);
-    // clear state
-    // for (const input of e.target) {
-    //   this.setState({
-    //     [input.name]: ''
-    //   });;
-    // }
-    e.preventDefault();
-  };
+    await onAddData(value);
+    this.setState(dataState);
+    window.Materialize.toast('Success! Your data is pending review.', 4000);
+  }
+
+  // handleSubmit = async (e) => {
+  //   const value = this.state;
+  //   // const { onAddData } = this.props;
+  //   // await onAddData(value);
+  //   await addData(value);
+  //   // clear state
+  //   // for (const input of e.target) {
+  //   //   this.setState({
+  //   //     [input.name]: ''
+  //   //   });;
+  //   // }
+  //   // e.preventDefault();
+  // };
 
   render() {
     const {
@@ -76,7 +90,7 @@ export default class DataSubmitForm extends Component {
       temporalScales,
       title,
       usesAndVisualizations,
-      worldRegions
+      worldRegions,
     } = this.state;
 
     const isEnabled = title.length > 0 &&
@@ -294,3 +308,7 @@ export default class DataSubmitForm extends Component {
     );
   }
 }
+
+DataSubmitForm.propTypes = {
+  onAddData: PropTypes.func.isRequired,
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import dataType from '../../utils/props';
 
 // CSS
 import './Home.css';
@@ -14,16 +15,15 @@ function Home(props) {
   return (
     <div className="home">
       <Showcase dataList={dataList} updateDataList={updateDataList} />
-      {showPurpose ? (
-        <div>
-          <Purpose />
-          <DataList dataList={shownDataList} />
-        </div>
-      ) :
-        <DataList dataList={shownDataList} />
-      }
+      {showPurpose && <Purpose />}
+      <DataList dataList={shownDataList} />
     </div>
   );
 }
 
 export default Home;
+
+Home.propTypes = {
+  updateDataList: PropTypes.func.isRequired,
+  showPurpose: PropTypes.bool.isRequired,
+};

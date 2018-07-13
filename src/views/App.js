@@ -25,19 +25,19 @@ class App extends React.Component {
     this.state = {
       dataList: null,
       shownDataList: null,
-      showPurpose: true
+      showPurpose: true,
     };
     this.updateDataList = this.updateDataList.bind(this);
     this.updateShownDataList = this.updateShownDataList.bind(this);
+    this.onAddData = this.onAddData.bind(this);
   }
-  
 
   async componentDidMount() {
     const dataList = await fetchDataList();
     this.setState({
-      dataList: dataList,
-      shownDataList: dataList
-    })
+      dataList,
+      shownDataList: dataList,
+    });
   }
 
   async onAddData(data) {
@@ -48,18 +48,19 @@ class App extends React.Component {
 
   updateDataList(dataList) {
     this.setState({
-      dataList
+      dataList,
     });
-  } 
+  }
 
   updateShownDataList(shownDataList) {
     this.setState({
-      shownDataList: shownDataList,
-      showPurpose: false
+      shownDataList,
+      showPurpose: false,
     });
   }
 
   render() {
+    const { dataList, shownDataList, showPurpose } = this.state;
     return (
       <Router>
         <div>
@@ -69,11 +70,13 @@ class App extends React.Component {
               exact
               path="/"
               render={({ props }) => (
-                <Home {...{ props }} 
-                dataList={this.state.dataList} 
-                shownDataList={this.state.shownDataList} 
-                updateDataList={this.updateShownDataList}
-                showPurpose={this.state.showPurpose}/>
+                <Home
+                  {...{ props }}
+                  dataList={dataList}
+                  shownDataList={shownDataList}
+                  updateDataList={this.updateShownDataList}
+                  showPurpose={showPurpose}
+                />
               )}
             />
             <Route exact path="/collaborators" component={Collaborators} />
@@ -83,7 +86,7 @@ class App extends React.Component {
               exact
               path="/submit-data"
               render={({ props }) => (
-                <DataSubmit {...{ props }} onAddData={this.addData} />
+                <DataSubmit {...{ props }} onAddData={this.onAddData} />
               )}
             />
           </main>
