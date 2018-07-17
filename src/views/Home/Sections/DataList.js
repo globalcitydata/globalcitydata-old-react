@@ -3,32 +3,33 @@ import { Row, Col, Card, Button, Preloader } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function DataCard(props) {
+const DataCard = props => {
   const { data } = props;
+  const url = `data/${data.url}`;
   return (
     <Card
       className="w3-spin"
       textClassName=""
       title={data.title}
       actions={[
-        <Link to="#" key={data.title}>
+        <Link to={url} key={data.url}>
           <Button waves="light">Detail</Button>
-        </Link>
+        </Link>,
       ]}
     >
       <p>{data.description}</p>
     </Card>
   );
-}
+};
 
-function DataList(props) {
+const DataList = props => {
   const { dataList } = props;
   if (!dataList) return <Preloader flashing />;
   return (
     <section className="dataList">
       <div className="container content-wrap">
         <h2>Datasets and Models</h2>
-        {dataList.length == 0 ? (
+        {dataList.length === 0 ? (
           <p>There is no data matching your query :(</p>
         ) : (
             <ul className="dataListCards">
@@ -46,6 +47,6 @@ function DataList(props) {
       </div>
     </section>
   );
-}
+};
 
 export default DataList;

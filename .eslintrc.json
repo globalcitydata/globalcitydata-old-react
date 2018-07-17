@@ -22,6 +22,8 @@
       "singleQuote": true,
       "trailingComma": "es5"
     }],
-    "jsx-a11y/heading-has-content": false
+    "jsx-a11y/heading-has-content": false,
+    "arrow-parens": ["error", "as-needed"],
+    "operator-linebreak": ["error", "after"]
   }
 }

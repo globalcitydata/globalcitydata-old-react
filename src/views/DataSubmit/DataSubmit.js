@@ -14,14 +14,14 @@ export default class DataSubmitForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleRadioChange = (e) => {
+  handleRadioChange = e => {
     let parameters, outcomes, spatialScales, temporalScales, worldRegions; // eslint-disable-line
     const { name, value } = e.target;
-    const oldState = { ...this.state[name] };
+    const oldState = { ...this.state[name] }; // eslint-disable-line
     oldState[value] = !oldState[value];
     switch (name) {
       case 'parameters':
@@ -93,7 +93,7 @@ export default class DataSubmitForm extends Component {
       worldRegions,
     } = this.state;
 
-    const isEnabled = title.length > 0 &&
+    const isEnabled = title.length > 0 && // eslint-disable-line
       description.length > 0 &&
       context.length > 0 &&
       keyTakeaways.length > 0 &&

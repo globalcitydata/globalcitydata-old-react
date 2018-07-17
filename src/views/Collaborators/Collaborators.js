@@ -1,20 +1,20 @@
 import React from 'react';
 // import { addData } from '../../utils/api';
+import { queryData } from '../../utils/api';
 
-function Collaborators() {
-  return (
-    <section className="collaborators">
-      <div className="container">
-        <h1>Collaborators</h1>
-        <p>I am the collaborators page.</p>
-        {/* <input
+const Collaborators = () => (
+  <section className="collaborators">
+    <div className="container">
+      <h1>Collaborators</h1>
+      <p>I am the collaborators page.</p>
+      {/* <input
           type="submit"
           value="submit"
           onClick={async () => addData({ title: 'successsss' })}
         /> */}
-      </div>
-    </section>
-  );
-}
+      {/* <input type="submit" value="test submit" onClick={async () => await queryData()} /> */}
+    </div>
+  </section>
+);
 
 export default Collaborators;
