@@ -1,9 +1,10 @@
 {
   "name": "globalcitydata",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
   "dependencies": {
     "firebase": "^5.2.0",
+    "jquery": "^3.3.1",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
@@ -13,12 +14,14 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-select": "^2.0.0-beta.6",
+    "react-tooltip": "^3.6.1",
+    "smooth-scroll": "^14.2.1",
     "styled-components": "^3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "firebase deploy",
+    "deploy": "react-scripts build && firebase deploy",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint .",
