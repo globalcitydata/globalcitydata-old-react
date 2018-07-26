@@ -50,17 +50,17 @@ const DataDetailBody = ({ data }) => {
   } = data;
   return (
     <div className="dataDetailContainer">
-      <div className="container">
-        <h2>{title}</h2>
-        <hr />
-        <div className="dataDetailContent">
-          <h6>Description</h6>
-          <div>
-            <p>{description}</p>
-          </div>
-          {/* <h6>Tags</h6> */}
-          <div>
-            {/* <p>
+
+      <h2>{title}</h2>
+      <hr />
+      <div className="dataDetailContent">
+        <h6>Description</h6>
+        <div>
+          <p>{description}</p>
+        </div>
+        {/* <h6>Tags</h6> */}
+        <div>
+          {/* <p>
           <strong>Parameters:</strong> {displayTags({ parameters })}
         </p>
         <p>
@@ -75,34 +75,33 @@ const DataDetailBody = ({ data }) => {
         <p>
           <strong>World Regions:</strong> {displayTags({ worldRegions })}
         </p> */}
-          </div>
-          <h6>Context</h6>
-          <div>
-            <p>{context}</p>
-          </div>
-          <h6>Key Takeaways</h6>
-          <div>
-            <p>{keyTakeaways}</p>
-          </div>
-          <h6>Sample Uses and Visualizations</h6>
-          <div>
-            <p>{usesAndVisualizations}</p>
-          </div>
-          <h6>Technical Details</h6>
-          <div>
-            <p>{technicalDetails}</p>
-          </div>
-          <h6>Applicable Datasets, Models, and Tutorials</h6>
-          <div>
-            <p>{applicableData}</p>
-          </div>
-          {/* <h6>Relevant Publications</h6> */}
-          {/* <div>
+        </div>
+        <h6>Context</h6>
+        <div>
+          <p>{context}</p>
+        </div>
+        <h6>Key Takeaways</h6>
+        <div>
+          <p>{keyTakeaways}</p>
+        </div>
+        <h6>Sample Uses and Visualizations</h6>
+        <div>
+          <p>{usesAndVisualizations}</p>
+        </div>
+        <h6>Technical Details</h6>
+        <div>
+          <p>{technicalDetails}</p>
+        </div>
+        <h6>Applicable Datasets, Models, and Tutorials</h6>
+        <div>
+          <p>{applicableData}</p>
+        </div>
+        {/* <h6>Relevant Publications</h6> */}
+        {/* <div>
         <p>{relevantPublications.map(pub => <p>{pub}</p>)}</p>
       </div> */}
-          <h6>Request Access</h6>
-          <p>{contact}</p>
-        </div>
+        <h6>Request Access</h6>
+        <p>{contact}</p>
       </div>
     </div>
   );

@@ -14,7 +14,6 @@ import NoMatch from '../views/NoMatch/NoMatch';
 
 const MyRoutes = ({
   dataList,
-  shownDataList,
   updateDataList,
   showPurpose,
   onAddData,
@@ -26,7 +25,7 @@ const MyRoutes = ({
         render={({ props }) => (
           <Home
             {...{ props }}
-            dataList={shownDataList}
+            dataList={dataList}
             updateDataList={updateDataList}
             showPurpose={showPurpose}
           />

@@ -7,13 +7,13 @@ function Showcase(props) {
   const { dataList, updateDataList } = props;
   return (
     <div className="showcase">
-      <div className="bg-image"></div>
-        <div className="container content-wrap">
-          <h1>Global City Data</h1>
-          <SearchBar />
-          <br />
-          <QueryBar dataList={dataList} updateDataList={updateDataList}/>
-        </div>
+      <div className="bg-image" />
+      <div className="container content-wrap">
+        <h1>Global City Data</h1>
+        <SearchBar />
+        <br />
+        <QueryBar dataList={dataList} updateDataList={updateDataList} />
+      </div>
     </div>
   );
 }
