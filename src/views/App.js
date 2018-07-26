@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import SmoothScroll from 'smooth-scroll';
 
 // Routes
 import MyRoutes from '../routes/routes';
@@ -57,6 +58,7 @@ class App extends React.Component {
   }
 
   render() {
+    const scroll = new SmoothScroll('a[href*="#"]', { speed: 1000, easing: 'easeInOutCubic', }); // works like this;
     const { shownDataList, showPurpose } = this.state;
     return (
       <Router>

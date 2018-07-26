@@ -42,8 +42,8 @@ class QueryBar extends React.Component {
     console.log(tags);
 
     return (
-      <div className="dropdownContainer">
-        <Row>
+      <div className="queryBarContainer">
+        <Row className="blue">
           <Col>
             <Dropdown trigger={<Button onClick={this.handleDropdown}>Content Type</Button>}>
               <Row className="queryDropdownOptions">

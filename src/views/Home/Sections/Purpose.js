@@ -1,5 +1,6 @@
 import React from 'react';
-import {Router, Link} from 'react-router-dom';
+import { Router, Link } from 'react-router-dom';
+import { Button } from 'react-materialize';
 
 function Purpose() {
   return (
@@ -11,8 +12,9 @@ function Purpose() {
         this site, please use the contact link at the bottom of each detail page to be put in contact with the
               owners of individual data sets and models.</p>
         <p>Interested in contributing to Global City Data? Learn more <Link to="/collaborators">here.</Link></p>
+        <a data-scroll href="#dataList"><Button className="blue-grey darken-4">Datasets, models and tutorials</Button></a>
       </div>
-    </section>
+    </section >
   )
 }
 

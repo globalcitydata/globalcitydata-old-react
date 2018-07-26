@@ -26,7 +26,7 @@ const DataList = props => {
   const { dataList } = props;
   if (!dataList) return <Preloader flashing />;
   return (
-    <section className="dataList">
+    <section className="dataList" id="dataList">
       <div className="container content-wrap">
         <h2>Datasets and Models</h2>
         {dataList.length === 0 ? (
