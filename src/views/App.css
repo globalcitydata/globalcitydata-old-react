@@ -121,9 +121,15 @@ p {
 }
 
 .queryDropdownOptions {
+  text-align: left;
   padding-top: 20px;
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.__react_component_tooltip li {
+  line-height: 2rem;
+  font-size: 1rem;
 }
 
 /* Home SearchBar */
