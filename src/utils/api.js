@@ -9,7 +9,20 @@ const db = firebase.firestore();
 const settings = { timestampsInSnapshots: true };
 db.settings(settings);
 const dataListRef = db.collection('dataList');
+const publicationsRef = db.collection('publications');
 const tagsRef = db.collection('tags');
+
+export async function fetchPublications() {
+  const publications = [];
+  try {
+    const snapshot = await publicationsRef.get();
+    snapshot.docs.map(doc => publications.push(doc.data()));
+  } catch (err) {
+    throw new Error('Error getting publications.', err);
+  }
+  console.log(publications);
+  return publications;
+}
 
 export async function fetchDataList() {
   const dataList = [];
@@ -17,9 +30,8 @@ export async function fetchDataList() {
     const snapshot = await dataListRef.get();
     snapshot.docs.map(doc => dataList.push(doc.data()));
   } catch (err) {
-    throw new Error('Error getting documents', err);
+    throw new Error('Error getting data.', err);
   }
-
   return dataList;
 }
 
@@ -29,9 +41,8 @@ export async function fetchPublishedDataList() {
     const snapshot = await dataListRef.where('published', '==', true).get();
     snapshot.docs.map(doc => dataList.push(doc.data()));
   } catch (err) {
-    throw new Error('Error getting documents', err);
+    throw new Error('Error getting published data.', err);
   }
-
   return dataList;
 }
 
@@ -41,7 +52,7 @@ export async function queryData() {
     // queryDoc.docs.map(doc => console.log(doc.data()));
     console.log(queryDoc.data());
   } catch (err) {
-    throw new Error('error with query baby', err);
+    throw new Error('Error querying for data.', err);
   }
 }
 
@@ -49,7 +60,7 @@ export async function addData(data) {
   try {
     await dataListRef.doc(data.title).set(data);
   } catch (err) {
-    throw new Error('Error getting documents', err);
+    throw new Error('Error adding data', err);
   }
 }
 

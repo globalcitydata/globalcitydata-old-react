@@ -1,24 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+// Routes
+import MyRoutes from '../routes/routes';
 
 // Components
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
-// Views
-import Home from './Home/Home';
-import Collaborators from './Collaborators/Collaborators';
-import Publications from './Publications/Publications';
-import Contact from './Contact/Contact';
-import DataSubmit from './DataSubmit/DataSubmit';
-import DataDetail from './DataDetail/DataDetail';
-
 // API
-import { fetchDataList, addData } from '../utils/api';
+import { fetchDataList, fetchPublishedDataList, addData } from '../utils/api';
 
 // CSS
 import './App.css';
-import DataList from './Home/Sections/DataList';
 
 // Main App
 class App extends React.Component {
@@ -36,9 +30,10 @@ class App extends React.Component {
 
   async componentDidMount() {
     const dataList = await fetchDataList();
+    const shownDataList = await fetchPublishedDataList();
     this.setState({
       dataList,
-      shownDataList: dataList,
+      shownDataList,
     });
   }
 
@@ -62,44 +57,19 @@ class App extends React.Component {
   }
 
   render() {
-    const { dataList, shownDataList, showPurpose } = this.state;
+    const { shownDataList, showPurpose } = this.state;
     return (
       <Router>
         <div>
           <Nav />
           <main className="main">
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={({ props }) => (
-                  <Home
-                    {...{ props }}
-                    dataList={dataList}
-                    shownDataList={shownDataList}
-                    updateDataList={this.updateShownDataList}
-                    showPurpose={showPurpose}
-                  />
-                )}
-              />
-              <Route exact path="/collaborators" component={Collaborators} />
-              <Route exact path="/publications" component={Publications} />
-              <Route exact path="/contact" component={Contact} />
-              <Route
-                exact
-                path="/submit-data"
-                render={({ props }) => (
-                  <DataSubmit {...{ props }} onAddData={this.onAddData} />
-                )}
-              />
-              <Route path="/data/:dataURL" render={({ props, match }) => (
-                <DataDetail {...{ props }} dataList={dataList} match={match}
-                />
-              )} />
-              <Route render={() => <div className='container center'><p>404</p></div>} />
-            </Switch>
+            <MyRoutes
+              dataList={shownDataList}
+              updateDataList={this.updateShownDataList}
+              showPurpose={showPurpose}
+              onAddData={this.onAddData}
+            />
           </main>
-
           <Footer />
         </div>
       </Router>
