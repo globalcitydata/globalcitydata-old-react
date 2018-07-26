@@ -127,6 +127,11 @@ p {
   padding-right: 30px;
 }
 
+.myDropdown ul {
+  width: min-content !important;
+  min-width: 200px;
+}
+
 .__react_component_tooltip li {
   line-height: 2rem;
   font-size: 1rem;

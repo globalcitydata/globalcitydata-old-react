@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 const DataCard = props => {
   const { data } = props;
   const url = `data/${data.url}`;
+  const description = `${data.description.slice(0, 400)}...`;
   return (
     <Card
       className="w3-spin"
@@ -17,7 +18,7 @@ const DataCard = props => {
         </Link>,
       ]}
     >
-      <p>{data.description}</p>
+      <p>{description}</p>
     </Card>
   );
 };
