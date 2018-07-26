@@ -1,33 +1,43 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { NavLink } from 'react-router-dom'; // eslint-disable-line no-unused-vars
+import { Navbar } from 'react-materialize';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-};
-
-function Nav(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Typography variant="lead" color="inherit">
-            Global City Data
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+class Nav extends React.Component {
+  render() {
+    return (
+      <nav>
+        <div className="nav-wrapper">
+          <Navbar brand="Global City Data" right options={{ closeOnClick: true }} className="nav blue">
+            <li>
+              <NavLink exact activeClassName="active" onClick={this.forceUpdate} to="/">
+                Home
+          </NavLink>
+            </li>
+            <li>
+              <NavLink exact activeClassName="active" to="/collaborators">
+                Collaborators
+          </NavLink>
+            </li>
+            <li>
+              <NavLink exact activeClassName="active" to="/publications">
+                Publications
+          </NavLink>
+            </li>
+            <li>
+              <NavLink exact activeClassName="active" to="/contact">
+                Contact
+          </NavLink>
+            </li>
+            <li>
+              <NavLink exact activeClassName="active" to="/submit-data">
+                Submit Data
+          </NavLink>
+            </li>
+          </Navbar>
+        </div>
+      </nav>
+    );
+  }
 }
 
-Nav.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Nav);
+export default Nav;

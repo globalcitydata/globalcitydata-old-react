@@ -1,11 +1,12 @@
 import React from 'react';
+import logo from '../img/nsf_logo.png';
 
 export default function Footer() {
-	return (
-		<section id="footer" className="section">
-			<div className="container">
-				<p>Put NSF Logo</p>
-			</div>
-		</section>
-	);
+  return (
+    <footer className="blue">
+      <div className="container content-wrap">
+        <img src={logo} alt="nsf logo" />
+      </div>
+    </footer>
+  );
 }

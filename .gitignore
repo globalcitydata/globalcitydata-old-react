@@ -10,8 +10,7 @@
 /build
 
 # for use with firebase
-secret.json
-firebase.json
+/src/utils
 .firebaserc
 
 # misc
@@ -24,3 +23,6 @@ firebase.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+*.icloud
+/.vscode
