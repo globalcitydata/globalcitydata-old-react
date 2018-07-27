@@ -5,8 +5,10 @@ h1 {
 }
 
 h2 {
+  margin-top: 0;
+  margin-bottom: 45px;
   font-size: 2.75rem;
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
 }
 
 h3 {
@@ -29,13 +31,18 @@ p {
   line-height: 1.7rem;
 }
 
-.container {
+.container,
+.container-fluid {
   padding: 25px 0;
   margin: 0 auto;
 }
 
 .container.content-wrap {
-  padding: 80px 0;
+  padding: 75px 0;
+}
+
+.container-fluid.content-wrap {
+  padding: 100px 5% 0;
 }
 
 .main {
@@ -45,7 +52,7 @@ p {
 .btn {
   background-color: #2196f3;
   padding: 0.5rem 1.2rem 3rem;
-  margin-top: 25px;
+  margin-top: 15px;
   border-radius: 5px;
 }
 
@@ -74,7 +81,7 @@ p {
 /* Home Showcase */
 
 .showcase {
-  min-height: 525px;
+  min-height: 700px;
   position: relative;
   color: #fff;
   text-align: center;
@@ -88,7 +95,7 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 525px;
+  height: 700px;
   z-index: -1;
   filter: brightness(40%);
 }
@@ -96,22 +103,36 @@ p {
 /* Home QueryBar */
 
 .queryBarContainer {
-  display: flex;
-  justify-content: center;
+  padding: 15px 8% 0;
 }
 
-.queryBarContainer .col {
+.queryBarContainer .col,
+.queryBarContainer .row {
   padding: 0;
+  margin: 0
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .queryBarContainer .btn {
-  font-size: 1rem;
-  padding: 0.5rem 1.2rem 3rem 1.2rem;
+  font-size: 0.8rem;
   margin: 0;
+  width: 100%;
+  padding: 0.5rem 0 3rem 0 !important;
 }
 
 .querySearch.btn {
   background-color: #5cb85c;
+}
+
+@media only screen and (min-width: 601px) and (max-width: 993px) {
+  .row .col.m2 .querySearch.btn {
+    height: 100%;
+    padding: 2rem 1rem 2rem !important;
+  }
 }
 
 .querySearch.btn:hover,
@@ -122,14 +143,13 @@ p {
 
 .queryDropdownOptions {
   text-align: left;
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 20px 30px !important;
 }
 
 .myDropdown ul {
   width: min-content !important;
   min-width: 200px;
+  overflow: hidden;
 }
 
 .__react_component_tooltip li {
@@ -155,6 +175,12 @@ p {
 .searchBar {
   font-size: 2rem;
 }
+
+/* Home Purpose */
+
+/* .purpose h2 {
+  margin-bottom: 35px;
+} */
 
 /* Home DataList */
 

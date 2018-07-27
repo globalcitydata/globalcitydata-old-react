@@ -14,8 +14,8 @@ function Purpose() {
         <p>Interested in contributing to Global City Data? Learn more <Link to="/collaborators">here.</Link></p>
         <a data-scroll href="#dataList"><Button className="blue-grey darken-4">Datasets, models and tutorials</Button></a>
       </div>
-    </section >
-  )
+    </section>
+  );
 }
 
 export default Purpose;

@@ -8,7 +8,7 @@ function Showcase(props) {
   return (
     <div className="showcase">
       <div className="bg-image" />
-      <div className="container content-wrap">
+      <div className="container-fluid content-wrap">
         <h1>Global City Data</h1>
         <SearchBar />
         <br />
