@@ -1,45 +1,55 @@
-import React, { Component } from 'react';
-import { arrayOf, object } from 'prop-types';
-import { fetchPublications } from '../../utils/api';
+import React from 'react';
+import { Router, Link } from 'react-router-dom';
+import { objectOf, string } from 'prop-types';
+import { Preloader, Card, Row, Col, Button } from 'react-materialize';
 
-const PublicationsList = ({ publications }) => (
-  <ul>
-    {publications && publications.map(pub => {
-      const { title } = pub;
-      return <li key={title}>{title}</li>;
-    })}
-  </ul>
+const PubDetail = ({ pub }) => {
+  const [value, url] = pub;
+  const realURL = `/data/${url}`;
+  return (
+    <Col s={12} m={6} xl={4}>
+      <Card
+        className="z-depth-4"
+        actions={[
+          <Link to={realURL} key={value}>
+            <Button waves="light">This is a Link</Button>
+          </Link>,
+        ]}
+      >
+        <p>{value}</p>
+      </Card>
+    </Col>
+  );
+};
+
+const PubList = ({ publications }) => (
+  <Row className="flex">
+    {!publications ? (
+      <div>
+        <p style={{ paddingBottom: 25 }}>Loading publications...</p>
+        <Preloader flashing />
+      </div>
+    ) : (
+      Object.entries(publications).map((pub, i) => <PubDetail key={i} pub={pub} />)
+    )}
+  </Row>
 );
 
-class Publications extends Component {
-  state = {
-    publications: null,
-  };
-
-  async componentDidMount() {
-    const publications = await fetchPublications();
-    this.setState({ publications });
-  }
-
-  render() {
-    const { publications } = this.state;
-    return (
-      <section className="publications">
-        <div className="container">
-          <h1>Publications</h1>
-          <PublicationsList publications={publications} />
-        </div>
-      </section>
-    );
-  }
-}
+const Publications = ({ publications }) => (
+  <section className="publications">
+    <div className="container">
+      <h1>Publications</h1>
+      <PubList publications={publications} />
+    </div>
+  </section>
+);
 
 export default Publications;
 
-PublicationsList.propTypes = {
-  publications: arrayOf(object),
+PubList.propTypes = {
+  publications: objectOf(string),
 };
 
-PublicationsList.defaultProps = {
+PubList.defaultProps = {
   publications: null,
 };
