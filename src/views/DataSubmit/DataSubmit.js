@@ -178,6 +178,50 @@ const TemporalScales = ({ tsk, hrc }) => (
   </Row>
 );
 
+const WorldRegions = ({ wrk, hrc }) => (
+  <Row>
+    <h4>World Regions</h4>
+    {wrk.map(val => (
+      <Input
+        name="worldRegions"
+        type="checkbox"
+        key={val}
+        value={val}
+        label={val}
+        onChange={hrc}
+      />
+    ))}
+  </Row>
+);
+
+const Owner = ({ owner, hc }) => (
+  <Input
+    s={12}
+    name="owner"
+    label="Your Full Name"
+    value={owner}
+    onChange={hc}
+    required
+  />
+);
+
+const Contact = ({ contact, hc }) => (
+  <Input
+    s={12}
+    name="contact"
+    label="Your Email"
+    value={contact}
+    onChange={hc}
+    required
+  />
+);
+
+const Submit = ({ isEnabled, hs }) => (
+  <Button s={12} waves="light" disabled={!isEnabled} onClick={hs}>
+    Submit
+  </Button>
+);
+
 export default class DataSubmitForm extends Component {
   state = dataState;
 
@@ -260,15 +304,15 @@ export default class DataSubmitForm extends Component {
     } = this.state;
 
     const isEnabled = title.length > 0 && // eslint-disable-line
-      description.length > 0
-      && context.length > 0
-      && keyTakeaways.length > 0
-      && usesAndVisualizations.length > 0
-      && technicalDetails.length > 0
-      && applicableData.length > 0
-      && relevantPublications.length > 0
-      && owner.length > 0
-      && contact.length > 0;
+      description.length > 0 &&
+      context.length > 0 &&
+      keyTakeaways.length > 0 &&
+      usesAndVisualizations.length > 0 &&
+      technicalDetails.length > 0 &&
+      applicableData.length > 0 &&
+      relevantPublications.length > 0 &&
+      owner.length > 0 &&
+      contact.length > 0;
 
     const parameterKeys = Object.keys(parameters);
     const outcomeKeys = Object.keys(outcomes);
@@ -303,51 +347,17 @@ export default class DataSubmitForm extends Component {
                 ssk={spatialScaleKeys}
                 hrc={this.handleRadioChange}
               />
-              {/* Temporal Scales */}
               <TemporalScales
                 tsk={temporalScaleKeys}
                 hrc={this.handleRadioChange}
               />
-              {/* World Regions */}
-              <Row>
-                <h4>World Regions</h4>
-                {worldRegionKeys.map(val => (
-                  <Input
-                    name="worldRegions"
-                    type="checkbox"
-                    key={val}
-                    value={val}
-                    label={val}
-                    onChange={this.handleRadioChange}
-                  />
-                ))}
-              </Row>
-              {/* Owner */}
-              <Input
-                s={12}
-                name="owner"
-                label="Your Full Name"
-                value={owner}
-                onChange={this.handleChange}
-                required
+              <WorldRegions
+                wrk={worldRegionKeys}
+                hrc={this.handleRadioChange}
               />
-              {/* Contact */}
-              <Input
-                s={12}
-                name="contact"
-                label="Your Email"
-                value={contact}
-                onChange={this.handleChange}
-                required
-              />
-              <Button
-                s={12}
-                waves="light"
-                disabled={!isEnabled}
-                onClick={this.handleSubmit}
-              >
-                Submit
-              </Button>
+              <Owner owner={owner} hc={this.handleChange} />
+              <Contact contact={contact} hc={this.handleChange} />
+              <Submit isEnabled={isEnabled} hs={this.handleSubmit} />
             </Row>
           </form>
         </div>
