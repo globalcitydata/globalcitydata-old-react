@@ -96,8 +96,8 @@ class QueryBar extends React.Component {
   // };
 
   render() {
-    $('.dropdown-button + .dropdown-content').on('click', function (event) {
-      event.stopPropagation();
+    $('.dropdown-button + .dropdown-content').on('click', e => {
+      e.stopPropagation();
     });
     return (
       <div className="queryBarContainer">
@@ -109,9 +109,10 @@ class QueryBar extends React.Component {
               {tags.map(tag => <QueryDropdown key={tag.label} tag={tag} />)}
             </Row>
           </Col>
-          <Col s={12} m={2} l={1}><Button className="querySearch">Search</Button></Col>
+          <Col s={12} m={2} l={1}>
+            <Button className="querySearch">Search</Button>
+          </Col>
         </Row>
-
       </div>
     );
   }

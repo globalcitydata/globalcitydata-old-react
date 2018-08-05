@@ -33,18 +33,18 @@ const DataList = props => {
         {dataList.length === 0 ? (
           <p>There is no data matching your query :(</p>
         ) : (
-            <ul className="dataListCards">
-              <Row>
-                {dataList.map(data => (
-                  <Col key={data.title} s={12} m={6} xl={4}>
-                    <li>
-                      <DataCard data={data} />
-                    </li>
-                  </Col>
-                ))}
-              </Row>
-            </ul>
-          )}
+          <ul className="dataListCards">
+            <Row>
+              {dataList.map(data => (
+                <Col key={data.title} s={12} m={6} xl={4}>
+                  <li>
+                    <DataCard data={data} />
+                  </li>
+                </Col>
+              ))}
+            </Row>
+          </ul>
+        )}
       </div>
     </section>
   );

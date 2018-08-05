@@ -1,7 +1,6 @@
 {
   "extends": [
     "Airbnb",
-    "prettier",
     "prettier/react"
   ],
   "plugins": [
@@ -23,9 +22,11 @@
       "singleQuote": true,
       "trailingComma": "es5"
     }],
-    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
-    "jsx-a11y/heading-has-content": false,
+    "comma-dangle": [0],
+    "semi": [0],
+    "object-curly-newline": [0],
     "arrow-parens": ["error", "as-needed"],
-    "operator-linebreak": ["error", "after"]
+    "jsx-a11y/heading-has-content": [0],
+    "no-restricted-syntax": ["error", "WithStatement", "BinaryExpression[operator='in']"]
   }
 }

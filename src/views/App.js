@@ -10,66 +10,42 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
 // API
-import { fetchDataList, fetchPublishedDataList, addData } from '../utils/api';
+import { fetchPublishedDataList } from '../utils/api';
 
 // CSS
 import './App.css';
 
 // Main App
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dataList: null,
-      shownDataList: null,
-      showPurpose: true,
-    };
-    this.updateDataList = this.updateDataList.bind(this);
-    this.updateShownDataList = this.updateShownDataList.bind(this);
-    this.onAddData = this.onAddData.bind(this);
-  }
+  state = {
+    dataList: null,
+    showPurpose: true,
+  };
 
   async componentDidMount() {
-    const dataList = await fetchDataList();
-    const shownDataList = await fetchPublishedDataList();
-    this.setState({
-      dataList,
-      shownDataList,
-    });
+    const dataList = await fetchPublishedDataList();
+    this.setState({ dataList });
   }
 
-  async onAddData(data) {
-    await addData(data);
-    const { dataList } = this.state;
-    this.updateDataList([data, ...dataList]);
-  }
+  updateDataList = dataList => this.setState({ dataList, showPurpose: false });
 
-  updateDataList(dataList) {
-    this.setState({
-      dataList,
-    });
-  }
-
-  updateShownDataList(shownDataList) {
-    this.setState({
-      shownDataList,
-      showPurpose: false,
-    });
-  }
+  updateShowPurpose = showPurpose => this.setState({ showPurpose });
 
   render() {
-    const scroll = new SmoothScroll('a[href*="#"]', { speed: 1000, easing: 'easeInOutCubic', }); // works like this;
-    const { shownDataList, showPurpose } = this.state;
+    const scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 1000,
+      easing: 'easeInOutCubic',
+    }); // works like this;
+    const { dataList, showPurpose } = this.state;
     return (
       <Router>
         <div>
           <Nav />
           <main className="main">
             <MyRoutes
-              dataList={shownDataList}
-              updateDataList={this.updateShownDataList}
+              dataList={dataList}
               showPurpose={showPurpose}
-              onAddData={this.onAddData}
+              updateDataList={this.updateDataList}
             />
           </main>
           <Footer />

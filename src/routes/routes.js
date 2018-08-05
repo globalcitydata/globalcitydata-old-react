@@ -12,50 +12,44 @@ import DataDetail from '../views/DataDetail/DataDetail';
 import TestView from '../tests/TestView/TestView';
 import NoMatch from '../views/NoMatch/NoMatch';
 
-const MyRoutes = ({
-  dataList,
-  updateDataList,
-  showPurpose,
-  onAddData,
-}) => (
-    <Switch>
-      <Route
-        exact
-        path="/"
-        render={({ props }) => (
-          <Home
-            {...{ props }}
-            dataList={dataList}
-            updateDataList={updateDataList}
-            showPurpose={showPurpose}
-          />
-        )}
-      />
-      <Route exact path="/collaborators" component={Collaborators} />
-      <Route exact path="/publications" component={Publications} />
-      <Route exact path="/contact" component={Contact} />
-      <Route
-        exact
-        path="/submit-data"
-        render={({ props }) => (
-          <DataSubmit {...{ props }} onAddData={onAddData} />
-        )}
-      />
-      <Route path="/data/:dataURL" render={({ props, match }) => (
-        <DataDetail {...{ props }} dataList={dataList} match={match}
+const MyRoutes = ({ dataList, showPurpose, updateDataList }) => (
+  <Switch>
+    <Route
+      exact
+      path="/"
+      render={({ props }) => (
+        <Home
+          {...{ props }}
+          dataList={dataList}
+          showPurpose={showPurpose}
+          updateDataList={updateDataList}
         />
-      )} />
-      <Route exact path="/tests" component={TestView} />
-      <Route component={NoMatch} />
-    </Switch>
-  )
+      )}
+    />
+    <Route exact path="/collaborators" component={Collaborators} />
+    <Route exact path="/publications" component={Publications} />
+    <Route exact path="/contact" component={Contact} />
+    <Route
+      exact
+      path="/submit-data"
+      render={({ props }) => <DataSubmit {...{ props }} />}
+    />
+    <Route
+      path="/data/:dataURL"
+      render={({ props, match }) => (
+        <DataDetail {...{ props }} dataList={dataList} match={match} />
+      )}
+    />
+    <Route exact path="/tests" component={TestView} />
+    <Route component={NoMatch} />
+  </Switch>
+);
 
 export default MyRoutes;
 
 MyRoutes.propTypes = {
   dataList: arrayOf(object),
-  shownDataList: arrayOf(object),
-  updateDataList: func.isRequired,
   showPurpose: bool.isRequired,
+  updateDataList: func.isRequired,
   onAddData: func.isRequired,
 };

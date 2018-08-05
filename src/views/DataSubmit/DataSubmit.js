@@ -5,14 +5,7 @@ import { dataState } from '../../utils/data';
 import { addData } from '../../utils/api';
 
 export default class DataSubmitForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = dataState;
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleRadioChange = this.handleRadioChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  state = dataState;
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -54,8 +47,7 @@ export default class DataSubmitForm extends Component {
   async handleSubmit(e) {
     e.preventDefault();
     const value = this.state;
-    const { onAddData } = this.props;
-    await onAddData(value);
+    await addData(value);
     this.setState(dataState);
     window.Materialize.toast('Success! Your data is pending review.', 4000);
   }
@@ -94,15 +86,15 @@ export default class DataSubmitForm extends Component {
     } = this.state;
 
     const isEnabled = title.length > 0 && // eslint-disable-line
-      description.length > 0 &&
-      context.length > 0 &&
-      keyTakeaways.length > 0 &&
-      usesAndVisualizations.length > 0 &&
-      technicalDetails.length > 0 &&
-      applicableData.length > 0 &&
-      relevantPublications.length > 0 &&
-      owner.length > 0 &&
-      contact.length > 0;
+      description.length > 0
+      && context.length > 0
+      && keyTakeaways.length > 0
+      && usesAndVisualizations.length > 0
+      && technicalDetails.length > 0
+      && applicableData.length > 0
+      && relevantPublications.length > 0
+      && owner.length > 0
+      && contact.length > 0;
 
     const parameterKeys = Object.keys(parameters);
     const outcomeKeys = Object.keys(outcomes);
@@ -309,6 +301,4 @@ export default class DataSubmitForm extends Component {
   }
 }
 
-DataSubmitForm.propTypes = {
-  onAddData: PropTypes.func.isRequired,
-};
+DataSubmitForm.propTypes = {};
