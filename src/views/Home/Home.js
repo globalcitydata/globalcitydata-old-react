@@ -1,6 +1,6 @@
 import React from 'react';
-import { arrayOf, object, func, bool } from 'prop-types';
-// import dataType from '../../utils/props';
+import { arrayOf, func, bool } from 'prop-types';
+import { dataType } from '../../utils/data';
 
 // CSS
 import './Home.css';
@@ -11,10 +11,10 @@ import Purpose from './Sections/Purpose';
 import Showcase from './Sections/Showcase';
 
 function Home(props) {
-  const { dataList, updateDataList, showPurpose } = props;
+  const { dataList, fullDataList, updateDataList, showPurpose } = props;
   return (
     <div className="home">
-      <Showcase dataList={dataList} updateDataList={updateDataList} />
+      <Showcase dataList={fullDataList} updateDataList={updateDataList} />
       {showPurpose && <Purpose />}
       <DataList dataList={dataList} />
     </div>
@@ -24,11 +24,13 @@ function Home(props) {
 export default Home;
 
 Home.propTypes = {
-  dataList: arrayOf(object),
+  dataList: arrayOf(dataType),
+  fullDataList: arrayOf(dataType),
   updateDataList: func.isRequired,
   showPurpose: bool.isRequired,
 };
 
 Home.defaultProps = {
   dataList: null,
+  fullDataList: null,
 };

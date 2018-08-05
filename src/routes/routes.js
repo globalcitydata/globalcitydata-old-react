@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { arrayOf, func, bool, object } from 'prop-types';
-
+import { dataType } from '../utils/data';
 // Views
 import Home from '../views/Home/Home';
 import Collaborators from '../views/Collaborators/Collaborators';
@@ -12,7 +12,7 @@ import DataDetail from '../views/DataDetail/DataDetail';
 import TestView from '../tests/TestView/TestView';
 import NoMatch from '../views/NoMatch/NoMatch';
 
-const MyRoutes = ({ dataList, showPurpose, updateDataList }) => (
+const MyRoutes = ({ dataList, fullDataList, showPurpose, updateDataList }) => (
   <Switch>
     <Route
       exact
@@ -21,6 +21,7 @@ const MyRoutes = ({ dataList, showPurpose, updateDataList }) => (
         <Home
           {...{ props }}
           dataList={dataList}
+          fullDataList={fullDataList}
           showPurpose={showPurpose}
           updateDataList={updateDataList}
         />
@@ -37,7 +38,7 @@ const MyRoutes = ({ dataList, showPurpose, updateDataList }) => (
     <Route
       path="/data/:dataURL"
       render={({ props, match }) => (
-        <DataDetail {...{ props }} dataList={dataList} match={match} />
+        <DataDetail {...{ props }} dataList={fullDataList} match={match} />
       )}
     />
     <Route exact path="/tests" component={TestView} />
@@ -48,8 +49,13 @@ const MyRoutes = ({ dataList, showPurpose, updateDataList }) => (
 export default MyRoutes;
 
 MyRoutes.propTypes = {
-  dataList: arrayOf(object),
+  dataList: arrayOf(dataType),
+  fullDataList: arrayOf(dataType),
   showPurpose: bool.isRequired,
   updateDataList: func.isRequired,
-  onAddData: func.isRequired,
+};
+
+MyRoutes.defaultProps = {
+  dataList: null,
+  fullDataList: null,
 };

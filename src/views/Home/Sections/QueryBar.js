@@ -2,8 +2,13 @@ import React from 'react';
 import { Row, Input, Button, Col, Dropdown } from 'react-materialize';
 import ReactTooltip from 'react-tooltip';
 import $ from 'jquery';
-import { tagState } from '../../../utils/data';
-import { tags } from '../../../utils/tags';
+
+// Prop Types
+import { func, arrayOf } from 'prop-types';
+import { dataType } from '../../../utils/data';
+
+// Tags
+import { tags, tagState } from '../../../utils/tags';
 
 const QueryDropdown = ({ tag }) => {
   const { label, options } = tag;
@@ -119,3 +124,12 @@ class QueryBar extends React.Component {
 }
 
 export default QueryBar;
+
+QueryBar.propTypes = {
+  dataList: arrayOf(dataType),
+  updateDataList: func.isRequired,
+};
+
+QueryBar.defaultProps = {
+  dataList: null,
+};
