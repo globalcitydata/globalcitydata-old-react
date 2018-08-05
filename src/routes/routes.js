@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { arrayOf, func, bool, object } from 'prop-types';
+import { arrayOf, func, bool } from 'prop-types';
 import { dataType } from '../utils/data';
 // Views
 import Home from '../views/Home/Home';

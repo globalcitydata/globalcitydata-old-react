@@ -10,7 +10,7 @@ const settings = { timestampsInSnapshots: true };
 db.settings(settings);
 const dataListRef = db.collection('dataList');
 const publicationsRef = db.collection('publications');
-const tagsRef = db.collection('tags');
+// const tagsRef = db.collection('tags');
 
 export async function getDataRef(dataRef) {
   const snapshot = await dataRef.get();
@@ -49,51 +49,6 @@ export async function fetchPublishedDataList() {
   }
   return dataList;
 }
-
-async function getAllDataFromSnapshot(snapshot) {
-  const documents = [];
-  snapshot.docs.map(doc => documents.push(doc.data()));
-  const dataRefs = [];
-  documents.map(({ dataRef }) => dataRefs.push(getDataRef(dataRef)));
-  const dataList = await Promise.all(dataRefs);
-  return new Set(dataList);
-}
-
-const inSet = (data, set) => {
-  const values = set.values();
-  let done = false;
-  while (!done) {
-    const next = values.next();
-    if (next.done) done = true;
-    else if (next.value.title === data.title) return true;
-  }
-  return false;
-};
-
-export async function queryData(query) {
-  let dataList = new Set();
-  const queryEntries = Object.entries(query);
-  try {
-    for (const dropDown of queryEntries) {
-      const tag = dropDown[0];
-      const attrs = dropDown[1];
-      let innerDataList = new Set();
-      for (const attr of attrs) {
-        const attributeSnapshot = await tagsRef.doc(tag).collection(attr).get();
-        const set = await getAllDataFromSnapshot(attributeSnapshot);
-        innerDataList = new Set([...innerDataList, ...set]);
-        // console.log('innerdataList', innerDataList);
-      }
-      if (dataList.size === 0) dataList = new Set([...dataList, ...innerDataList])
-      else dataList = new Set([...dataList].filter(data => inSet(data, innerDataList)));
-      // dataList = new Set([...dataList, ...innerDataList]);
-    }
-  } catch (err) {
-    throw new Error('Error querying for data.', err);
-  }
-  return [...dataList];
-}
-
 export async function addData(data) {
   try {
     await dataListRef.doc(data.title).set(data);
@@ -105,3 +60,49 @@ export async function addData(data) {
 export function fetchFilteredDataList(query) {
   return query;
 }
+
+// BEGINNING OF QUERY IMPLEMENTATION FROM DATABASE:
+
+// async function getAllDataFromSnapshot(snapshot) {
+//   const documents = [];
+//   snapshot.docs.map(doc => documents.push(doc.data()));
+//   const dataRefs = [];
+//   documents.map(({ dataRef }) => dataRefs.push(getDataRef(dataRef)));
+//   const dataList = await Promise.all(dataRefs);
+//   return new Set(dataList);
+// }
+
+// const inSet = (data, set) => {
+//   const values = set.values();
+//   let done = false;
+//   while (!done) {
+//     const next = values.next();
+//     if (next.done) done = true;
+//     else if (next.value.title === data.title) return true;
+//   }
+//   return false;
+// };
+
+// export async function queryData(query) {
+//   let dataList = new Set();
+//   const queryEntries = Object.entries(query);
+//   try {
+//     for (const dropDown of queryEntries) {
+//       const tag = dropDown[0];
+//       const attrs = dropDown[1];
+//       let innerDataList = new Set();
+//       for (const attr of attrs) {
+//         const attributeSnapshot = await tagsRef.doc(tag).collection(attr).get();
+//         const set = await getAllDataFromSnapshot(attributeSnapshot);
+//         innerDataList = new Set([...innerDataList, ...set]);
+//         // console.log('innerdataList', innerDataList);
+//       }
+//       if (dataList.size === 0) dataList = new Set([...dataList, ...innerDataList])
+//       else dataList = new Set([...dataList].filter(data => inSet(data, innerDataList)));
+//       // dataList = new Set([...dataList, ...innerDataList]);
+//     }
+//   } catch (err) {
+//     throw new Error('Error querying for data.', err);
+//   }
+//   return [...dataList];
+// }

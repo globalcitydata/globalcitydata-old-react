@@ -2,29 +2,31 @@ import React from 'react';
 import { Row, Input, Button, Col, Dropdown } from 'react-materialize';
 import ReactTooltip from 'react-tooltip';
 import $ from 'jquery';
-
-// Prop Types
 import { func, arrayOf } from 'prop-types';
 import { dataType } from '../../../utils/data';
+import { query } from '../../../utils/searchAndFilter';
 
 // Tags
-import { tags, tagState } from '../../../utils/tags';
+import { tags, tagState, tagQuery } from '../../../utils/tags';
 
-const QueryDropdown = ({ tag }) => {
+const QueryDropdown = ({ tag, handleChange }) => {
   const { label, options } = tag;
   return (
     <Col s={12} m={4} l={2} className="myDropdown">
       <Dropdown
         trigger={
           <Button data-tip data-for={label}>
-            {' '}
             {label}
           </Button>
         }
       >
         <Row className="queryDropdownOptions">
           {options.map(option => (
-            <DropdownInput key={option.value} option={option} />
+            <DropdownInput
+              key={option.value}
+              option={option}
+              handleChange={handleChange}
+            />
           ))}
         </Row>
       </Dropdown>
@@ -32,11 +34,85 @@ const QueryDropdown = ({ tag }) => {
   );
 };
 
-const DropdownInput = ({ option }) => {
+const DropdownInput = ({ option, handleChange }) => {
   const { value, label, group } = option;
   return (
-    <Input s={12} name={group} type="checkbox" value={value} label={label} />
+    <Input
+      s={12}
+      name={group}
+      type="checkbox"
+      checked={false}
+      value={value}
+      label={label}
+      onChange={handleChange}
+    />
   );
+};
+
+class QueryBar extends React.Component {
+  state = { selectedTags: tagQuery };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { selectedTags } = this.state;
+    const { dataList, updateDataList } = this.props;
+    const newDataList = query(dataList, selectedTags);
+    updateDataList(newDataList);
+    this.setState({ selectedTags: tagQuery });
+  };
+
+  handleChange = e => {
+    const { name: group, value } = e.target;
+    const { selectedTags } = this.state;
+    const i = selectedTags[group].indexOf(value);
+    if (i !== -1) {
+      selectedTags[group].splice(i, 1);
+    } else {
+      selectedTags[group].push(value);
+    }
+    this.setState({ selectedTags });
+  };
+
+  render() {
+    // $('.dropdown-button + .dropdown-content').on('click', e => {
+    //   e.stopPropagation();
+    // });
+    return (
+      <div className="queryBarContainer">
+        {/* <ParameterTooltip />
+        <SpatialScalesTooltip /> */}
+        <Row className="blue flex">
+          <Col s={12} m={10} l={11}>
+            <Row className="flex">
+              {tags.map(tag => (
+                <QueryDropdown
+                  key={tag.label}
+                  tag={tag}
+                  handleChange={this.handleChange}
+                />
+              ))}
+            </Row>
+          </Col>
+          <Col s={12} m={2} l={1}>
+            <Button className="querySearch" onClick={this.handleSubmit}>
+              Search
+            </Button>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+}
+
+export default QueryBar;
+
+QueryBar.propTypes = {
+  dataList: arrayOf(dataType),
+  updateDataList: func.isRequired,
+};
+
+QueryBar.defaultProps = {
+  dataList: null,
 };
 
 // const ParameterTooltip = () => (
@@ -73,63 +149,3 @@ const DropdownInput = ({ option }) => {
 //     </ul>
 //   </ReactTooltip>
 // );
-
-class QueryBar extends React.Component {
-  state = tagState;
-
-  // handleChange = selectedOptions => {
-  //   this.setState({
-  //     selectedOptions,
-  //   });
-  // };
-
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   const value = this.state;
-  //   const { selectedOptions } = this.state;
-  //   const { dataList, updateDataList } = this.props;
-  //   for (const tag of selectedOptions) {
-  //     value[tag.group][tag.value] = true;
-  //   }
-  //   let filteredData;
-  //   if (selectedOptions.length == 0) filteredData = dataList;
-  //   else {
-  //     filteredData = query(dataList, value);
-  //     if (!filteredData) filteredData = [];
-  //   }
-  //   updateDataList(filteredData);
-  // };
-
-  render() {
-    $('.dropdown-button + .dropdown-content').on('click', e => {
-      e.stopPropagation();
-    });
-    return (
-      <div className="queryBarContainer">
-        {/* <ParameterTooltip />
-        <SpatialScalesTooltip /> */}
-        <Row className="blue flex">
-          <Col s={12} m={10} l={11}>
-            <Row className="flex">
-              {tags.map(tag => <QueryDropdown key={tag.label} tag={tag} />)}
-            </Row>
-          </Col>
-          <Col s={12} m={2} l={1}>
-            <Button className="querySearch">Search</Button>
-          </Col>
-        </Row>
-      </div>
-    );
-  }
-}
-
-export default QueryBar;
-
-QueryBar.propTypes = {
-  dataList: arrayOf(dataType),
-  updateDataList: func.isRequired,
-};
-
-QueryBar.defaultProps = {
-  dataList: null,
-};
