@@ -3,6 +3,180 @@ import { Row, Input, Button } from 'react-materialize';
 import PropTypes from 'prop-types';
 import { dataState } from '../../utils/data';
 import { addData } from '../../utils/api';
+import { CONTENT_TYPES } from '../../utils/tags';
+
+const ContentType = ({ handleChange }) => (
+  <Input
+    s={12}
+    type="select"
+    name="contentType"
+    label="Content Type"
+    defaultValue="dataset"
+    onChange={handleChange}
+    required
+  >
+    {CONTENT_TYPES.map(val => (
+      <option key={val} value={val}>
+        {val}
+      </option>
+    ))}
+  </Input>
+);
+
+const Title = ({ title, hc }) => (
+  <Input
+    s={12}
+    name="title"
+    label="Title"
+    value={title}
+    onChange={hc}
+    required
+  />
+);
+
+const Description = ({ des, hc }) => (
+  <Input
+    s={12}
+    type="textarea"
+    name="description"
+    label="Description"
+    value={des}
+    onChange={hc}
+    required
+  />
+);
+
+const Context = ({ context, hc }) => (
+  <Input
+    s={12}
+    type="textarea"
+    name="context"
+    label="Context"
+    value={context}
+    onChange={hc}
+    required
+  />
+);
+
+const KeyTakeaways = ({ kt, hc }) => (
+  <Input
+    s={12}
+    name="keyTakeaways"
+    label="Key Takeaways"
+    value={kt}
+    onChange={hc}
+    required
+  />
+);
+
+const UsesAndVisualizations = ({ uav, hc }) => (
+  <Input
+    s={12}
+    name="usesAndVisualizations"
+    label="Sample Uses and Visualizations"
+    value={uav}
+    onChange={hc}
+    required
+  />
+);
+
+const TechnicalDetails = ({ td, hc }) => (
+  <Input
+    s={12}
+    name="technicalDetails"
+    label="Technical Details"
+    value={td}
+    onChange={hc}
+    required
+  />
+);
+
+const ApplicableData = ({ ad, hc }) => (
+  <Input
+    s={12}
+    name="applicableData"
+    label="Applicable Datasets, Models, or Tutorials - if multiple please separate by semicolon (;)"
+    value={ad}
+    onChange={hc}
+    required
+  />
+);
+
+const RelevantPublications = ({ rp, hc }) => (
+  <Input
+    s={12}
+    type="textarea"
+    name="relevantPublications"
+    label="Relevant Publications - if multiple please separate by semicolon (;)"
+    value={rp}
+    onChange={hc}
+    required
+  />
+);
+
+const Parameters = ({ pk, hrc }) => (
+  <Row>
+    <h4>Parameters</h4>
+    {pk.map(val => (
+      <Input
+        name="parameters"
+        type="checkbox"
+        key={val}
+        value={val}
+        label={val}
+        onChange={hrc}
+      />
+    ))}
+  </Row>
+);
+
+const Outcomes = ({ ok, hrc }) => (
+  <Row>
+    <h4>Outcomes</h4>
+    {ok.map(val => (
+      <Input
+        name="outcomes"
+        type="checkbox"
+        key={val}
+        value={val}
+        label={val}
+        onChange={hrc}
+      />
+    ))}
+  </Row>
+);
+
+const SpatialScales = ({ ssk, hrc }) => (
+  <Row>
+    <h4>Spatial Scales</h4>
+    {ssk.map(val => (
+      <Input
+        name="spatialScales"
+        type="checkbox"
+        key={val}
+        value={val}
+        label={val}
+        onChange={hrc}
+      />
+    ))}
+  </Row>
+);
+
+const TemporalScales = ({ tsk, hrc }) => (
+  <Row>
+    <h4>Temporal Scales</h4>
+    {tsk.map(val => (
+      <Input
+        name="temporalScales"
+        type="checkbox"
+        key={val}
+        value={val}
+        label={val}
+        onChange={hrc}
+      />
+    ))}
+  </Row>
+);
 
 export default class DataSubmitForm extends Component {
   state = dataState;
@@ -108,151 +282,32 @@ export default class DataSubmitForm extends Component {
           <h1>Submit Data</h1>
           <form>
             <Row>
-              {/* Content Type */}
-              <Input
-                s={12}
-                type="select"
-                name="contentType"
-                label="Content Type"
-                defaultValue="dataset"
-                onChange={this.handleChange}
-                required
-              >
-                <option value="dataset">Dataset</option>
-                <option value="model">Model</option>
-                <option value="tutorial">Tutorial</option>
-              </Input>
-              {/* Title */}
-              <Input
-                s={12}
-                name="title"
-                label="Title"
-                value={title}
-                onChange={this.handleChange}
-                required
+              <ContentType hc={this.handleChange} />
+              <Title title={title} hc={this.handleChange} />
+              <Description des={description} hc={this.handleChange} />
+              <Context context={context} hc={this.handleChange} />
+              <KeyTakeaways kt={keyTakeaways} hc={this.handleChange} />
+              <UsesAndVisualizations
+                uav={usesAndVisualizations}
+                hc={this.handleChange}
               />
-              {/* Description */}
-              <Input
-                s={12}
-                type="textarea"
-                name="description"
-                label="Description"
-                value={description}
-                onChange={this.handleChange}
-                required
+              <TechnicalDetails td={technicalDetails} hc={this.handleChange} />
+              <ApplicableData ad={applicableData} hc={this.handleChange} />
+              <RelevantPublications
+                rp={relevantPublications}
+                hc={this.handleChange}
               />
-              {/* Context */}
-              <Input
-                s={12}
-                type="textarea"
-                name="context"
-                label="Context"
-                value={context}
-                onChange={this.handleChange}
-                required
+              <Parameters pk={parameterKeys} hrc={this.handleRadioChange} />
+              <Outcomes ok={outcomeKeys} hrc={this.handleRadioChange} />
+              <SpatialScales
+                ssk={spatialScaleKeys}
+                hrc={this.handleRadioChange}
               />
-              {/* Key Takeaways */}
-              <Input
-                s={12}
-                name="keyTakeaways"
-                label="Key Takeaways"
-                value={keyTakeaways}
-                onChange={this.handleChange}
-                required
-              />
-              {/* Sample Uses and Visualizations */}
-              <Input
-                s={12}
-                name="usesAndVisualizations"
-                label="Sample Uses and Visualizations"
-                value={usesAndVisualizations}
-                onChange={this.handleChange}
-                required
-              />
-              {/* Technical Details */}
-              <Input
-                s={12}
-                name="technicalDetails"
-                label="Technical Details"
-                value={technicalDetails}
-                onChange={this.handleChange}
-                required
-              />
-              {/* Applicable Data */}
-              <Input
-                s={12}
-                name="applicableData"
-                label="Applicable Datasets, Models, or Tutorials - if multiple please separate by semicolon (;)"
-                value={applicableData}
-                onChange={this.handleChange}
-                required
-              />
-              {/* Relevant Publications */}
-              <Input
-                s={12}
-                type="textarea"
-                name="relevantPublications"
-                label="Relevant Publications - if multiple please separate by semicolon (;)"
-                value={relevantPublications}
-                onChange={this.handleChange}
-                required
-              />
-              {/* Parameters */}
-              <Row>
-                <h4>Parameters</h4>
-                {parameterKeys.map(val => (
-                  <Input
-                    name="parameters"
-                    type="checkbox"
-                    key={val}
-                    value={val}
-                    label={val}
-                    onChange={this.handleRadioChange}
-                  />
-                ))}
-              </Row>
-              {/* Outcomes */}
-              <Row>
-                <h4>Outcomes</h4>
-                {outcomeKeys.map(val => (
-                  <Input
-                    name="outcomes"
-                    type="checkbox"
-                    key={val}
-                    value={val}
-                    label={val}
-                    onChange={this.handleRadioChange}
-                  />
-                ))}
-              </Row>
-              {/* Spatial Scales */}
-              <Row>
-                <h4>Spatial Scales</h4>
-                {spatialScaleKeys.map(val => (
-                  <Input
-                    name="spatialScales"
-                    type="checkbox"
-                    key={val}
-                    value={val}
-                    label={val}
-                    onChange={this.handleRadioChange}
-                  />
-                ))}
-              </Row>
               {/* Temporal Scales */}
-              <Row>
-                <h4>Temporal Scales</h4>
-                {temporalScaleKeys.map(val => (
-                  <Input
-                    name="temporalScales"
-                    type="checkbox"
-                    key={val}
-                    value={val}
-                    label={val}
-                    onChange={this.handleRadioChange}
-                  />
-                ))}
-              </Row>
+              <TemporalScales
+                tsk={temporalScaleKeys}
+                hrc={this.handleRadioChange}
+              />
               {/* World Regions */}
               <Row>
                 <h4>World Regions</h4>
