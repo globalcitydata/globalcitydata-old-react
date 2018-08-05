@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { arrayOf, func, bool } from 'prop-types';
+import { arrayOf, objectOf, func, bool, string } from 'prop-types';
 import { dataType } from '../utils/data';
+
 // Views
 import Home from '../views/Home/Home';
 import Collaborators from '../views/Collaborators/Collaborators';
@@ -12,7 +13,13 @@ import DataDetail from '../views/DataDetail/DataDetail';
 import TestView from '../tests/TestView/TestView';
 import NoMatch from '../views/NoMatch/NoMatch';
 
-const MyRoutes = ({ dataList, fullDataList, showPurpose, updateDataList }) => (
+const MyRoutes = ({
+  dataList,
+  fullDataList,
+  publications,
+  showPurpose,
+  updateDataList,
+}) => (
   <Switch>
     <Route
       exact
@@ -28,7 +35,13 @@ const MyRoutes = ({ dataList, fullDataList, showPurpose, updateDataList }) => (
       )}
     />
     <Route exact path="/collaborators" component={Collaborators} />
-    <Route exact path="/publications" component={Publications} />
+    <Route
+      exact
+      path="/publications"
+      render={({ props }) => (
+        <Publications {...{ props }} publications={publications} />
+      )}
+    />
     <Route exact path="/contact" component={Contact} />
     <Route
       exact
@@ -38,7 +51,7 @@ const MyRoutes = ({ dataList, fullDataList, showPurpose, updateDataList }) => (
     <Route
       path="/data/:dataURL"
       render={({ props, match }) => (
-        <DataDetail {...{ props }} dataList={fullDataList} match={match} />
+        <DataDetail {...{ props }} match={match} dataList={fullDataList} />
       )}
     />
     <Route exact path="/tests" component={TestView} />
@@ -51,6 +64,7 @@ export default MyRoutes;
 MyRoutes.propTypes = {
   dataList: arrayOf(dataType),
   fullDataList: arrayOf(dataType),
+  publications: objectOf(string),
   showPurpose: bool.isRequired,
   updateDataList: func.isRequired,
 };
@@ -58,4 +72,5 @@ MyRoutes.propTypes = {
 MyRoutes.defaultProps = {
   dataList: null,
   fullDataList: null,
+  publications: null,
 };

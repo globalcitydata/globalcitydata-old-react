@@ -1,8 +1,11 @@
 import React from 'react';
 
 const NoMatch = () => (
-  <div className="container">
-    <p>I'm a 404 page.</p>
+  <div className="error-page">
+    <div>
+      <h1 data-h1="404">404</h1>
+      <p data-p="NOT FOUND">Try again :)</p>
+    </div>
   </div>
 );
 

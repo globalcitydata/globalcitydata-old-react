@@ -1,31 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Preloader } from 'react-materialize';
+import { fetchPublishedDataList } from '../../utils/api';
 
 const findData = (dataList, dataURL) => {
   if (!dataList || dataList.length === 0) {
     return null;
   }
-  const data = dataList.shift();
-  return data.url === dataURL ? data : findData(dataList, dataURL);
+  for (const data of dataList) {
+    if (data.url === dataURL) return data;
+  }
+  return null;
 };
-
-function displayTags(tags) {
-  const entries = Object.entries(tags);
-  const entriesToDisplay = entries.filter(tagEntry => tagEntry[1]);
-  const tagsToDisplay = entriesToDisplay.map(entry => entry[0]);
-  return <div>{tagsToDisplay.map(tag => <p>{tag}</p>)}</div>;
-}
 
 const DataDetail = ({ match, dataList }) => {
   const { dataURL } = match.params;
   const data = findData(dataList, dataURL);
   return (
     <div className="container">
-      {!data ? (
-        <div className="center"><Preloader flashing /></div>
+      {!data || !dataList ? (
+        <div className="center">
+          <p style={{ paddingBottom: 25 }}>Loading data detail...</p>
+          <Preloader flashing />
+        </div>
       ) : (
+        <div style={{ paddingTop: 25, paddingBottom: 25 }}>
           <DataDetailBody data={data} />
-        )}
+        </div>
+      )}
     </div>
   );
 };
@@ -46,11 +47,10 @@ const DataDetailBody = ({ data }) => {
     technicalDetails,
     title,
     usesAndVisualizations,
-    worldRegions
+    worldRegions,
   } = data;
   return (
     <div className="dataDetailContainer">
-
       <h2>{title}</h2>
       <hr />
       <div className="dataDetailContent">
