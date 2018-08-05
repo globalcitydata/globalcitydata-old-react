@@ -23,7 +23,7 @@ const PubDetail = ({ pub }) => {
 };
 
 const PubList = ({ publications }) => (
-  <Row className="flex">
+  <Row className="list">
     {!publications ? (
       <div>
         <p style={{ paddingBottom: 25 }}>Loading publications...</p>

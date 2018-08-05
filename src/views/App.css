@@ -63,6 +63,10 @@ p {
   background-color: #1a75c0;
 }
 
+.list {
+  height: 100%;
+}
+
 /* Nav */
 
 .active {
@@ -114,10 +118,9 @@ p {
 }
 
 .flex {
-  /* display: flex;
+  display: flex;
   flex-wrap: wrap;
-  flex-direction: row; */
-  height: 100%
+  flex-direction: row;
 }
 
 .queryBarContainer .btn {

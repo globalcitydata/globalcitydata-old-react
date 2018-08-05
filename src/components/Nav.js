@@ -7,31 +7,50 @@ class Nav extends React.Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <Navbar brand="Global City Data" right options={{ closeOnClick: true }} className="nav blue">
+          <Navbar
+            brand="Global City Data"
+            right
+            options={{ closeOnClick: true }}
+            className="nav blue"
+          >
             <li>
-              <NavLink exact activeClassName="active" onClick={this.forceUpdate} to="/">
+              <NavLink
+                exact
+                activeClassName="active"
+                onClick={this.forceUpdate}
+                to="/"
+              >
                 Home
-          </NavLink>
+              </NavLink>
             </li>
             <li>
               <NavLink exact activeClassName="active" to="/collaborators">
                 Collaborators
-          </NavLink>
+              </NavLink>
             </li>
             <li>
               <NavLink exact activeClassName="active" to="/publications">
                 Publications
-          </NavLink>
+              </NavLink>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                href="https://medium.com/@globalcitydata"
+                rel="noopener noreferrer"
+              >
+                Blog
+              </a>
             </li>
             <li>
               <NavLink exact activeClassName="active" to="/contact">
                 Contact
-          </NavLink>
+              </NavLink>
             </li>
             <li>
               <NavLink exact activeClassName="active" to="/submit-data">
                 Submit Data
-          </NavLink>
+              </NavLink>
             </li>
           </Navbar>
         </div>

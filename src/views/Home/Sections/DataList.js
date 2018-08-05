@@ -40,7 +40,7 @@ const DataList = props => {
               <p>There is no data matching your query :(</p>
             ) : (
               <ul className="dataListCards">
-                <Row className="flex">
+                <Row className="list">
                   {dataList.map(data => (
                     <Col key={data.title} s={12} m={6} xl={4}>
                       <li>
