@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Preloader } from 'react-materialize';
+import { Preloader, Button } from 'react-materialize';
 import { fetchPublishedDataList } from '../../utils/api';
+import './DataDetail.css';
 
 const findData = (dataList, dataURL) => {
   if (!dataList || dataList.length === 0) {
@@ -31,151 +32,94 @@ const DataDetail = ({ match, dataList }) => {
   );
 };
 
-const DataDetailBody = ({ data }) => {
-  const {
-    applicableData,
-    contact,
-    contentType,
-    context,
-    description,
-    keyTakeaways,
-    outcomes,
-    parameters,
-    relevantPublications,
-    spatialScales,
-    temporalScales,
-    technicalDetails,
-    title,
-    usesAndVisualizations,
-    worldRegions,
-  } = data;
-  return (
-    <div className="dataDetailContainer">
-      <h2>{title}</h2>
-      <hr />
-      <div className="dataDetailContent">
-        <h6>Description</h6>
-        <div>
-          <p>{description}</p>
-        </div>
-        {/* <h6>Tags</h6> */}
-        <div>
-          {/* <p>
-          <strong>Parameters:</strong> {displayTags({ parameters })}
-        </p>
-        <p>
-          <strong>Outcomes:</strong> {displayTags({ outcomes })}
-        </p>
-        <p>
-          <strong>Spatial Scales:</strong> {displayTags({ spatialScales })}
-        </p>
-        <p>
-          <strong>Temporal Scales:</strong> {displayTags({ temporalScales })}
-        </p>
-        <p>
-          <strong>World Regions:</strong> {displayTags({ worldRegions })}
-        </p> */}
-        </div>
-        <h6>Context</h6>
-        <div>
-          <p>{context}</p>
-        </div>
-        <h6>Key Takeaways</h6>
-        <div>
-          <p>{keyTakeaways}</p>
-        </div>
-        <h6>Sample Uses and Visualizations</h6>
-        <div>
-          <p>{usesAndVisualizations}</p>
-        </div>
-        <h6>Technical Details</h6>
-        <div>
-          <p>{technicalDetails}</p>
-        </div>
-        <h6>Applicable Datasets, Models, and Tutorials</h6>
-        <div>
-          <p>{applicableData}</p>
-        </div>
-        {/* <h6>Relevant Publications</h6> */}
-        {/* <div>
+class DataDetailBody extends Component {
+  state = { showContact: false };
+
+  render() {
+    const { data } = this.props;
+    const {
+      applicableData,
+      contact,
+      contentType,
+      context,
+      description,
+      keyTakeaways,
+      outcomes,
+      parameters,
+      relevantPublications,
+      spatialScales,
+      temporalScales,
+      technicalDetails,
+      title,
+      usesAndVisualizations,
+      worldRegions,
+    } = data;
+
+    const { showContact } = this.state;
+
+    return (
+      <div className="dataDetailContainer">
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <hr />
+        <div className="dataDetailContent">
+          {/* <h6>Tags</h6>
+          <div>
+            <div>
+              <strong>Parameters:</strong>
+              <ul>{parameters.map(x => <li key={x}>{x}, </li>)}</ul>
+            </div>
+            <div>
+              <strong>Outcomes:</strong>
+              <ul>{outcomes.map(x => <li key={x}>{x}, </li>)}</ul>
+            </div>
+            <div>
+              <strong>Spatial Scales:</strong>
+              <ul>{spatialScales.map(x => <li key={x}>{x}, </li>)}</ul>
+            </div>
+            <div>
+              <strong>Temporal Scales:</strong>
+              <ul>{temporalScales.map(x => <li key={x}>{x}, </li>)}</ul>
+            </div>
+            <div>
+              <strong>World Regions:</strong>
+              <ul>{worldRegions.map(x => <li key={x}>{x}, </li>)}</ul>
+            </div>
+          </div> */}
+          <h6 style={{ paddingTop: 20 }}>Context</h6>
+          <div>
+            <p>{context}</p>
+          </div>
+          <h6>Key Takeaways</h6>
+          <div>
+            <p>{keyTakeaways}</p>
+          </div>
+          <h6>Sample Uses and Visualizations</h6>
+          <div>
+            <p>{usesAndVisualizations}</p>
+          </div>
+          <h6>Technical Details</h6>
+          <div>
+            <p>{technicalDetails}</p>
+          </div>
+          <h6>Applicable Datasets, Models, and Tutorials</h6>
+          <div>
+            <p>{applicableData}</p>
+          </div>
+          {/* <h6>Relevant Publications</h6> */}
+          {/* <div>
         <p>{relevantPublications.map(pub => <p>{pub}</p>)}</p>
       </div> */}
-        <h6>Request Access</h6>
-        <p>{contact}</p>
+          <Button
+            waves="light"
+            onClick={() => this.setState({ showContact: true })}
+          >
+            {showContact ? <div>{contact}</div> : <div>Request Access</div>}
+          </Button>
+        </div>
       </div>
-    </div>
-  );
-};
-
-// function DataDetail({ data }) {
-//   const {
-//     applicableData,
-//     contentType,
-//     context,
-//     description,
-//     keyTakeaways,
-//     outcomes,
-//     parameters,
-//     relevantPublications,
-//     spatialScales,
-//     temporalScales,
-//     technicalDetails,
-//     title,
-//     usesAndVisualizations,
-//     worldRegions
-//   } = data;
-//   return (
-//     <div>
-//       <h2>
-//         {title} - {contentType}
-//       </h2>
-//       <div>
-//         <p>{description}</p>
-//       </div>
-//       <h4>Tags</h4>
-//       <div>
-//         <p>
-//           <strong>Parameters:</strong> {displayTags({ parameters })}
-//         </p>
-//         <p>
-//           <strong>Outcomes:</strong> {displayTags({ outcomes })}
-//         </p>
-//         <p>
-//           <strong>Spatial Scales:</strong> {displayTags({ spatialScales })}
-//         </p>
-//         <p>
-//           <strong>Temporal Scales:</strong> {displayTags({ temporalScales })}
-//         </p>
-//         <p>
-//           <strong>World Regions:</strong> {displayTags({ worldRegions })}
-//         </p>
-//       </div>
-//       <h4>Context</h4>
-//       <div>
-//         <p>{context}</p>
-//       </div>
-//       <h4>Key Takeaways</h4>
-//       <div>
-//         <p>{keyTakeaways}</p>
-//       </div>
-//       <h4>Sample Uses and Visualizations</h4>
-//       <div>
-//         <p>{usesAndVisualizations}</p>
-//       </div>
-//       <h4>Technical Details</h4>
-//       <div>
-//         <p>{technicalDetails}</p>
-//       </div>
-//       <h4>Applicable Datasets, Models, and Tutorials</h4>
-//       <div>
-//         <p>{applicableData}</p>
-//       </div>
-//       <h4>Relevant Publications</h4>
-//       <div>
-//         <p>{relevantPublications.map(pub => <p>{pub}</p>)}</p>
-//       </div>
-//     </div>
-//   );
-// }
+    );
+  }
+}
 
 export default DataDetail;

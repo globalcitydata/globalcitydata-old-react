@@ -59,6 +59,7 @@ class QueryBar extends React.Component {
     const newDataList = query(dataList, selectedTags);
     updateDataList(newDataList);
     this.setState({ selectedTags: tagQuery });
+    window.Materialize.toast('Check below for your query results!', 1000);
   };
 
   handleChange = e => {

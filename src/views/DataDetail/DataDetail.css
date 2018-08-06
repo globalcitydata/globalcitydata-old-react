@@ -1,0 +1,17 @@
+.dataDetailContainer {
+  background-color: rgb(228, 228, 228);
+  padding: 2rem 2rem 3rem;
+  border-radius: 1%
+}
+
+.dataDetailContainer p {
+  margin-left: 25px;
+}
+
+.dataDetailContent .btn {
+  padding: 0.5rem 1rem 2.8rem;
+}
+
+.dataDetailContent ul li {
+  display: inline;
+}

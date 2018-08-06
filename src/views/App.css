@@ -5,8 +5,8 @@ h1 {
 }
 
 h2 {
-  margin-top: 0;
-  margin-bottom: 45px;
+  /* margin-top: 0;
+  margin-bottom: 45px; */
   font-size: 2.75rem;
   /* padding-bottom: 30px; */
 }
@@ -184,9 +184,10 @@ p {
 
 /* Home Purpose */
 
-/* .purpose h2 {
-  margin-bottom: 35px;
-} */
+.home h2 {
+  margin-top: 0;
+  padding-bottom: 25px;
+}
 
 /* Home DataList */
 
@@ -226,16 +227,6 @@ p {
   padding-top: 1.5rem;
   padding-bottom: 0.5rem;
 }
-
-/* Data Detail */
-
-.dataDetailContainer {
-  background: lightgrey;
-  padding: 3rem 2rem;
-  border-radius: 1%
-}
-
-.dataDetailContent {}
 
 /* Footer */
 
