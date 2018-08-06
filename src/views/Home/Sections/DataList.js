@@ -10,7 +10,6 @@ const DataCard = props => {
   return (
     <Card
       className="z-depth-4"
-      textClassName=""
       title={data.title}
       actions={[
         <Link to={url} key={data.url}>

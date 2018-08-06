@@ -7,7 +7,7 @@ import { dataType } from '../../../utils/data';
 import { query } from '../../../utils/searchAndFilter';
 
 // Tags
-import { tags, tagState, tagQuery } from '../../../utils/tags';
+import { tags, tagQuery } from '../../../utils/tags';
 
 const QueryDropdown = ({ tag, handleChange }) => {
   const { label, options } = tag;

@@ -3,16 +3,23 @@ import { Row, Input, Button } from 'react-materialize';
 import PropTypes from 'prop-types';
 import { dataState } from '../../utils/data';
 import { addData } from '../../utils/api';
-import { CONTENT_TYPES } from '../../utils/tags';
+import {
+  CONTENT_TYPES,
+  OUTCOMES,
+  PARAMETERS,
+  SPATIAL_SCALES,
+  TEMPORAL_SCALES,
+  WORLD_REGIONS,
+} from '../../utils/tags';
 
-const ContentType = ({ handleChange }) => (
+const ContentType = ({ f }) => (
   <Input
     s={12}
     type="select"
     name="contentType"
     label="Content Type"
     defaultValue="dataset"
-    onChange={handleChange}
+    onChange={f}
     required
   >
     {CONTENT_TYPES.map(val => (
@@ -23,266 +30,248 @@ const ContentType = ({ handleChange }) => (
   </Input>
 );
 
-const Title = ({ title, hc }) => (
-  <Input
-    s={12}
-    name="title"
-    label="Title"
-    value={title}
-    onChange={hc}
-    required
-  />
+const Title = ({ val, f }) => (
+  <Input s={12} name="title" label="Title" value={val} onChange={f} required />
 );
 
-const Description = ({ des, hc }) => (
+const Description = ({ val, f }) => (
   <Input
     s={12}
     type="textarea"
     name="description"
     label="Description"
-    value={des}
-    onChange={hc}
+    value={val}
+    onChange={f}
     required
   />
 );
 
-const Context = ({ context, hc }) => (
+const Context = ({ val, f }) => (
   <Input
     s={12}
     type="textarea"
     name="context"
     label="Context"
-    value={context}
-    onChange={hc}
+    value={val}
+    onChange={f}
     required
   />
 );
 
-const KeyTakeaways = ({ kt, hc }) => (
+const KeyTakeaways = ({ val, f }) => (
   <Input
     s={12}
     name="keyTakeaways"
     label="Key Takeaways"
-    value={kt}
-    onChange={hc}
+    value={val}
+    onChange={f}
     required
   />
 );
 
-const UsesAndVisualizations = ({ uav, hc }) => (
+const UsesAndVisualizations = ({ val, f }) => (
   <Input
     s={12}
     name="usesAndVisualizations"
     label="Sample Uses and Visualizations"
-    value={uav}
-    onChange={hc}
+    value={val}
+    onChange={f}
     required
   />
 );
 
-const TechnicalDetails = ({ td, hc }) => (
+const TechnicalDetails = ({ val, f }) => (
   <Input
     s={12}
     name="technicalDetails"
     label="Technical Details"
-    value={td}
-    onChange={hc}
+    value={val}
+    onChange={f}
     required
   />
 );
 
-const ApplicableData = ({ ad, hc }) => (
+const ApplicableData = ({ val, f }) => (
   <Input
     s={12}
     name="applicableData"
     label="Applicable Datasets, Models, or Tutorials - if multiple please separate by semicolon (;)"
-    value={ad}
-    onChange={hc}
+    value={val}
+    onChange={f}
     required
   />
 );
 
-const RelevantPublications = ({ rp, hc }) => (
+const RelevantPublications = ({ val, f }) => (
   <Input
     s={12}
     type="textarea"
     name="relevantPublications"
     label="Relevant Publications - if multiple please separate by semicolon (;)"
-    value={rp}
-    onChange={hc}
+    value={val}
+    onChange={f}
     required
   />
 );
 
-const Parameters = ({ pk, hrc }) => (
+const Parameters = ({ f }) => (
   <Row>
     <h4>Parameters</h4>
-    {pk.map(val => (
+    {PARAMETERS.map(val => (
       <Input
         name="parameters"
         type="checkbox"
         key={val}
         value={val}
         label={val}
-        onChange={hrc}
+        onChange={f}
       />
     ))}
   </Row>
 );
 
-const Outcomes = ({ ok, hrc }) => (
+const Outcomes = ({ f }) => (
   <Row>
     <h4>Outcomes</h4>
-    {ok.map(val => (
+    {OUTCOMES.map(val => (
       <Input
         name="outcomes"
         type="checkbox"
         key={val}
         value={val}
         label={val}
-        onChange={hrc}
+        onChange={f}
       />
     ))}
   </Row>
 );
 
-const SpatialScales = ({ ssk, hrc }) => (
+const SpatialScales = ({ f }) => (
   <Row>
     <h4>Spatial Scales</h4>
-    {ssk.map(val => (
+    {SPATIAL_SCALES.map(val => (
       <Input
         name="spatialScales"
         type="checkbox"
         key={val}
         value={val}
         label={val}
-        onChange={hrc}
+        onChange={f}
       />
     ))}
   </Row>
 );
 
-const TemporalScales = ({ tsk, hrc }) => (
+const TemporalScales = ({ f }) => (
   <Row>
     <h4>Temporal Scales</h4>
-    {tsk.map(val => (
+    {TEMPORAL_SCALES.map(val => (
       <Input
         name="temporalScales"
         type="checkbox"
         key={val}
         value={val}
         label={val}
-        onChange={hrc}
+        onChange={f}
       />
     ))}
   </Row>
 );
 
-const WorldRegions = ({ wrk, hrc }) => (
+const WorldRegions = ({ f }) => (
   <Row>
     <h4>World Regions</h4>
-    {wrk.map(val => (
+    {WORLD_REGIONS.map(val => (
       <Input
         name="worldRegions"
         type="checkbox"
         key={val}
         value={val}
         label={val}
-        onChange={hrc}
+        onChange={f}
       />
     ))}
   </Row>
 );
 
-const Owner = ({ owner, hc }) => (
+const Owner = ({ val, f }) => (
   <Input
     s={12}
     name="owner"
     label="Your Full Name"
-    value={owner}
-    onChange={hc}
+    value={val}
+    onChange={f}
     required
   />
 );
 
-const Contact = ({ contact, hc }) => (
+const Contact = ({ val, f }) => (
   <Input
     s={12}
     name="contact"
     label="Your Email"
-    value={contact}
-    onChange={hc}
+    value={val}
+    onChange={f}
     required
   />
 );
 
-const Submit = ({ isEnabled, hs }) => (
-  <Button s={12} waves="light" disabled={!isEnabled} onClick={hs}>
+const Submit = ({ isEnabled, f }) => (
+  <Button s={12} waves="light" disabled={!isEnabled} onClick={f}>
     Submit
   </Button>
 );
 
+function preProcessSubmit(oldValue) {
+  // split publications into array
+  const value = oldValue;
+  let pubs = value.relevantPublications.split(';');
+  pubs = pubs.filter(pub => pub !== '' && pub !== ' ');
+  value.relevantPublications = pubs.map(pub => pub.trim());
+  // add url
+  value.url = value.title.split(' ').join('-');
+  return value;
+}
+
 export default class DataSubmitForm extends Component {
-  state = dataState;
+  constructor(props) {
+    super(props);
+    this.state = dataState;
+    this.handleChange = this.handleChange.bind(this);
+    this.handleRadioChange = this.handleRadioChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   handleRadioChange = e => {
-    let parameters, outcomes, spatialScales, temporalScales, worldRegions; // eslint-disable-line
-    const { name, value } = e.target;
-    const oldState = { ...this.state[name] }; // eslint-disable-line
-    oldState[value] = !oldState[value];
-    switch (name) {
-      case 'parameters':
-        parameters = oldState;
-        this.setState({ parameters });
-        break;
-      case 'outcomes':
-        outcomes = oldState;
-        this.setState({ outcomes });
-        break;
-      case 'spatialScales':
-        spatialScales = oldState;
-        this.setState({ spatialScales });
-        break;
-      case 'temporalScales':
-        temporalScales = oldState;
-        this.setState({ temporalScales });
-        break;
-      case 'worldRegions':
-        worldRegions = oldState;
-        this.setState({ worldRegions });
-        break;
-      default:
-        alert(
-          'Error with the submit form. Please contact globalcitydata and try again in a couple days.'
-        );
-    }
+    const { name: group, value } = e.target;
+    this.setState(oldState => {
+      const i = oldState[group].indexOf(value);
+      if (i !== -1) oldState[group].splice(i, 1);
+      else oldState[group].push(value);
+      return oldState;
+    });
   };
 
   async handleSubmit(e) {
     e.preventDefault();
-    const value = this.state;
-    await addData(value);
-    this.setState(dataState);
-    window.Materialize.toast('Success! Your data is pending review.', 4000);
+    try {
+      this.setState(async oldState => {
+        const value = preProcessSubmit(oldState);
+        await addData(value);
+        return dataState;
+      });
+      window.Materialize.toast('Success! Your data is pending review.', 4000);
+    } catch (err) {
+      window.Materialize.toast(
+        'Uh oh. Something went wrong with your submission.',
+        4000
+      );
+    }
   }
-
-  // handleSubmit = async (e) => {
-  //   const value = this.state;
-  //   // const { onAddData } = this.props;
-  //   // await onAddData(value);
-  //   await addData(value);
-  //   // clear state
-  //   // for (const input of e.target) {
-  //   //   this.setState({
-  //   //     [input.name]: ''
-  //   //   });;
-  //   // }
-  //   // e.preventDefault();
-  // };
 
   render() {
     const {
@@ -291,19 +280,15 @@ export default class DataSubmitForm extends Component {
       context,
       description,
       keyTakeaways,
-      outcomes,
       owner,
-      parameters,
       relevantPublications,
-      spatialScales,
       technicalDetails,
-      temporalScales,
       title,
       usesAndVisualizations,
-      worldRegions,
     } = this.state;
 
-    const isEnabled = title.length > 0 && // eslint-disable-line
+    const isEnabled =
+      title.length > 0 &&
       description.length > 0 &&
       context.length > 0 &&
       keyTakeaways.length > 0 &&
@@ -314,50 +299,35 @@ export default class DataSubmitForm extends Component {
       owner.length > 0 &&
       contact.length > 0;
 
-    const parameterKeys = Object.keys(parameters);
-    const outcomeKeys = Object.keys(outcomes);
-    const spatialScaleKeys = Object.keys(spatialScales);
-    const temporalScaleKeys = Object.keys(temporalScales);
-    const worldRegionKeys = Object.keys(worldRegions);
-
     return (
       <section className="dataSubmit">
         <div className="container">
           <h1>Submit Data</h1>
           <form>
             <Row>
-              <ContentType hc={this.handleChange} />
-              <Title title={title} hc={this.handleChange} />
-              <Description des={description} hc={this.handleChange} />
-              <Context context={context} hc={this.handleChange} />
-              <KeyTakeaways kt={keyTakeaways} hc={this.handleChange} />
+              <ContentType f={this.handleChange} />
+              <Title val={title} f={this.handleChange} />
+              <Description val={description} f={this.handleChange} />
+              <Context val={context} f={this.handleChange} />
+              <KeyTakeaways val={keyTakeaways} f={this.handleChange} />
               <UsesAndVisualizations
-                uav={usesAndVisualizations}
-                hc={this.handleChange}
+                val={usesAndVisualizations}
+                f={this.handleChange}
               />
-              <TechnicalDetails td={technicalDetails} hc={this.handleChange} />
-              <ApplicableData ad={applicableData} hc={this.handleChange} />
+              <TechnicalDetails val={technicalDetails} f={this.handleChange} />
+              <ApplicableData val={applicableData} f={this.handleChange} />
               <RelevantPublications
-                rp={relevantPublications}
-                hc={this.handleChange}
+                val={relevantPublications}
+                f={this.handleChange}
               />
-              <Parameters pk={parameterKeys} hrc={this.handleRadioChange} />
-              <Outcomes ok={outcomeKeys} hrc={this.handleRadioChange} />
-              <SpatialScales
-                ssk={spatialScaleKeys}
-                hrc={this.handleRadioChange}
-              />
-              <TemporalScales
-                tsk={temporalScaleKeys}
-                hrc={this.handleRadioChange}
-              />
-              <WorldRegions
-                wrk={worldRegionKeys}
-                hrc={this.handleRadioChange}
-              />
-              <Owner owner={owner} hc={this.handleChange} />
-              <Contact contact={contact} hc={this.handleChange} />
-              <Submit isEnabled={isEnabled} hs={this.handleSubmit} />
+              <Parameters f={this.handleRadioChange} />
+              <Outcomes f={this.handleRadioChange} />
+              <SpatialScales f={this.handleRadioChange} />
+              <TemporalScales f={this.handleRadioChange} />
+              <WorldRegions f={this.handleRadioChange} />
+              <Owner val={owner} f={this.handleChange} />
+              <Contact val={contact} f={this.handleChange} />
+              <Submit isEnabled={isEnabled} f={this.handleSubmit} />
             </Row>
           </form>
         </div>
