@@ -15,7 +15,7 @@ const QueryDropdown = ({ tag, handleChange }) => {
     <Col s={12} m={4} l={2} className="myDropdown">
       <Dropdown
         trigger={
-          <Button data-tip data-for={label}>
+          <Button waves="light" data-for={label} data-tip>
             {label}
           </Button>
         }
@@ -59,7 +59,7 @@ class QueryBar extends React.Component {
     const newDataList = query(dataList, selectedTags);
     updateDataList(newDataList);
     this.setState({ selectedTags: tagQuery });
-    window.Materialize.toast('Check below for your query results!', 1000);
+    window.Materialize.toast('Check below for your query results', 1000);
   };
 
   handleChange = e => {
@@ -80,8 +80,8 @@ class QueryBar extends React.Component {
     // });
     return (
       <div className="queryBarContainer">
-        {/* <ParameterTooltip />
-        <SpatialScalesTooltip /> */}
+        <ParameterTooltip />
+        <SpatialScalesTooltip />
         <Row className="blue flex">
           <Col s={12} m={10} l={11}>
             <Row className="flex">
@@ -116,37 +116,37 @@ QueryBar.defaultProps = {
   dataList: null,
 };
 
-// const ParameterTooltip = () => (
-//   <ReactTooltip id="Parameters" effect="solid">
-//     <ul>
-//       <li>
-//         - Social & economic (population demographics, economy, households,
-//         policy, etc)
-//       </li>
-//       <li>
-//         - Environmental characteristics (soil, temperature, vegetation, etc)
-//       </li>
-//       <li>
-//         - Infrastructure & food supply (Supply of energy, water, transportation,
-//         etc)
-//       </li>
-//       <li>- Urban form (density, spatial layout)</li>
-//     </ul>
-//   </ReactTooltip>
-// );
+const ParameterTooltip = () => (
+  <ReactTooltip id="Parameters" effect="solid" delayHide={1000}>
+    <ul>
+      <li>
+        - Social & economic (population demographics, economy, households,
+        policy, etc)
+      </li>
+      <li>
+        - Environmental characteristics (soil, temperature, vegetation, etc)
+      </li>
+      <li>
+        - Infrastructure & food supply (Supply of energy, water, transportation,
+        etc)
+      </li>
+      <li>- Urban form (density, spatial layout)</li>
+    </ul>
+  </ReactTooltip>
+);
 
-// const SpatialScalesTooltip = () => (
-//   <ReactTooltip id="Spatial Scales" effect="solid">
-//     <ul>
-//       <li>
-//         - Intra-urban (fine spatial detail within a city, census tract, block
-//         group or finer)
-//       </li>
-//       <li>- Whole City (aggregate data for one or more cities)</li>
-//       <li>
-//         - National Urban (aligned data for all cities or urban areas in a
-//         country)
-//       </li>
-//     </ul>
-//   </ReactTooltip>
-// );
+const SpatialScalesTooltip = () => (
+  <ReactTooltip id="Spatial Scales" effect="solid" delayHide={1000}>
+    <ul>
+      <li>
+        - Intra-urban (fine spatial detail within a city, census tract, block
+        group or finer)
+      </li>
+      <li>- Whole City (aggregate data for one or more cities)</li>
+      <li>
+        - National Urban (aligned data for all cities or urban areas in a
+        country)
+      </li>
+    </ul>
+  </ReactTooltip>
+);

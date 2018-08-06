@@ -158,6 +158,11 @@ p {
   overflow: hidden;
 }
 
+.__react_component_tooltip {
+  background-color: white !important;
+  color: black !important;
+}
+
 .__react_component_tooltip li {
   line-height: 2rem;
   font-size: 1rem;
