@@ -9,15 +9,23 @@ import SearchBar from './SearchBar';
 import QueryBar from './QueryBar';
 
 function Showcase(props) {
-  const { dataList, updateDataList } = props;
+  const { dataList, scroll, updateDataList } = props;
   return (
     <div className="showcase">
       <div className="bg-image" />
       <div className="container-fluid content-wrap">
         <h1>Global City Data</h1>
-        <SearchBar dataList={dataList} updateDataList={updateDataList} />
+        <SearchBar
+          dataList={dataList}
+          scroll={scroll}
+          updateDataList={updateDataList}
+        />
         <br />
-        <QueryBar dataList={dataList} updateDataList={updateDataList} />
+        <QueryBar
+          dataList={dataList}
+          scroll={scroll}
+          updateDataList={updateDataList}
+        />
       </div>
     </div>
   );

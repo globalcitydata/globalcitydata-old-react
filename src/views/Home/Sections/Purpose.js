@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Link } from 'react-router-dom';
 import { Button } from 'react-materialize';
 
-function Purpose() {
+function Purpose({ scroll }) {
   return (
     <section className="purpose">
       <div className="container content-wrap">

@@ -38,8 +38,9 @@ class App extends React.Component {
 
   render() {
     const scroll = new SmoothScroll('a[href*="#"]', { // eslint-disable-line
-      speed: 1000,
-      easing: 'easeInOutCubic',
+      speed: 1500,
+      easing: 'easeInOutQuint',
+      updateURL: false,
     }); // this is picked up by smooth-scroll package
     const { dataList, shownDataList, publications, showPurpose } = this.state;
     return (
@@ -52,6 +53,7 @@ class App extends React.Component {
               fullDataList={dataList}
               publications={publications}
               showPurpose={showPurpose}
+              scroll={scroll}
               updateDataList={this.updateDataList}
             />
           </main>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { arrayOf, objectOf, func, bool, string } from 'prop-types';
+import { arrayOf, object, objectOf, func, bool, string } from 'prop-types';
 import { dataType } from '../utils/data';
 
 // Views
@@ -18,6 +18,7 @@ const MyRoutes = ({
   fullDataList,
   publications,
   showPurpose,
+  scroll,
   updateDataList,
 }) => (
   <Switch>
@@ -30,6 +31,7 @@ const MyRoutes = ({
           dataList={dataList}
           fullDataList={fullDataList}
           showPurpose={showPurpose}
+          scroll={scroll}
           updateDataList={updateDataList}
         />
       )}
@@ -66,6 +68,7 @@ MyRoutes.propTypes = {
   fullDataList: arrayOf(dataType),
   publications: objectOf(string),
   showPurpose: bool.isRequired,
+  scroll: object.isRequired, // eslint-disable-line
   updateDataList: func.isRequired,
 };
 
