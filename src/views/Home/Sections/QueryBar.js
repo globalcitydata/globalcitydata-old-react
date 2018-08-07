@@ -80,8 +80,8 @@ class QueryBar extends React.Component {
     // });
     return (
       <div className="queryBarContainer">
-        <ParameterTooltip />
-        <SpatialScalesTooltip />
+        {/* <ParameterTooltip />
+        <SpatialScalesTooltip /> */}
         <Row className="blue flex">
           <Col s={12} m={10} l={11}>
             <Row className="flex">

@@ -9,6 +9,10 @@ function lambdaSearch(dataDetail, myQuery) {
     // console.log(typeof entry[1]);
     if (typeof entry[1] === 'string') {
       if (entry[1].toLowerCase().includes(myQuery.toLowerCase())) return true;
+    } else if (entry[1].constructor === Array) {
+      for (const field of entry[1]) {
+        if (field.toLowerCase().includes(myQuery.toLowerCase())) return true;
+      }
     }
   }
   return false;
