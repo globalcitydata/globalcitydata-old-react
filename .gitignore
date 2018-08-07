@@ -10,7 +10,7 @@
 /build
 
 # for use with firebase
-/src/utils
+/src/utils/secret.json
 .firebaserc
 
 # misc
