@@ -210,6 +210,7 @@ const Contact = ({ val, f }) => (
     s={12}
     name="contact"
     label="Your Email"
+    type="email"
     value={val}
     onChange={f}
     required

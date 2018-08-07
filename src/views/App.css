@@ -67,6 +67,10 @@ p {
   height: 100%;
 }
 
+form .btn {
+  margin-top: 15px;
+}
+
 /* Nav */
 
 .active {

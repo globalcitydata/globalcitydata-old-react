@@ -1,23 +1,22 @@
 import React from 'react';
-import { Row, Input, Button } from 'react-materialize';
-
-const handleSubmit = e => {
-  e.preventDefault();
-};
+import { Input, Button } from 'react-materialize';
 
 const Contact = () => (
   <section className="contact">
     <div className="container">
       <h1>Contact</h1>
-      <Row>
-        <Input s={12} label="First Name" validate />
-        <Input s={12} label="Last Name" validate />
-        <Input s={12} type="password" label="Password" validate />
-        <Input s={12} type="email" label="Email" validate />
-        <Button waves="light" onClick={handleSubmit}>
+      <form
+        action="https://formspree.io/globalcitydata@gmail.com"
+        method="POST"
+      >
+        <Input label="Name" required />
+        <Input type="email" label="your@email.com" required />
+        <Input label="Subject" required />
+        <Input type="textarea" label="Your message" required />
+        <Button waves="light" type="submit">
           Submit
         </Button>
-      </Row>
+      </form>
     </div>
   </section>
 );
