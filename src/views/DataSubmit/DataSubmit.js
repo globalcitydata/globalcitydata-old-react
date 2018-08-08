@@ -260,11 +260,10 @@ export default class DataSubmitForm extends Component {
   async handleSubmit(e) {
     e.preventDefault();
     try {
-      this.setState(async oldState => {
-        const value = preProcessSubmit(oldState);
-        await addData(value);
-        return dataState;
-      });
+      const value = preProcessSubmit(this.state);
+      await addData(value);
+      this.setState(dataState);
+      console.log(dataState);
       window.Materialize.toast('Success! Your data is pending review.', 4000);
     } catch (err) {
       window.Materialize.toast(
