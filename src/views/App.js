@@ -44,6 +44,7 @@ class App extends React.Component {
     }); // this is picked up by smooth-scroll package
     const { dataList, shownDataList, publications, showPurpose } = this.state;
     return (
+      // <Router onUpdate={() => window.scrollTo(0, 0)}>
       <Router>
         <div>
           <Nav />

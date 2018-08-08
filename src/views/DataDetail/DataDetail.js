@@ -13,24 +13,31 @@ const findData = (dataList, dataURL) => {
   return null;
 };
 
-const DataDetail = ({ match, dataList }) => {
-  const { dataURL } = match.params;
-  const data = findData(dataList, dataURL);
-  return (
-    <div className="container">
-      {!data || !dataList ? (
-        <div className="center">
-          <p style={{ paddingBottom: 25 }}>Loading data detail...</p>
-          <Preloader flashing />
-        </div>
-      ) : (
-        <div style={{ paddingTop: 25, paddingBottom: 25 }}>
-          <DataDetailBody data={data} />
-        </div>
-      )}
-    </div>
-  );
-};
+class DataDetail extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
+  render() {
+    const { match, dataList } = this.props;
+    const { dataURL } = match.params;
+    const data = findData(dataList, dataURL);
+    return (
+      <div className="container">
+        {!data || !dataList ? (
+          <div className="center">
+            <p style={{ paddingBottom: 25 }}>Loading data detail...</p>
+            <Preloader flashing />
+          </div>
+        ) : (
+          <div style={{ paddingTop: 25, paddingBottom: 25 }}>
+            <DataDetailBody data={data} />
+          </div>
+        )}
+      </div>
+    );
+  }
+}
 
 class DataDetailBody extends Component {
   state = { showContact: false };
