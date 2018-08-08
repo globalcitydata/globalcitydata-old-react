@@ -28,6 +28,7 @@
     "object-curly-newline": [0],
     "arrow-parens": ["error", "as-needed"],
     "jsx-a11y/heading-has-content": [0],
+    "jsx-a11y/label-has-for": [0],
     "operator-linebreak": [0],
     "no-restricted-syntax": ["error", "WithStatement", "BinaryExpression[operator='in']"]
   }
