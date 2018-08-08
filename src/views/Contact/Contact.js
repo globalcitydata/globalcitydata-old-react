@@ -9,13 +9,16 @@ const Contact = () => (
         action="https://formspree.io/globalcitydata@gmail.com"
         method="POST"
       >
-        <Input label="Name" required />
-        <Input type="email" label="your@email.com" required />
-        <Input label="Subject" required />
-        <Input type="textarea" label="Your message" required />
+        <Input name="name" type="text" label="Name" required />
+        <Input name="email" type="email" label="your@email.com" required />
+        <Input name="subject" type="text" label="Subject" required />
+        <Input name="message" type="textarea" label="Your message" required />
         <Button waves="light" type="submit">
           Submit
         </Button>
+        {/* for bots and redirect after submit */}
+        <input type="hidden" name="_next" value="https://globalcitydata.com" />
+        <input type="text" name="_gotcha" style={{ display: 'none' }} />
       </form>
     </div>
   </section>
