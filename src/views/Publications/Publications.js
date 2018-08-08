@@ -27,10 +27,9 @@ const PubDetail = ({ pub }) => {
 };
 
 const PubList = ({ publications }) => (
-  <Row className="list">
+  <Row>
     {!publications ? (
-      <div>
-        <p style={{ paddingBottom: 25 }}>Loading publications...</p>
+      <div className="center">
         <Preloader flashing />
       </div>
     ) : (

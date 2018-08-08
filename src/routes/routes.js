@@ -18,7 +18,6 @@ const MyRoutes = ({
   fullDataList,
   publications,
   showPurpose,
-  scroll,
   updateDataList,
 }) => (
   <Switch>
@@ -31,7 +30,6 @@ const MyRoutes = ({
           dataList={dataList}
           fullDataList={fullDataList}
           showPurpose={showPurpose}
-          scroll={scroll}
           updateDataList={updateDataList}
         />
       )}
@@ -68,7 +66,6 @@ MyRoutes.propTypes = {
   fullDataList: arrayOf(dataType),
   publications: objectOf(string),
   showPurpose: bool.isRequired,
-  scroll: object.isRequired, // eslint-disable-line
   updateDataList: func.isRequired,
 };
 

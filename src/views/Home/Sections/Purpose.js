@@ -1,8 +1,11 @@
 import React from 'react';
-import { Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-materialize';
 
-function Purpose({ scroll }) {
+// need for <a> outside button
+import { scroll } from '../../../utils/scroll'; // eslint-disable-line
+
+function Purpose() {
   return (
     <section className="purpose">
       <div className="container content-wrap">

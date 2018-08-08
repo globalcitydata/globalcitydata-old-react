@@ -5,6 +5,9 @@ import { func, arrayOf } from 'prop-types';
 import { dataType } from '../../../utils/data';
 import { query } from '../../../utils/searchAndFilter';
 
+// utils
+import { scroll } from '../../../utils/scroll';
+
 // Tags
 import { tags, tagQuery } from '../../../utils/tags';
 
@@ -54,7 +57,7 @@ class QueryBar extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const { selectedTags } = this.state;
-    const { dataList, scroll, updateDataList } = this.props;
+    const { dataList, updateDataList } = this.props;
     const newDataList = query(dataList, selectedTags);
     updateDataList(newDataList);
     this.setState({ selectedTags: tagQuery });

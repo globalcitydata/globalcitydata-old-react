@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Input, Button } from 'react-materialize';
 import PropTypes from 'prop-types';
+
+// utils
+import { scroll } from '../../utils/scroll';
 import { dataState } from '../../utils/data';
 import { addData } from '../../utils/api';
 import {
@@ -263,7 +266,6 @@ export default class DataSubmitForm extends Component {
       const value = preProcessSubmit(this.state);
       await addData(value);
       this.setState(dataState);
-      console.log(dataState);
       window.Materialize.toast('Success! Your data is pending review.', 4000);
     } catch (err) {
       window.Materialize.toast(
@@ -271,6 +273,9 @@ export default class DataSubmitForm extends Component {
         4000
       );
     }
+    // scroll to top after submit
+    const anchor = document.querySelector('#dataSubmit');
+    scroll.animateScroll(anchor);
   }
 
   render() {
@@ -300,7 +305,7 @@ export default class DataSubmitForm extends Component {
       contact.length > 0;
 
     return (
-      <section className="dataSubmit">
+      <section className="dataSubmit" id="dataSubmit">
         <div className="container">
           <h1>Submit Data</h1>
           <form>

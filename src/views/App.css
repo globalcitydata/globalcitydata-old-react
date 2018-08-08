@@ -46,7 +46,11 @@ p {
 }
 
 .main {
-  min-height: 77vh;
+  min-height: 60vh;
+}
+
+footer {
+  min-height: 20v;
 }
 
 .btn {
@@ -121,7 +125,7 @@ form .btn {
   margin: 0
 }
 
-.flex {
+.queryBarContainer .flex {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -226,8 +230,18 @@ form .btn {
   animation: fadein 2s;
 }
 
+.dataList .card .card-content {
+  height: 235px;
+}
+
 .card-action .btn {
   width: inherit;
+}
+
+/* Publication */
+
+.publications .card .card-content {
+  height: 155px;
 }
 
 /* Data Submit */

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const DataCard = props => {
   const { data } = props;
   const url = `data/${data.url}`;
-  const description = `${data.description.slice(0, 400)}...`;
+  const description = `${data.description.slice(0, 300)}...`;
   return (
     <Card
       className="z-depth-4"
@@ -26,31 +26,29 @@ const DataList = props => {
   const { dataList } = props;
   return (
     <section className="dataList" id="dataList">
-      {!dataList ? (
-        <div>
-          <p style={{ paddingBottom: 25 }}>Loading data...</p>
-          <Preloader flashing />
-        </div>
-      ) : (
-        <div className="container content-wrap">
-          <h2>Datasets and Models</h2>
-          {dataList.length === 0 ? (
-            <p>There is no data matching your query :(</p>
-          ) : (
-            <ul className="dataListCards">
-              <Row className="list">
+      <div className="container content-wrap">
+        <h2>Datasets and Models</h2>
+
+        {!dataList ? (
+          <div className="center">
+            <Preloader flashing />
+          </div>
+        ) : (
+          <div>
+            {dataList.length === 0 ? (
+              <p>There is no data matching your query :(</p>
+            ) : (
+              <Row>
                 {dataList.map(data => (
                   <Col key={data.title} s={12} m={6} xl={4}>
-                    <li>
-                      <DataCard data={data} />
-                    </li>
+                    <DataCard data={data} />
                   </Col>
                 ))}
               </Row>
-            </ul>
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        )}
+      </div>
     </section>
   );
 };

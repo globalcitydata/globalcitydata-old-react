@@ -1,9 +1,12 @@
 import React from 'react';
 import { Row, Input, Button } from 'react-materialize';
 import { func, arrayOf } from 'prop-types';
-import SmoothScroll from 'smooth-scroll';
+
 import { dataType } from '../../../utils/data';
 import { search } from '../../../utils/searchAndFilter';
+
+// utils
+import { scroll } from '../../../utils/scroll';
 
 class SearchBar extends React.Component {
   state = {
@@ -14,7 +17,7 @@ class SearchBar extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { dataList, scroll, updateDataList } = this.props;
+    const { dataList, updateDataList } = this.props;
     const { value } = this.state;
     const newDataList = search(dataList, value);
     updateDataList(newDataList);
