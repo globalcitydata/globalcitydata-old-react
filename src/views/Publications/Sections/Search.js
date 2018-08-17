@@ -13,13 +13,19 @@ export default class Search extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.setState(oldState => {
-      const { value } = oldState;
-      const { pubs, updatePubs } = this.props;
-      const newPubs = queryPublications(pubs, value);
-      updatePubs(newPubs);
-      return '';
-    });
+    const { value } = this.state;
+    const { pubs, updatePubs } = this.props;
+    const newPubs = queryPublications(pubs, value);
+    updatePubs(newPubs);
+    this.setState({ value: '' });
+    // this.setState(oldState => {
+    //   const { value } = oldState;
+    //   const { pubs, updatePubs } = this.props;
+    //   const newPubs = queryPublications(pubs, value);
+    //   updatePubs(newPubs);
+    //   return '';
+    // });
+    // scroll to top after submit
   };
 
   render() {

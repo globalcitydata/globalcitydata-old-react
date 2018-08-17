@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router, Link } from 'react-router-dom';
 import { objectOf, string } from 'prop-types';
 import { Preloader, Card, Row, Col, Button } from 'react-materialize';
+import { scroll } from '../../utils/scroll';
 
 // Sections
 import Search from './Sections/Search';
@@ -28,13 +29,25 @@ const PubDetail = ({ pub }) => {
 
 const PubList = ({ publications }) => (
   <Row>
-    {!publications ? (
-      <div className="center">
-        <Preloader flashing />
-      </div>
-    ) : (
-      Object.entries(publications).map((pub, i) => <PubDetail key={i} pub={pub} />)
-    )}
+    <div id="pubList">
+      {!publications ? (
+        <div className="center">
+          <Preloader flashing />
+        </div>
+      ) : (
+        <div>
+          {Object.keys(publications).length === 0 ? (
+            <p>There are no publications matching your query.</p>
+          ) : (
+            <div>
+              {Object.entries(publications).map((pub, i) => (
+                <PubDetail key={i} pub={pub} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   </Row>
 );
 
@@ -46,7 +59,11 @@ class Publications extends Component {
     this.setState({ publications });
   }
 
-  updatePublications = publications => this.setState({ publications });
+  updatePublications = publications => {
+    this.setState({ publications });
+    const anchor = document.querySelector('#pubList');
+    scroll.animateScroll(anchor);
+  };
 
   render() {
     const { publications } = this.props;

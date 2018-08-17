@@ -162,8 +162,12 @@ form .btn {
 
 .myDropdown ul {
   width: min-content !important;
-  min-width: 200px;
+  min-width: 210px;
   overflow: hidden;
+}
+
+.myDropdown ul div .col {
+  margin-bottom: 10px;
 }
 
 .__react_component_tooltip {

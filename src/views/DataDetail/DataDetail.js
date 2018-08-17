@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Preloader, Button } from 'react-materialize';
-import { fetchPublishedDataList } from '../../utils/api';
 import './DataDetail.css';
 
 const findData = (dataList, dataURL) => {

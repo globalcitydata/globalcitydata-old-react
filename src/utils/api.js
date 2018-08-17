@@ -8,25 +8,15 @@ firebase.initializeApp(config);
 const db = firebase.firestore();
 const settings = { timestampsInSnapshots: true };
 db.settings(settings);
-const dataListRef = db.collection('dataList');
-// const publicationsRef = db.collection('publications');
-// const tagsRef = db.collection('tags');
+let dataListRef = db.collection('dataList');
+if (process.env.NODE_ENV === 'development') {
+  dataListRef = db.collection('testDataList');
+}
 
 export async function getDataRef(dataRef) {
   const snapshot = await dataRef.get();
   return snapshot.data();
 }
-
-// export async function fetchPublications() {
-//   const publications = [];
-//   try {
-//     const snapshot = await publicationsRef.get();
-//     snapshot.docs.map(doc => publications.push(doc.data()));
-//   } catch (err) {
-//     throw new Error('Error getting publications.', err);
-//   }
-//   return publications;
-// }
 
 export async function fetchDataList() {
   const dataList = [];

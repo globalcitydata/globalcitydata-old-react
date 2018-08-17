@@ -1,3 +1,5 @@
+import { startCase } from 'lodash';
+
 export const CONTENT_TYPES = ['dataset', 'model', 'tutorial'];
 export const OUTCOMES = [
   'environmentalImpacts',
@@ -7,10 +9,10 @@ export const OUTCOMES = [
   'wellBeing',
 ];
 export const PARAMETERS = [
-  'social',
-  'environment',
-  'infrastructure',
-  'urbanDesign',
+  'socialAndEconomic',
+  'environmentalCharacteristics',
+  'infrastructureAndFoodSupply',
+  'urbanForm',
 ];
 export const SPATIAL_SCALES = ['intraUrban', 'wholeCity', 'nationalUrban'];
 export const TEMPORAL_SCALES = [
@@ -26,58 +28,41 @@ export const WORLD_REGIONS = [
   'asia',
 ];
 
-const typeOptions = [
-  { value: 'dataset', label: 'Dataset', group: 'contentType' },
-  { value: 'model', label: 'Modal', group: 'contentType' },
-  { value: 'tutorial', label: 'Tutorial', group: 'contentType' },
-];
+const typeOptions = CONTENT_TYPES.map(t => ({
+  value: t,
+  label: startCase(t),
+  group: 'contentType',
+}));
 
-const outcomeOptions = [
-  {
-    value: 'environmentalImpacts',
-    label: 'Environmental Impacts',
-    group: 'outcomes',
-  },
-  { value: 'equity', label: 'Equity', group: 'outcomes' },
-  { value: 'health', label: 'Health', group: 'outcomes' },
-  { value: 'livability', label: 'Livability', group: 'outcomes' },
-  { value: 'wellBeing', label: 'Well Being', group: 'outcomes' },
-];
+const outcomeOptions = OUTCOMES.map(t => ({
+  value: t,
+  label: startCase(t),
+  group: 'outcomes',
+}));
 
-const parameterOptions = [
-  { value: 'social', label: 'Social', group: 'parameters' },
-  { value: 'environment', label: 'Environment', group: 'parameters' },
-  { value: 'infrastructure', label: 'Infrastructure', group: 'parameters' },
-  { value: 'urbanDesign', label: 'Urban Design', group: 'parameters' },
-];
+const parameterOptions = PARAMETERS.map(t => ({
+  value: t,
+  label: startCase(t),
+  group: 'parameters',
+}));
 
-const spatialOptions = [
-  { value: 'intraUrban', label: 'Intra Urban', group: 'spatialScales' },
-  { value: 'wholeCity', label: 'Whole City', group: 'spatialScales' },
-  { value: 'nationalUrban', label: 'National Urban', group: 'spatialScales' },
-];
+const spatialOptions = SPATIAL_SCALES.map(t => ({
+  value: t,
+  label: startCase(t),
+  group: 'spatialScales',
+}));
 
-const temporalOptions = [
-  {
-    value: 'singleYearSnapshot',
-    label: 'Single Year Snapshot',
-    group: 'temporalScales',
-  },
-  { value: 'timeSeries', label: 'Time Series', group: 'temporalScales' },
-  {
-    value: 'futuresModeling',
-    label: 'Futures Modeling',
-    group: 'temporalScales',
-  },
-];
+const temporalOptions = TEMPORAL_SCALES.map(t => ({
+  value: t,
+  label: startCase(t),
+  group: 'temporalScales',
+}));
 
-const worldOptions = [
-  { value: 'northAmerica', label: 'North America', group: 'worldRegions' },
-  { value: 'southAmerica', label: 'South America', group: 'worldRegions' },
-  { value: 'europe', label: 'Europe', group: 'worldRegions' },
-  { value: 'africa', label: 'Africa', group: 'worldRegions' },
-  { value: 'asia', label: 'Asia', group: 'worldRegions' },
-];
+const worldOptions = WORLD_REGIONS.map(t => ({
+  value: t,
+  label: startCase(t),
+  group: 'worldRegions',
+}));
 
 export const tags = [
   {
