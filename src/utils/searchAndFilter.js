@@ -72,7 +72,7 @@ export function getPublications(dataList) {
 }
 
 export function queryPublications(pubs, myQuery) {
-  console.log(myQuery);
+  // console.log(myQuery);
   const obj = {};
   for (const entry of Object.entries(pubs)) {
     const pubName = entry[0];
