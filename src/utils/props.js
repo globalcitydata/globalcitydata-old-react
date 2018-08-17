@@ -46,7 +46,7 @@ const dataType = shape({
     europe: bool.isRequired,
     africa: bool.isRequired,
     asia: bool.isRequired,
-  })
+  }),
 });
 
 export default dataType;
