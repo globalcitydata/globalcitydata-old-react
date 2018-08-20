@@ -24,6 +24,7 @@ function lambdaSearch(dataDetail, myQuery) {
  * Returns: list of relevant data
 */
 export function search(dataList, myQuery) {
+  if (!dataList) return [];
   return dataList.filter(data => lambdaSearch(data, myQuery));
 }
 
@@ -57,6 +58,7 @@ function lambdaQuery(dataDetail, myQuery) {
  * Returns: list of relevant data
 */
 export function query(dataList, myQuery) {
+  if (!dataList) return [];
   return dataList.filter(data => lambdaQuery(data, myQuery));
 }
 
@@ -74,6 +76,7 @@ export function getPublications(dataList) {
 export function queryPublications(pubs, myQuery) {
   // console.log(myQuery);
   const obj = {};
+  if (!pubs) return {};
   for (const entry of Object.entries(pubs)) {
     const pubName = entry[0];
     if (pubName.toLowerCase().includes(myQuery.toLowerCase())) {

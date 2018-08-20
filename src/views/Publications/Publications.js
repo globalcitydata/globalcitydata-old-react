@@ -4,6 +4,9 @@ import { objectOf, string } from 'prop-types';
 import { Preloader, Card, Row, Col, Button } from 'react-materialize';
 import { scroll } from '../../utils/scroll';
 
+// CSS
+import './Publications.css';
+
 // Sections
 import Search from './Sections/Search';
 

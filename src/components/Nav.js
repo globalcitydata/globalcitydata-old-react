@@ -2,6 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'; // eslint-disable-line no-unused-vars
 import { Navbar } from 'react-materialize';
 
+// CSS
+import './Nav.css';
+
 class Nav extends React.Component {
   render() {
     return (
