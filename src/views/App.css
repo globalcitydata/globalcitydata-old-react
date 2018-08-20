@@ -42,11 +42,7 @@ p {
 }
 
 .main {
-  min-height: 60vh;
-}
-
-footer {
-  min-height: 20v;
+  min-height: 75vh
 }
 
 .btn {
@@ -104,7 +100,7 @@ form .btn {
 
 footer {
   text-align: center;
-  min-height: 15vh;
+  min-height: 10vh;
 }
 
 footer img {
