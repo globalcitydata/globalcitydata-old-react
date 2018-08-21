@@ -27,7 +27,7 @@ const DataList = props => {
   return (
     <section className="dataList" id="dataList">
       <div className="container content-wrap">
-        <h2>Datasets and Models</h2>
+        <h2>Datasets, Models and Tutorials</h2>
 
         {!dataList ? (
           <div className="center">

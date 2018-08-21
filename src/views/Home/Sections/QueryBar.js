@@ -122,37 +122,37 @@ QueryBar.defaultProps = {
   dataList: null,
 };
 
-// const ParameterTooltip = () => (
-//   <ReactTooltip id="Parameters" effect="solid" delayHide={1000}>
-//     <ul>
-//       <li>
-//         - Social & economic (population demographics, economy, households,
-//         policy, etc)
-//       </li>
-//       <li>
-//         - Environmental characteristics (soil, temperature, vegetation, etc)
-//       </li>
-//       <li>
-//         - Infrastructure & food supply (Supply of energy, water, transportation,
-//         etc)
-//       </li>
-//       <li>- Urban form (density, spatial layout)</li>
-//     </ul>
-//   </ReactTooltip>
-// );
+const ParameterTooltip = () => (
+  <ReactTooltip id="Parameters" effect="solid" delayHide={1000}>
+    <ul>
+      <li>
+        - Social & economic (population demographics, economy, households,
+        policy, etc)
+      </li>
+      <li>
+        - Environmental characteristics (soil, temperature, vegetation, etc)
+      </li>
+      <li>
+        - Infrastructure & food supply (Supply of energy, water, transportation,
+        etc)
+      </li>
+      <li>- Urban form (density, spatial layout)</li>
+    </ul>
+  </ReactTooltip>
+);
 
-// const SpatialScalesTooltip = () => (
-//   <ReactTooltip id="Spatial Scales" effect="solid" delayHide={1000}>
-//     <ul>
-//       <li>
-//         - Intra-urban (fine spatial detail within a city, census tract, block
-//         group or finer)
-//       </li>
-//       <li>- Whole City (aggregate data for one or more cities)</li>
-//       <li>
-//         - National Urban (aligned data for all cities or urban areas in a
-//         country)
-//       </li>
-//     </ul>
-//   </ReactTooltip>
-// );
+const SpatialScalesTooltip = () => (
+  <ReactTooltip id="Spatial Scales" effect="solid" delayHide={1000}>
+    <ul>
+      <li>
+        - Intra-urban (fine spatial detail within a city, census tract, block
+        group or finer)
+      </li>
+      <li>- Whole City (aggregate data for one or more cities)</li>
+      <li>
+        - National Urban (aligned data for all cities or urban areas in a
+        country)
+      </li>
+    </ul>
+  </ReactTooltip>
+);

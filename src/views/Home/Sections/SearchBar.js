@@ -36,7 +36,7 @@ class SearchBar extends React.Component {
             <Input
               s={12}
               m={10}
-              label="Search for datasets, models and tutorials"
+              label="Search for datasets, models and tutorials by typing here or filtering below"
               name="value"
               value={value}
               onChange={this.handleChange}
