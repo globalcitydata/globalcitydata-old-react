@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Input, Button } from 'react-materialize';
+import { Input } from 'react-materialize';
 import { func, arrayOf } from 'prop-types';
 
 import { dataType } from '../../../utils/data';

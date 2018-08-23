@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { arrayOf, object, objectOf, func, bool, string } from 'prop-types';
+import { Router, Route, Switch } from 'react-router-dom'; // eslint-disable-line
+import { arrayOf, objectOf, func, bool, string } from 'prop-types';
 import { dataType } from '../utils/data';
 
 // Views

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { objectOf, string } from 'prop-types';
 import { Preloader, Card, Row, Col, Button } from 'react-materialize';
 import { scroll } from '../../utils/scroll';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { arrayOf, func, bool, object } from 'prop-types';
+import { arrayOf, func, bool } from 'prop-types';
 import { dataType } from '../../utils/data';
 
 // CSS

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Input, Button } from 'react-materialize';
 
 const Contact = () => (
   <section className="contact">
