@@ -7,25 +7,25 @@ import { scroll } from '../../utils/scroll';
 import { dataState } from '../../utils/data';
 import { addData } from '../../utils/api';
 import {
-  CONTENT_TYPES,
+  DATA_TYPES,
   OUTCOMES,
-  PARAMETERS,
+  DETERMINANTS,
   SPATIAL_SCALES,
   TEMPORAL_SCALES,
   WORLD_REGIONS,
 } from '../../utils/tags';
 
-const ContentType = ({ f }) => (
+const DataType = ({ f }) => (
   <Input
     s={12}
     type="select"
     name="contentType"
-    label="Content Type"
+    label="Data Type"
     defaultValue="dataset"
     onChange={f}
     required
   >
-    {CONTENT_TYPES.map(val => (
+    {DATA_TYPES.map(val => (
       <option key={val} value={val}>
         {val}
       </option>
@@ -119,8 +119,8 @@ const RelevantPublications = ({ val, f }) => (
 
 const Parameters = ({ f }) => (
   <Row>
-    <h4>Parameters</h4>
-    {PARAMETERS.map(val => (
+    <h4>Determinants</h4>
+    {DETERMINANTS.map(val => (
       <Input
         name="parameters"
         type="checkbox"
@@ -310,7 +310,7 @@ export default class DataSubmitForm extends Component {
           <h1>Submit Data</h1>
           <form>
             <Row>
-              <ContentType f={this.handleChange} />
+              <DataType f={this.handleChange} />
               <Title val={title} f={this.handleChange} />
               <Description val={description} f={this.handleChange} />
               <Context val={context} f={this.handleChange} />
