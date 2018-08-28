@@ -36,7 +36,7 @@ export default class Search extends Component {
           <Input
             name="pubSearch"
             value={value}
-            label="Search for publications"
+            label="Search for publication by topic, title or author"
             onChange={this.handleChange}
           />
         </form>

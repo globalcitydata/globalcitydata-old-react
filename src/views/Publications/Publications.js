@@ -19,7 +19,7 @@ const PubDetail = ({ pub }) => {
         className="z-depth-4"
         actions={[
           <Link to={realURL} key={value}>
-            <Button waves="light">Relevant Data</Button>
+            <Button waves="light">Associated Content</Button>
           </Link>,
         ]}
         // title={url.split('-').join(' ')}
