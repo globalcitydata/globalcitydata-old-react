@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Input, Button, Col, Dropdown } from 'react-materialize';
+import { Row, Input, Button, Col, Dropdown, Icon } from 'react-materialize';
 import ReactTooltip from 'react-tooltip';
 import { func, arrayOf } from 'prop-types';
 import { dataType } from '../../../utils/data';
@@ -17,7 +17,7 @@ const QueryDropdown = ({ tag, handleChange }) => {
     <Col s={12} m={4} l={2} className="myDropdown">
       <Dropdown
         trigger={
-          <Button waves="light" data-for={label} data-tip>
+          <Button waves="light" data-for={label} data-tip><Icon className="right">arrow_drop_down</Icon>
             {label}
           </Button>
         }
