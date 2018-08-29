@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Modal, Icon } from 'react-materialize';
 
 // Prop Types
 import { func, arrayOf } from 'prop-types';
@@ -34,6 +35,20 @@ function Showcase(props) {
           scroll={scroll}
           updateDataList={updateDataList}
         />
+          <Modal trigger={<Button className="right"><Icon>help</Icon></Button>}>
+            <h1 className="center">Glossary</h1>
+            <h6>Data Type</h6>
+            <ol>
+              <li>First type - this list is numbered</li>
+              <li>Whatever - means whatever</li>
+              <li>This - means that</li>
+            </ol>
+            <h6>Spatial Scales</h6>
+            <ul>
+              <li>Second type - this list is not</li>
+              <li>Test - definitions look like that</li>
+            </ul>
+          </Modal>
       </div>
     </div>
   );
