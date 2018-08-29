@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, Icon } from 'react-materialize';
+import { Button, Modal, Icon, Carousel } from 'react-materialize';
 
 // Prop Types
 import { func, arrayOf } from 'prop-types';
@@ -8,6 +8,10 @@ import { dataType } from '../../../utils/data';
 // Views
 import SearchBar from './SearchBar';
 import QueryBar from './QueryBar';
+import Veggies from '../../../img/Veggies.jpg'
+import Street from '../../../img/Street.jpg'
+import People from '../../../img/People.jpg'
+import Building from '../../../img/Building.jpg'
 
 function Showcase(props) {
   const { dataList, scroll, updateDataList } = props;
@@ -24,6 +28,12 @@ function Showcase(props) {
             intra­urban data, aggregate data/metrics for individual cities, and, across all urban areas in a nation.
         </p>
         <hr></hr>
+        <Carousel options={{}} images={[
+          Veggies,
+          People,
+          Street,
+          Building
+        ]} />
         <SearchBar
           dataList={dataList}
           scroll={scroll}
