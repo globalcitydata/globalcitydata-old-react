@@ -21,6 +21,12 @@ export const SPATIAL_SCALES = [
   'nationalUrban',
 ];
 
+export const SECTORS = [
+  'test1',
+  'test2',
+  'test3',
+]
+
 export const TEMPORAL_SCALES = [
   'singleYearSnapshot',
   'timeSeries',

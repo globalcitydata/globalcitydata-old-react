@@ -18,7 +18,7 @@ function Home(props) {
       <Showcase dataList={fullDataList} updateDataList={updateDataList} />
       {showPurpose && <Purpose />}
       <DataList dataList={dataList} />
-    </div>
+     </div>
   );
 }
 

@@ -5,6 +5,9 @@ import { Button, Modal, Icon, Carousel } from 'react-materialize';
 import { func, arrayOf } from 'prop-types';
 import { dataType } from '../../../utils/data';
 
+//Css
+import './Sections.css';
+
 // Views
 import SearchBar from './SearchBar';
 import QueryBar from './QueryBar';
@@ -20,20 +23,18 @@ function Showcase(props) {
       <div className="bg-image" />
       <div className="container-fluid content-wrap">
         <h1>Global City Data</h1>
-        <hr></hr>
-        <p>
+        
+        <hr className="homeHR"></hr>
+
+        <h7>
             A collaborative platform showcasing diverse urban datasets that assess multiple sustainability
-            outcomes in cities: economy, environment, health, equity, wellbeing and livability. Contributed 
+            outcomes in cities: economy, environment, health, equity, wellbeing and livability.<br></br> Contributed 
             by researchers from across the world, these peer-reviewed datasets are organized at three scales: 
-            intra­urban data, aggregate data/metrics for individual cities, and, across all urban areas in a nation.
-        </p>
-        <hr></hr>
-        <Carousel options={{}} images={[
-          Veggies,
-          People,
-          Street,
-          Building
-        ]} />
+            intra­urban data, aggregate data/metrics for individual cities, and, across <br></br> all urban areas in a nation.
+        </h7>
+
+        <hr className="homeHR"></hr>
+
         <SearchBar
           dataList={dataList}
           scroll={scroll}
@@ -47,16 +48,14 @@ function Showcase(props) {
         />
           <Modal trigger={<Button className="right"><Icon>help</Icon></Button>}>
             <h1 className="center">Glossary</h1>
-            <h6>Data Type</h6>
-            <ol>
-              <li>First type - this list is numbered</li>
-              <li>Whatever - means whatever</li>
-              <li>This - means that</li>
-            </ol>
-            <h6>Spatial Scales</h6>
+            <hr id="glossaryHR"></hr>
             <ul>
-              <li>Second type - this list is not</li>
-              <li>Test - definitions look like that</li>
+              <li>
+                <h6>Category</h6>
+              </li>
+              <ul>
+                <li><strong>Example</strong> - Definition of example.</li>
+              </ul>
             </ul>
           </Modal>
       </div>
