@@ -331,6 +331,8 @@ export default class DataSubmitForm extends Component {
               <TemporalScales f={this.handleRadioChange} />
               <WorldRegions f={this.handleRadioChange} />
               <Owner val={owner} f={this.handleChange} />
+              <h6>upload images here</h6>
+              <input type="file" onChange={this.fileHandler} />
               <Contact val={contact} f={this.handleChange} />
               <Submit isEnabled={isEnabled} f={this.handleSubmit} />
             </Row>

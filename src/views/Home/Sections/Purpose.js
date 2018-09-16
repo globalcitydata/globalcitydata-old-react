@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Carousel } from 'react-materialize';
+import { Row, Button, Carousel } from 'react-materialize';
 import Veggies from '../../../img/Veggies.jpg'
 import Street from '../../../img/Street.jpg'
 import People from '../../../img/People.jpg'
@@ -22,6 +22,7 @@ function Purpose() {
         ]} />      
       </div>
     </section>
+
   );
 }
 
