@@ -14,7 +14,7 @@ import { tags, tagQuery } from '../../../utils/tags';
 const QueryDropdown = ({ tag, handleChange }) => {
   const { label, options } = tag;
   return (
-    <Col s={12} m={4} l={2} className="myDropdown">
+    <Col s={12} m={6} l={2} className="myDropdown">
       <Dropdown
         trigger={
           <Button waves="light" data-for={label} data-tip><Icon className="right">arrow_drop_down</Icon>

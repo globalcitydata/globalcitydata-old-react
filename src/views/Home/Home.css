@@ -44,6 +44,11 @@
   margin: 0 auto;
 }
 
+hr.homeHR { 
+  border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
 .searchBar input {
   font-size: 1.2rem;
 }
@@ -76,7 +81,7 @@
 }
 
 .queryBarContainer .btn {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   margin: 0;
   width: 100%;
   padding: 0.5rem 0 3rem 0 !important;
@@ -149,3 +154,18 @@
 .dataList .card .card-content {
   height: 235px;
 }
+
+/* Glossary */
+
+li {
+  font-size: 14px;
+  margin-left: 10px;
+  list-style-type: circle;
+}
+
+#glossaryHR {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+

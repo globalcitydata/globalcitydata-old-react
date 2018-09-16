@@ -5,9 +5,6 @@ import { Button, Modal, Icon, Carousel } from 'react-materialize';
 import { func, arrayOf } from 'prop-types';
 import { dataType } from '../../../utils/data';
 
-//Css
-import './Sections.css';
-
 // Views
 import SearchBar from './SearchBar';
 import QueryBar from './QueryBar';
