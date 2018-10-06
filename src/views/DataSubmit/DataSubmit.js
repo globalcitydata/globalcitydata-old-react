@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Input, Button } from 'react-materialize';
+import { Row, Input, Button, Col } from 'react-materialize';
 import PropTypes from 'prop-types';
 
 // utils
@@ -110,7 +110,7 @@ const RelevantPublications = ({ val, f }) => (
     s={12}
     type="textarea"
     name="relevantPublications"
-    label="Relevant Publications - if multiple please separate by semicolon (;)"
+    label="Associated Publications - if multiple please separate by semicolon (;)"
     value={val}
     onChange={f}
     required
@@ -307,7 +307,17 @@ export default class DataSubmitForm extends Component {
     return (
       <section className="dataSubmit" id="dataSubmit">
         <div className="container">
-          <h1>Submit Data</h1>
+          <Row s={9}>
+            <h1>Submit Data</h1>
+            <h6>Notes</h6>
+            <hr></hr>
+            <Col s={12} m={10} l={11}>
+              <p><strong>Please enter your citations in the same format as the following example: </strong><br></br><br></br>Boyer, D., & Ramaswami, A. (2017). 
+              What Is the Contribution of City-Scale Actions to the Overall Food System’s Environmental Impacts?: 
+              Assessing Water, Greenhouse Gas, and Land Impacts of Future Urban Food Scenarios. Environmental Science and 
+              Technology, 51(20).</p>
+            </Col>
+          </Row>
           <form>
             <Row>
               <DataType f={this.handleChange} />
@@ -331,8 +341,8 @@ export default class DataSubmitForm extends Component {
               <TemporalScales f={this.handleRadioChange} />
               <WorldRegions f={this.handleRadioChange} />
               <Owner val={owner} f={this.handleChange} />
-              <h6>upload images here</h6>
-              <input type="file" onChange={this.fileHandler} />
+              {/* <h6>Upload Images</h6> */}
+              {/* <input type="file" onChange={this.fileHandler} /> */}
               <Contact val={contact} f={this.handleChange} />
               <Submit isEnabled={isEnabled} f={this.handleSubmit} />
             </Row>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, Icon, Carousel } from 'react-materialize';
+import { Button, Modal, Icon, Row, Col, Carousel } from 'react-materialize';
 
 // Prop Types
 import { func, arrayOf } from 'prop-types';
@@ -19,18 +19,20 @@ function Showcase(props) {
     <div className="showcase">
       <div className="bg-image" />
       <div className="container-fluid content-wrap">
-        <h1>Global City Data</h1>
-        
-        <hr className="homeHR"></hr>
-
-        <h7>
-            A collaborative platform showcasing diverse urban datasets that assess multiple sustainability
-            outcomes in cities: economy, environment, health, equity, wellbeing and livability.<br></br> Contributed 
-            by researchers from across the world, these peer-reviewed datasets are organized at three scales: 
-            intra­urban data, aggregate data/metrics for individual cities, and, across <br></br> all urban areas in a nation.
-        </h7>
-
-        <hr className="homeHR"></hr>
+        <Row>
+          <h1>Global City Data</h1>
+      
+          <Col s={12} m={10} l={12}>
+            <hr className="homeHR"></hr>
+            <h7>
+              A collaborative platform showcasing diverse urban datasets that assess multiple sustainability
+              outcomes in cities: economy, environment, health, equity, wellbeing and livability. Contributed 
+              by researchers from across the world, these peer-reviewed datasets are organized at three scales: 
+              intra­urban data, aggregate data/metrics for individual cities, and, across all urban areas in a nation.
+            </h7>
+            <hr className="homeHR"></hr>
+          </Col>
+        </Row>
 
         <SearchBar
           dataList={dataList}
@@ -38,6 +40,7 @@ function Showcase(props) {
           updateDataList={updateDataList}
         />
         <br />
+        <Row>
         <QueryBar
           dataList={dataList}
           scroll={scroll}
@@ -55,6 +58,14 @@ function Showcase(props) {
               </ul>
             </ul>
           </Modal>
+          </Row>
+          <Row>
+            <Carousel options={{ indicators: true }} images={[
+              Veggies,
+              Veggies,
+              Street
+            ]} />      
+          </Row>
       </div>
     </div>
   );

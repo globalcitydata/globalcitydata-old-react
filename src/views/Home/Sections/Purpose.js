@@ -13,9 +13,10 @@ function Purpose() {
   return (
     <section className="purpose">
       <div className="container content-wrap">
-        <Carousel options={{ indicators: true, fullWidth: true }} images={[
+        <Carousel options={{ indicators: true }} images={[
           Veggies,
-          People,
+          Veggies,
+          Street
         ]} />      
       </div>
     </section>
