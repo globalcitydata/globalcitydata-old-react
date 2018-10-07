@@ -12,6 +12,7 @@ import {
   DETERMINANTS,
   SPATIAL_SCALES,
   TEMPORAL_SCALES,
+  SECTORS,
   WORLD_REGIONS,
 } from '../../utils/tags';
 
@@ -181,6 +182,22 @@ const TemporalScales = ({ f }) => (
   </Row>
 );
 
+const Sectors = ({ f }) => (
+  <Row>
+    <h4>Sectors</h4>
+    {SECTORS.map(val => (
+      <Input
+        name="Sectors"
+        type="checkbox"
+        key={val}
+        value={val}
+        label={val}
+        onChange={f}
+      />
+    ))}
+  </Row>
+)
+
 const WorldRegions = ({ f }) => (
   <Row>
     <h4>World Regions</h4>
@@ -339,6 +356,7 @@ export default class DataSubmitForm extends Component {
               <Outcomes f={this.handleRadioChange} />
               <SpatialScales f={this.handleRadioChange} />
               <TemporalScales f={this.handleRadioChange} />
+              <Sectors f={this.handleRadioChange} />
               <WorldRegions f={this.handleRadioChange} />
               <Owner val={owner} f={this.handleChange} />
               {/* <h6>Upload Images</h6> */}

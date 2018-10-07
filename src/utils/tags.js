@@ -8,6 +8,7 @@ export const OUTCOMES = [
   'livability',
   'wellBeing',
 ];
+
 export const DETERMINANTS = [
   'socialAndEconomic',
   'environmentalCharacteristics',
@@ -22,16 +23,22 @@ export const SPATIAL_SCALES = [
 ];
 
 export const SECTORS = [
-  'test1',
-  'test2',
-  'test3',
-]
+  'Buildings',
+  'Energy',
+  'Transportation',
+  'Information Communication',
+  'Water Supply',
+  'Sanitation & Waste',
+  'Food Supply',
+  'Land & Public Space'
+];
 
 export const TEMPORAL_SCALES = [
   'singleYearSnapshot',
   'timeSeries',
   'futuresModeling',
 ];
+
 export const WORLD_REGIONS = [
   'northAmerica',
   'southAmerica',
@@ -69,6 +76,12 @@ const temporalOptions = TEMPORAL_SCALES.map(t => ({
   group: 'temporalScales',
 }));
 
+const sectorOptions = SECTORS.map(t => ({
+  value: t,
+  label: startCase(t),
+  group: 'sectors',
+}));
+
 const worldOptions = WORLD_REGIONS.map(t => ({
   value: t,
   label: startCase(t),
@@ -97,6 +110,10 @@ export const tags = [
     options: determinantOptions,
   },
   {
+    label: 'Sectors',
+    options: sectorOptions,
+  },
+  {
     label: 'World Regions',
     options: worldOptions,
   },
@@ -107,6 +124,7 @@ export const tagQuery = {
   outcomes: [],
   determinants: [],
   spatialScales: [],
+  sectors: [],
   temporalScales: [],
   worldRegions: [],
 };
