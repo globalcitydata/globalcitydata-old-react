@@ -23,14 +23,14 @@ function Showcase(props) {
           <h1>Global City Data</h1>
       
           <Col s={12} m={10} l={12}>
-            <hr className="homeHR"></hr>
-            <h7>
+            {/* <hr className="homeHR"></hr> */}
+            <h6 className="homeBio">
               A collaborative platform showcasing diverse urban datasets that assess multiple sustainability
               outcomes in cities: economy, environment, health, equity, wellbeing and livability. Contributed 
               by researchers from across the world, these peer-reviewed datasets are organized at three scales: 
               intra­urban data, aggregate data/metrics for individual cities, and, across all urban areas in a nation.
-            </h7>
-            <hr className="homeHR"></hr>
+            </h6>
+            {/* <hr className="homeHR"></hr> */}
           </Col>
         </Row>
 
@@ -46,7 +46,7 @@ function Showcase(props) {
           scroll={scroll}
           updateDataList={updateDataList}
         />
-          <Modal trigger={<Button className="right"><Icon>help</Icon></Button>}>
+          <Modal trigger={<Button className="left"><Icon>help</Icon></Button>}>
             <h1 className="center">Glossary</h1>
             <hr id="glossaryHR"></hr>
             <ul>
