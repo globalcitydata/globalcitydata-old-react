@@ -25,10 +25,10 @@ function Showcase(props) {
           <Col s={12} m={10} l={12}>
             {/* <hr className="homeHR"></hr> */}
             <h6 className="homeBio">
-              A collaborative platform showcasing diverse urban datasets that assess multiple sustainability
+              <hr className="biohr"></hr>A collaborative platform showcasing diverse urban datasets that assess multiple sustainability
               outcomes in cities: economy, environment, health, equity, wellbeing and livability. Contributed 
               by researchers from across the world, these peer-reviewed datasets are organized at three scales: 
-              intra­urban data, aggregate data/metrics for individual cities, and, across all urban areas in a nation.
+              intra­urban data, aggregate data/metrics for individual cities, and, across all urban areas in a nation.<hr className="biohr"></hr>
             </h6>
             {/* <hr className="homeHR"></hr> */}
           </Col>

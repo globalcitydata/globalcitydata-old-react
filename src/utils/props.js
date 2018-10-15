@@ -38,6 +38,16 @@ const dataType = shape({
     timeSeries: bool.isRequired,
     futuresModeling: bool.isRequired,
   }),
+  sectors: shape({
+    buildings: bool.isRequired,
+    energy: bool.isRequired,
+    transportation: bool.isRequired,
+    informationCommunication: bool.isRequired,
+    waterSupply: bool.isRequired,
+    sanitationWaste: bool.isRequired,
+    foodSupply: bool.isRequired,
+    landPublicSpace: bool.isRequired,
+  }),
   title: string.isRequired,
   usesAndVisualizations: string.isRequired,
   worldRegions: shape({

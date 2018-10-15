@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Preloader, Button } from 'react-materialize';
+import veggies from '../../img/Veggies.jpg'
 import './DataDetail.css';
 
 const findData = (dataList, dataURL) => {
@@ -49,11 +50,16 @@ class DataDetailBody extends Component {
       contentType,
       context,
       description,
+      highlight,
+      highlight2,
+      highlight3,
       keyTakeaways,
       outcomes,
       parameters,
       relevantPublications,
       spatialScales,
+      determinants,
+      sectors,
       temporalScales,
       technicalDetails,
       title,
@@ -92,11 +98,20 @@ class DataDetailBody extends Component {
               <ul>{worldRegions.map(x => <li key={x}>{x}, </li>)}</ul>
             </div>
           </div> */}
+          {/* <img src={veggies} alt="test"/> */}
           <h6 style={{ paddingTop: 20 }}>Context</h6>
           <div>
             <p>{context}</p>
           </div>
-          <h6>Key Takeaways</h6>
+          <h6>Key Highlights</h6>
+          <div>
+            <ol>
+              <li>{highlight}</li>
+              <li>{highlight2}</li>
+              <li>{highlight3}</li>
+            </ol>
+          </div>
+          <h6>Detailed Description</h6>
           <div>
             <p>{keyTakeaways}</p>
           </div>

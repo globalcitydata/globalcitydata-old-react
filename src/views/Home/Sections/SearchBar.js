@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Input, Button } from 'react-materialize';
+import { Row, Input, Button, Icon } from 'react-materialize';
 import { func, arrayOf } from 'prop-types';
 
 import { dataType } from '../../../utils/data';
@@ -39,8 +39,7 @@ class SearchBar extends React.Component {
               label="Search for datasets, models and tutorials by typing here or filtering below"
               name="value"
               value={value}
-              onChange={this.handleChange}
-            />
+              onChange={this.handleChange}><Icon>search</Icon></Input>
           </div>
         </form>
       </section>

@@ -23,14 +23,14 @@ export const SPATIAL_SCALES = [
 ];
 
 export const SECTORS = [
-  'Buildings',
-  'Energy',
-  'Transportation',
-  'Information Communication',
-  'Water Supply',
-  'Sanitation & Waste',
-  'Food Supply',
-  'Land & Public Space'
+  'buildings',
+  'energy',
+  'transportation',
+  'informationCommunication',
+  'waterSupply',
+  'sanitationWaste',
+  'foodSupply',
+  'landPublicSpace'
 ];
 
 export const TEMPORAL_SCALES = [

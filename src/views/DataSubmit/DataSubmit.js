@@ -43,7 +43,7 @@ const Description = ({ val, f }) => (
     s={12}
     type="textarea"
     name="description"
-    label="Description"
+    label="Summary Overview (50 Words max.)"
     value={val}
     onChange={f}
     required
@@ -66,12 +66,48 @@ const KeyTakeaways = ({ val, f }) => (
   <Input
     s={12}
     name="keyTakeaways"
-    label="Key Takeaways"
+    label="Detailed Description"
     value={val}
     onChange={f}
     required
   />
 );
+
+const Highlights = ({ val, f}) => (
+  <div>
+    <h6>Key Highlights</h6>
+    <Input
+      s={12}
+      name="highlight"
+      label="1) Key Highlight"
+      value={val}
+      onChange={f}
+      required
+    />
+  </div>
+)
+
+const Highlights_two = ({ val, f }) => (
+    <Input
+      s={12}
+      name="highlight2"
+      label="2) Key Highlight"
+      value={val}
+      onChange={f}
+      required
+    />
+)
+
+const Highlights_three = ({ val, f }) => (
+    <Input
+      s={12}
+      name="highlight3"
+      label="3) Key Highlight"
+      value={val}
+      onChange={f}
+      required
+    />
+)
 
 const UsesAndVisualizations = ({ val, f }) => (
   <Input
@@ -107,15 +143,23 @@ const ApplicableData = ({ val, f }) => (
 );
 
 const RelevantPublications = ({ val, f }) => (
-  <Input
-    s={12}
-    type="textarea"
-    name="relevantPublications"
-    label="Associated Publications - if multiple please separate by semicolon (;)"
-    value={val}
-    onChange={f}
-    required
-  />
+  <Row>
+    <Input
+      s={6}
+      type="textarea"
+      name="relevantPublications"
+      label="Associated Publications - if multiple please separate by semicolon (;)"
+      value={val}
+      onChange={f}
+      required
+    />
+    <Input
+      s={6}
+      type="textarea"
+      name="link"
+      label="Relevant URL - if multiple please seperate by semicolon (;)"
+    />
+  </Row>
 );
 
 const Parameters = ({ f }) => (
@@ -304,6 +348,9 @@ export default class DataSubmitForm extends Component {
       keyTakeaways,
       owner,
       relevantPublications,
+      highlights,
+      highlights2,
+      highlights3,
       technicalDetails,
       title,
       usesAndVisualizations,
@@ -315,6 +362,9 @@ export default class DataSubmitForm extends Component {
       context.length > 0 &&
       keyTakeaways.length > 0 &&
       usesAndVisualizations.length > 0 &&
+      highlights.length > 0 &&
+      highlights2.length > 0 &&
+      highlights3.length > 0 &&
       technicalDetails.length > 0 &&
       applicableData.length > 0 &&
       relevantPublications.length > 0 &&
@@ -326,32 +376,34 @@ export default class DataSubmitForm extends Component {
         <div className="container">
           <Row s={9}>
             <h1>Submit Data</h1>
-            <h6>Notes</h6>
-            <hr></hr>
-            <Col s={12} m={10} l={11}>
-              <p><strong>Please enter your citations in the same format as the following example: </strong><br></br><br></br>Boyer, D., & Ramaswami, A. (2017). 
-              What Is the Contribution of City-Scale Actions to the Overall Food System’s Environmental Impacts?: 
-              Assessing Water, Greenhouse Gas, and Land Impacts of Future Urban Food Scenarios. Environmental Science and 
-              Technology, 51(20).</p>
-            </Col>
           </Row>
           <form>
             <Row>
               <DataType f={this.handleChange} />
               <Title val={title} f={this.handleChange} />
               <Description val={description} f={this.handleChange} />
-              <Context val={context} f={this.handleChange} />
+              <Highlights val={highlights} f={this.handleChange} />
+              <Highlights_two val={highlights2} f={this.handleChange} />
+              <Highlights_three val={highlights3} f={this.handleChange} />
               <KeyTakeaways val={keyTakeaways} f={this.handleChange} />
+              {/* <Context val={context} f={this.handleChange} />
               <UsesAndVisualizations
                 val={usesAndVisualizations}
                 f={this.handleChange}
-              />
+              /> */}
+              <p><strong>Upload Images:</strong></p><Input type="file" />
               <TechnicalDetails val={technicalDetails} f={this.handleChange} />
               <ApplicableData val={applicableData} f={this.handleChange} />
               <RelevantPublications
                 val={relevantPublications}
                 f={this.handleChange}
               />
+             <Col s={12} m={10} l={11}>
+              <p><strong>Please enter your citations in the same format as the following example: </strong><br></br><br></br>Boyer, D., & Ramaswami, A. (2017). 
+              What Is the Contribution of City-Scale Actions to the Overall Food System’s Environmental Impacts?: 
+              Assessing Water, Greenhouse Gas, and Land Impacts of Future Urban Food Scenarios. Environmental Science and 
+              Technology, 51(20).</p>
+            </Col>             
               <Parameters f={this.handleRadioChange} />
               <Outcomes f={this.handleRadioChange} />
               <SpatialScales f={this.handleRadioChange} />
