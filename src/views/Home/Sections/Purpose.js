@@ -12,9 +12,6 @@ import { scroll } from '../../../utils/scroll'; // eslint-disable-line
 function Purpose() {
   return (
       <section className="purpose">
-        <h3>
-          What should go here?
-        </h3>
       {/* <div className="container content-wrap">
         <Carousel options={{ indicators: true }} images={[
           Veggies,

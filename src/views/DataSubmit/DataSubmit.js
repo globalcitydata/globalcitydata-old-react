@@ -35,19 +35,31 @@ const DataType = ({ f }) => (
 );
 
 const Title = ({ val, f }) => (
-  <Input s={12} name="title" label="Title" value={val} onChange={f} required />
+  <div>
+    <h6>Title</h6>
+    <Input s={12} 
+    name="title" 
+    label="" 
+    value={val} 
+    onChange={f} 
+    required />
+  </div>
 );
 
 const Description = ({ val, f }) => (
-  <Input
-    s={12}
-    type="textarea"
-    name="description"
-    label="Summary Overview (50 Words max.)"
-    value={val}
-    onChange={f}
-    required
-  />
+  <div>
+    <h6>Summary Overview</h6><p>what the dataset does, intellectual merit and novelty--not just a
+  rearrangement of open data; 50 words max, please include a representative image</p>
+    <Input
+      s={12}
+      type="textarea"
+      name="description"
+      label="Summary Overview"
+      value={val}
+      onChange={f}
+      required
+    />
+  </div>  
 );
 
 const Context = ({ val, f }) => (
@@ -63,19 +75,25 @@ const Context = ({ val, f }) => (
 );
 
 const KeyTakeaways = ({ val, f }) => (
-  <Input
-    s={12}
-    name="keyTakeaways"
-    label="Detailed Description"
-    value={val}
-    onChange={f}
-    required
-  />
+  <div>
+    <h6>Detailed Description</h6><p>history of creation, why is this arrangement new &amp; value added to
+existing data, details of contents, sources, sample size, uses etc. 350 words max, descriptive
+image optional</p><Input type="file" />
+    <Input
+      s={12}
+      type="textarea"
+      name="keyTakeaways"
+      label="Detailed Description "
+      value={val}
+      onChange={f}
+      required
+    />
+  </div>
 );
 
 const Highlights = ({ val, f}) => (
   <div>
-    <h6>Key Highlights</h6>
+    
     <Input
       s={12}
       name="highlight"
@@ -121,25 +139,31 @@ const UsesAndVisualizations = ({ val, f }) => (
 );
 
 const TechnicalDetails = ({ val, f }) => (
-  <Input
-    s={12}
-    name="technicalDetails"
-    label="Technical Details"
-    value={val}
-    onChange={f}
-    required
-  />
+  <div>
+    <h6>Technical Details</h6>
+    <Input
+      s={12}
+      name="technicalDetails"
+      label="Technical Details"
+      value={val}
+      onChange={f}
+      required
+    />
+  </div>
 );
 
 const ApplicableData = ({ val, f }) => (
-  <Input
-    s={12}
-    name="applicableData"
-    label="Applicable Datasets, Models, or Tutorials - if multiple please separate by semicolon (;)"
-    value={val}
-    onChange={f}
-    required
-  />
+  <div>
+    <h6>Related datasets, models, or tutorials</h6>
+    <Input
+      s={12}
+      name="applicableData"
+      label="Internal or external links - if multiple please separate by semicolon (;)"
+      value={val}
+      onChange={f}
+      required
+    />
+  </div>
 );
 
 const RelevantPublications = ({ val, f }) => (
@@ -259,21 +283,24 @@ const WorldRegions = ({ f }) => (
 );
 
 const Owner = ({ val, f }) => (
-  <Input
-    s={12}
-    name="owner"
-    label="Your Full Name"
-    value={val}
-    onChange={f}
-    required
-  />
+  <div>
+    <h6>Corresponding Author(s)</h6>
+    <Input
+      s={12}
+      name="owner"
+      label="Name(s)"
+      value={val}
+      onChange={f}
+      required
+    />
+  </div>
 );
 
 const Contact = ({ val, f }) => (
   <Input
     s={12}
     name="contact"
-    label="Your Email"
+    label="Email"
     type="email"
     value={val}
     onChange={f}
@@ -379,9 +406,14 @@ export default class DataSubmitForm extends Component {
           </Row>
           <form>
             <Row>
-              <DataType f={this.handleChange} />
               <Title val={title} f={this.handleChange} />
+              <DataType f={this.handleChange} />
+              <Owner val={owner} f={this.handleChange} />
+              {/* <h6>Upload Images</h6> */}
+              {/* <input type="file" onChange={this.fileHandler} /> */}
+              <Contact val={contact} f={this.handleChange} />
               <Description val={description} f={this.handleChange} />
+              <h6>Key Highlights</h6><p>key elements/highlights of the dataset/model -max 200 characters each</p>
               <Highlights val={highlights} f={this.handleChange} />
               <Highlights_two val={highlights2} f={this.handleChange} />
               <Highlights_three val={highlights3} f={this.handleChange} />
@@ -391,29 +423,34 @@ export default class DataSubmitForm extends Component {
                 val={usesAndVisualizations}
                 f={this.handleChange}
               /> */}
-              <p><strong>Upload Images:</strong></p><Input type="file" />
+              {/* <p><strong>Upload Images:</strong></p><Input type="file" /> */}
+              <h6>W</h6>
               <TechnicalDetails val={technicalDetails} f={this.handleChange} />
               <ApplicableData val={applicableData} f={this.handleChange} />
-              <RelevantPublications
-                val={relevantPublications}
-                f={this.handleChange}
-              />
-             <Col s={12} m={10} l={11}>
+              <h6>Citations</h6>
+              <Col s={12} m={10} l={11}>
               <p><strong>Please enter your citations in the same format as the following example: </strong><br></br><br></br>Boyer, D., & Ramaswami, A. (2017). 
               What Is the Contribution of City-Scale Actions to the Overall Food System’s Environmental Impacts?: 
               Assessing Water, Greenhouse Gas, and Land Impacts of Future Urban Food Scenarios. Environmental Science and 
               Technology, 51(20).</p>
-            </Col>             
+              </Col>  
+              <RelevantPublications
+              val={relevantPublications}
+              f={this.handleChange}
+              />
+              <Button onClick={
+                <RelevantPublications
+                  val={relevantPublications}
+                  f={this.handleChange}
+                />
+              }>Add</Button>       
               <Parameters f={this.handleRadioChange} />
               <Outcomes f={this.handleRadioChange} />
               <SpatialScales f={this.handleRadioChange} />
               <TemporalScales f={this.handleRadioChange} />
               <Sectors f={this.handleRadioChange} />
               <WorldRegions f={this.handleRadioChange} />
-              <Owner val={owner} f={this.handleChange} />
-              {/* <h6>Upload Images</h6> */}
-              {/* <input type="file" onChange={this.fileHandler} /> */}
-              <Contact val={contact} f={this.handleChange} />
+
               <Submit isEnabled={isEnabled} f={this.handleSubmit} />
             </Row>
           </form>

@@ -1,6 +1,6 @@
 import { startCase } from 'lodash';
 
-export const DATA_TYPES = ['Dataset', 'Model', 'Tutorial'];
+export const DATA_TYPES = ['dataset', 'model', 'tutorial'];
 export const OUTCOMES = [
   'environmentalImpacts',
   'equity',
@@ -102,7 +102,7 @@ export const tags = [
     options: temporalOptions,
   },
   {
-    label: 'Sustainability Outcome',
+    label: 'Sustainability Outcomes',
     options: outcomeOptions,
   },
   {

@@ -69,6 +69,10 @@ class DataDetailBody extends Component {
 
     const { showContact } = this.state;
 
+    const highlightIsEmpty = highlight === '';
+    const highlightIsEmpty2 = highlight2 === '';
+    const highlightIsEmpty3 = highlight3 === '';
+
     return (
       <div className="dataDetailContainer">
         <h2>{title}</h2>
@@ -103,14 +107,26 @@ class DataDetailBody extends Component {
           <div>
             <p>{context}</p>
           </div>
-          <h6>Key Highlights</h6>
+          {/* <div>
+            {highlightIsEmpty ? (
+              <div>
+                <h6>Key Highlights</h6>
+                <ol>
+                  <li>{highlight}</li>
+                </ol>
+              </div>
+            ) : (
+              <p></p>
+            )}
+          </div> */}
+          {/* <h6>Key Highlights</h6>
           <div>
             <ol>
               <li>{highlight}</li>
               <li>{highlight2}</li>
               <li>{highlight3}</li>
             </ol>
-          </div>
+          </div> */}
           <h6>Detailed Description</h6>
           <div>
             <p>{keyTakeaways}</p>

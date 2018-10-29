@@ -41,11 +41,11 @@ function Showcase(props) {
         />
         <br />
         <Row>
-        <QueryBar
-          dataList={dataList}
-          scroll={scroll}
-          updateDataList={updateDataList}
-        />
+          <QueryBar
+            dataList={dataList}
+            scroll={scroll}
+            updateDataList={updateDataList}
+          />
           <Modal trigger={<Button className="left"><Icon>help</Icon></Button>}>
             <h1 className="center">Glossary</h1>
             <hr id="glossaryHR"></hr>
@@ -58,14 +58,7 @@ function Showcase(props) {
               </ul>
             </ul>
           </Modal>
-          </Row>
-          <Row>
-            <Carousel options={{ indicators: true }} images={[
-              Veggies,
-              Veggies,
-              Street
-            ]} />      
-          </Row>
+        </Row>
       </div>
     </div>
   );
