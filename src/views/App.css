@@ -50,7 +50,8 @@ p {
   padding: 0.4rem 1.2rem 2.8rem;
   margin-top: 5px;
   border-radius: 5px;
-  font-size: 0.9rem;
+  font-size: 13px;
+  font-variant-caps: normal;
 }
 
 .btn:hover,

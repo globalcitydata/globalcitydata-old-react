@@ -40,8 +40,12 @@
 
 .searchBarWrapper {
   padding: 5px 8%;
-  max-width: 1000px;
+  max-width: 890px;
   margin: 0 auto;
+}
+
+.searchBarWrapper label {
+  text-align: left;
 }
 
 hr.homeHR { 
@@ -51,18 +55,19 @@ hr.homeHR {
 
 h6.homeBio {
   font-size: 1.3rem;
+  color: white;
   line-height: 1.8rem;
-  background-color: gray;
+  background-color: rgba(105, 105, 105, 0.5);
 }
 
 .searchBar input {
   font-size: 1.2rem;
-  background-color: grey;
+  background-color: rgba(105, 105, 105, 0.5);
 }
 
 .searchBar label {
   color: white !important;
-  font-size: 1rem !important;
+  font-size: 15px !important;
 }
 
 .searchBar {
@@ -88,7 +93,7 @@ h6.homeBio {
 }
 
 .queryBarContainer .btn {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   margin: 0;
   width: 100%;
   padding: 0.5rem 0 3rem 0 !important;
@@ -96,6 +101,25 @@ h6.homeBio {
 
 .querySearch.btn {
   background-color: #5cb85c;
+}
+
+.btn {
+  background-color: #2196f3;
+  padding: 0.4rem 1.2rem 2.8rem;
+  margin-top: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-variant-caps: normal;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  background-color: #1a75c0;
+}
+
+form .btn {
+  margin-top: 15px;
 }
 
 @media only screen and (min-width: 601px) and (max-width: 993px) {
@@ -112,6 +136,7 @@ h6.homeBio {
 }
 
 .queryDropdownOptions {
+  max-width: 850;
   text-align: left;
   padding: 20px 30px !important;
 }

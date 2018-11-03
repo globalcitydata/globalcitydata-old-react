@@ -48,8 +48,11 @@ const Title = ({ val, f }) => (
 
 const Description = ({ val, f }) => (
   <div>
-    <h6>Summary Overview</h6><p>what the dataset does, intellectual merit and novelty--not just a
-  rearrangement of open data; 50 words max, please include a representative image</p>
+    <h6>Summary Overview</h6>
+    <p>
+      What the dataset does, intellectual merit and novelty--not just a
+      rearrangement of open data; 50 words max, please include a representative image
+    </p>
     <Input
       s={12}
       type="textarea"
@@ -76,14 +79,31 @@ const Context = ({ val, f }) => (
 
 const KeyTakeaways = ({ val, f }) => (
   <div>
-    <h6>Detailed Description</h6><p>history of creation, why is this arrangement new &amp; value added to
-existing data, details of contents, sources, sample size, uses etc. 350 words max, descriptive
-image optional</p><Input type="file" />
+    <h6>Detailed Description</h6>
+    <p>
+      History of creation, why is this arrangement new &amp; value added to
+      existing data, details of contents, sources, sample size, uses etc., 350 words max, descriptive
+      image optional
+    </p>
+    <Input type="file" />
     <Input
       s={12}
       type="textarea"
       name="keyTakeaways"
       label="Detailed Description "
+      value={val}
+      onChange={f}
+      required
+    />
+  </div>
+);
+
+const image1 = ({ val, f }) => (
+  <div>
+    <h6>TEST TEST</h6>
+    <Input 
+      s={12}
+      type="image"
       value={val}
       onChange={f}
       required
@@ -127,6 +147,17 @@ const Highlights_three = ({ val, f }) => (
     />
 )
 
+const Citations = ({ val, f}) => (
+  <Input
+    s={12}
+    name="Citations of the dataset/model/tool"
+    label="citations"
+    value={val}
+    onChange={f}
+    required
+  />
+)
+
 const UsesAndVisualizations = ({ val, f }) => (
   <Input
     s={12}
@@ -151,6 +182,7 @@ const TechnicalDetails = ({ val, f }) => (
     />
   </div>
 );
+
 
 const ApplicableData = ({ val, f }) => (
   <div>
@@ -373,8 +405,10 @@ export default class DataSubmitForm extends Component {
       context,
       description,
       keyTakeaways,
+      image1,
       owner,
       relevantPublications,
+      citations,
       highlights,
       highlights2,
       highlights3,
@@ -387,8 +421,10 @@ export default class DataSubmitForm extends Component {
       title.length > 0 &&
       description.length > 0 &&
       context.length > 0 &&
+      image1.length > 0 &&
       keyTakeaways.length > 0 &&
       usesAndVisualizations.length > 0 &&
+      citations.length > 0 &&
       highlights.length > 0 &&
       highlights2.length > 0 &&
       highlights3.length > 0 &&
@@ -413,10 +449,13 @@ export default class DataSubmitForm extends Component {
               {/* <input type="file" onChange={this.fileHandler} /> */}
               <Contact val={contact} f={this.handleChange} />
               <Description val={description} f={this.handleChange} />
-              <h6>Key Highlights</h6><p>key elements/highlights of the dataset/model -max 200 characters each</p>
+              <h6>Key Highlights</h6><p>Key elements/highlights of the dataset/model, max 200 characters each</p>
               <Highlights val={highlights} f={this.handleChange} />
               <Highlights_two val={highlights2} f={this.handleChange} />
               <Highlights_three val={highlights3} f={this.handleChange} />
+              <h6>Citations For Datasets/Model/Tools</h6>
+              <Citations val={citations} f={this.handleChange} />
+              <image1 val={image1} f={this.handleChange} />
               <KeyTakeaways val={keyTakeaways} f={this.handleChange} />
               {/* <Context val={context} f={this.handleChange} />
               <UsesAndVisualizations
@@ -429,10 +468,10 @@ export default class DataSubmitForm extends Component {
               <ApplicableData val={applicableData} f={this.handleChange} />
               <h6>Citations</h6>
               <Col s={12} m={10} l={11}>
-              <p><strong>Please enter your citations in the same format as the following example: </strong><br></br><br></br>Boyer, D., & Ramaswami, A. (2017). 
+              <p><strong>Please enter your citations in the same format as the following example: </strong><br></br><br></br><i>Boyer, D., & Ramaswami, A. (2017). 
               What Is the Contribution of City-Scale Actions to the Overall Food System’s Environmental Impacts?: 
               Assessing Water, Greenhouse Gas, and Land Impacts of Future Urban Food Scenarios. Environmental Science and 
-              Technology, 51(20).</p>
+              Technology, 51(20).</i></p>
               </Col>  
               <RelevantPublications
               val={relevantPublications}

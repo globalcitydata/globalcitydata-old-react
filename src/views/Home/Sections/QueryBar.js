@@ -14,7 +14,7 @@ import { tags, tagQuery } from '../../../utils/tags';
 const QueryDropdown = ({ tag, handleChange }) => {
   const { label, options } = tag;
   return (
-    <Col s={12} m={6} l={4} className="myDropdown">
+    <Col s={12} m={6} l={4} offset="l3" className="myDropdown">
       <Dropdown
         trigger={
           <Button waves="light" data-for={label} data-tip><Icon className="right">arrow_drop_down</Icon>
@@ -98,13 +98,13 @@ class QueryBar extends React.Component {
               ))}
             </Row>
           </Col>
-          <Col s={12} m={2} l={1}>
+          {/* <Col s={12} m={2} l={1}>
             <a data-scroll href="#dataList">
               <Button className="querySearch" onClick={this.handleSubmit}>
                 Search
               </Button>
             </a>
-          </Col>
+          </Col> */}
         </Row>
       </div>
     );
