@@ -50,14 +50,13 @@ const Description = ({ val, f }) => (
   <div>
     <h6>Summary Overview</h6>
     <p>
-      What the dataset does, intellectual merit and novelty--not just a
-      rearrangement of open data; 50 words max, please include a representative image
+      
     </p>
     <Input
       s={12}
       type="textarea"
       name="description"
-      label="Summary Overview"
+      label="What the dataset does, intellectual merit and novelty--not just a rearrangement of open data; 50 words max, please include a representative image"
       value={val}
       onChange={f}
       required
@@ -81,20 +80,18 @@ const KeyTakeaways = ({ val, f }) => (
   <div>
     <h6>Detailed Description</h6>
     <p>
-      History of creation, why is this arrangement new &amp; value added to
-      existing data, details of contents, sources, sample size, uses etc., 350 words max, descriptive
-      image optional
+
     </p>
-    <Input type="file" />
     <Input
       s={12}
       type="textarea"
       name="keyTakeaways"
-      label="Detailed Description "
+      label="History of creation, why is this arrangement new &amp; value added to existing data, details of contents, sources, sample size, uses etc., 350 words max, descriptive image optional"
       value={val}
       onChange={f}
       required
     />
+    <Input type="file" />
   </div>
 );
 
@@ -132,7 +129,6 @@ const Highlights_two = ({ val, f }) => (
       label="2) Key Highlight"
       value={val}
       onChange={f}
-      required
     />
 )
 
@@ -143,7 +139,6 @@ const Highlights_three = ({ val, f }) => (
       label="3) Key Highlight"
       value={val}
       onChange={f}
-      required
     />
 )
 
@@ -151,7 +146,6 @@ const Citations = ({ val, f}) => (
   <Input
     s={12}
     name="Citations of the dataset/model/tool"
-    label="citations"
     value={val}
     onChange={f}
     required
@@ -175,7 +169,7 @@ const TechnicalDetails = ({ val, f }) => (
     <Input
       s={12}
       name="technicalDetails"
-      label="Technical Details"
+      label="data format, other specifications, funding organization, use restrictions, copyright, other"
       value={val}
       onChange={f}
       required
@@ -463,8 +457,8 @@ export default class DataSubmitForm extends Component {
                 f={this.handleChange}
               /> */}
               {/* <p><strong>Upload Images:</strong></p><Input type="file" /> */}
-              <h6 id="formatDub">W</h6>
               <TechnicalDetails val={technicalDetails} f={this.handleChange} />
+              {/* <h6 id="formatDub">W</h6> */}
               <ApplicableData val={applicableData} f={this.handleChange} />
               <h6>Citations</h6>
               <Col s={12} m={10} l={11}>
