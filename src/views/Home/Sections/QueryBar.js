@@ -69,6 +69,7 @@ class QueryBar extends React.Component {
   handleChange = e => {
     const { name: group, value } = e.target;
     const { selectedTags } = this.state;
+    console.log ("The issue group is " + group);
     const i = selectedTags[group].indexOf(value);
     if (i !== -1) {
       selectedTags[group].splice(i, 1);

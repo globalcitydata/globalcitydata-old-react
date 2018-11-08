@@ -20,7 +20,7 @@ const DataType = ({ f }) => (
   <Input
     s={12}
     type="select"
-    name="contentType"
+    name="dataType"
     label="Data Type"
     defaultValue="dataset"
     onChange={f}
@@ -463,7 +463,7 @@ export default class DataSubmitForm extends Component {
                 f={this.handleChange}
               /> */}
               {/* <p><strong>Upload Images:</strong></p><Input type="file" /> */}
-              <h6>W</h6>
+              <h6 id="formatDub">W</h6>
               <TechnicalDetails val={technicalDetails} f={this.handleChange} />
               <ApplicableData val={applicableData} f={this.handleChange} />
               <h6>Citations</h6>

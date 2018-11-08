@@ -3,7 +3,7 @@ import { shape, bool, arrayOf, string } from 'prop-types';
 export const dataState = {
   applicableData: '',
   contact: '',
-  contentType: 'dataset',
+  dataType: 'dataset',
   context: '',
   description: '',
   keyTakeaways: '',
@@ -26,7 +26,7 @@ export const dataState = {
 export const dataType = shape({
   applicableData: string.isRequired,
   contact: string.isRequired,
-  contentType: string.isRequired,
+  dataType: string.isRequired,
   context: string.isRequired,
   description: string.isRequired,
   keyTakeaways: string.isRequired,

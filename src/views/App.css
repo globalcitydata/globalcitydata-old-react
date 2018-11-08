@@ -97,6 +97,11 @@ form .btn {
   padding-bottom: 0.5rem;
 }
 
+#formatDub {
+  color: white;
+  font-size: 9px;
+}
+
 /* Footer */
 
 footer {
@@ -106,4 +111,5 @@ footer {
 
 footer img {
   max-height: 100px;
+  max-width: 100px;
 }

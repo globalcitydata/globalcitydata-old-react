@@ -3,7 +3,7 @@ import { shape, bool, array, string } from 'prop-types';
 const dataType = shape({
   applicableData: string.isRequired,
   contact: string.isRequired,
-  contentType: shape({
+  dataType: shape({
     dataset: bool.isRequired,
     model: bool.isRequired,
     tutorial: bool.isRequired,

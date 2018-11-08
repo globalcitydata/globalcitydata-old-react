@@ -47,7 +47,7 @@ class DataDetailBody extends Component {
     const {
       applicableData,
       contact,
-      contentType,
+      dataType,
       context,
       description,
       highlight,

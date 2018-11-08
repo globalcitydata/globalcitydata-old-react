@@ -60,7 +60,7 @@ class SearchBar extends React.Component {
               onChange={this.handleChange}><Icon>search</Icon></Input>
              
               <a data-scroll href="#dataList">
-              <Button className="querySearch" onClick={this.handleSubmit}>
+              <Button className="querySearch" onClick={this.handleSearch}>
                 Search
               </Button>
             </a>

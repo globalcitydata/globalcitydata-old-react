@@ -49,7 +49,7 @@ export const WORLD_REGIONS = [
 
 const typeOptions = DATA_TYPES.map(t => ({ value: t,
   label: startCase(t),
-  group: 'contentType',
+  group: 'dataType',
 }));
 
 const outcomeOptions = OUTCOMES.map(t => ({
