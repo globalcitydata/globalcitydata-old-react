@@ -1,11 +1,11 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom'; // eslint-disable-line
+import { Router, Route, Switch } from "react-router-dom"; // eslint-disable-line
 import { arrayOf, objectOf, func, bool, string } from 'prop-types';
 import { dataType } from '../utils/data';
 
 // Views
 import Home from '../views/Home/Home';
-import Collaborators from '../views/Collaborators/Collaborators';
+import OurStory from '../views/OurStory/OurStory';
 import Publications from '../views/Publications/Publications';
 import Contact from '../views/Contact/Contact';
 import DataSubmit from '../views/DataSubmit/DataSubmit';
@@ -34,7 +34,7 @@ const MyRoutes = ({
         />
       )}
     />
-    <Route exact path="/collaborators" component={Collaborators} />
+    <Route exact path="/story" component={OurStory} />
     <Route
       exact
       path="/publications"

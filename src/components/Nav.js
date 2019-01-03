@@ -27,8 +27,8 @@ class Nav extends React.Component {
               </NavLink>
             </li>
             <li>
-              <NavLink exact activeClassName="active" to="/collaborators">
-                Collaborators
+              <NavLink exact activeClassName="active" to="/story">
+                Our Story
               </NavLink>
             </li>
             <li>
