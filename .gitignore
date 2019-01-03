@@ -24,4 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 
 *.icloud
-/.vscode
+.vscode
+.firebase
