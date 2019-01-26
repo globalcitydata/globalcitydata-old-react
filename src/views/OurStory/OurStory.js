@@ -47,7 +47,7 @@ const OurStory = () => (
       </p>
       <p>Towards urban sustainability!</p>
       <p>The global city data team....</p>
-      <p>Professor Anu Ramaswami Dana Boyer Sam Tabory</p>
+      <p>Professor Anu Ramaswami, Dana Boyer, and Sam Tabory.</p>
     </div>
   </section>
 );
