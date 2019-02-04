@@ -18,14 +18,14 @@ export const SPATIAL_SCALES = ['intraUrban', 'wholeCity', 'nationalUrban'];
 export const TEMPORAL_SCALES = [
   'singleYearSnapshot',
   'timeSeries',
-  'futuresModeling'
+  'futuresModeling',
 ];
 export const WORLD_REGIONS = [
   'northAmerica',
   'southAmerica',
   'europe',
   'africa',
-  'asia'
+  'asia',
 ];
 
 const typeOptions = CONTENT_TYPES.map(t => ({
@@ -37,13 +37,13 @@ const typeOptions = CONTENT_TYPES.map(t => ({
 const outcomeOptions = OUTCOMES.map(t => ({
   value: t,
   label: startCase(t),
-  group: 'outcomes'
+  group: 'outcomes',
 }));
 
 const parameterOptions = PARAMETERS.map(t => ({
   value: t,
   label: startCase(t),
-  group: 'parameters'
+  group: 'parameters',
 }));
 
 const spatialOptions = SPATIAL_SCALES.map(t => ({
