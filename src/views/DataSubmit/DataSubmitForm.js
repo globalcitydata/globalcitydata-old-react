@@ -64,6 +64,10 @@ class DataSubmitForm extends Component {
     });
   };
 
+  handleObjectArrayChange = e => {
+    console.log(e.target);
+  };
+
   addAuthor = e => {
     e.preventDefault();
     this.setState(prevState => ({
@@ -81,11 +85,9 @@ class DataSubmitForm extends Component {
     });
   };
 
-  addHighlight = e => {
+  addToObjectArray = e => {
     e.preventDefault();
-    this.setState(prevState => ({
-      keyHighlights: [...prevState.keyHighlights, ''],
-    }));
+    console.log(e.target);
   };
 
   async handleSubmit(e) {
@@ -145,7 +147,7 @@ class DataSubmitForm extends Component {
             <div>
               <h4>Corresponding Author(s)</h4>
               <Authors val={authors} f={this.handleChange} />
-              <AddButton add={this.addAuthor} />
+              <AddButton f={this.addAuthor} name="authors" />
             </div>
             <div>
               <h4>Summary Overview</h4>
