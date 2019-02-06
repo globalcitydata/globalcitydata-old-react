@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Input } from 'react-materialize';
-import { string, func, shape } from 'prop-types';
+import { string, func, shape, arrayOf } from 'prop-types';
 
 // TODO: Figure out how to dynamically add author fields
 
@@ -12,25 +12,21 @@ const PublicationsGroup = ({ publication, url, f }) => (
       label="Associated Publication"
       value={publication}
       onChange={f}
-      required
     />
-    <Input
-      s={12}
-      name="url"
-      label="Relevant URL"
-      value={url}
-      onChange={f}
-      required
-    />
+    <Input s={12} name="url" label="Relevant URL" value={url} onChange={f} />
   </Fragment>
 );
 
-export const AssociatedPublications = ({ publications, f }) => (
+export const AssociatedPublications = ({ val: publications, f }) => (
   <Fragment>
-    {publications.map(pub => {
-      const { publication, url } = pub;
-      return <PublicationsGroup publication={publication} url={url} f={f} />;
-    })}
+    {publications.map(({ publication, url }) => (
+      <PublicationsGroup
+        publication={publication}
+        url={url}
+        f={f}
+        key={publication}
+      />
+    ))}
   </Fragment>
 );
 
@@ -41,9 +37,11 @@ PublicationsGroup.propTypes = {
 };
 
 AssociatedPublications.propTypes = {
-  publications: shape({
-    publication: string.isRequired,
-    url: string.isRequired,
-  }).isRequired,
+  val: arrayOf(
+    shape({
+      publication: string.isRequired,
+      url: string.isRequired,
+    })
+  ).isRequired,
   f: func.isRequired,
 };

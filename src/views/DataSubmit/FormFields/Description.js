@@ -14,7 +14,6 @@ export const Description = ({ val, f }) => {
       label={label}
       value={val}
       onChange={f}
-      required
     />
   );
 };

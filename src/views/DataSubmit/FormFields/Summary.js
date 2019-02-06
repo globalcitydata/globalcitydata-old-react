@@ -10,7 +10,6 @@ export const Summary = ({ val, f }) => (
     label="What the dataset does, intellectual merit and novelty--not just a rearrangement of open data; 50 words max."
     value={val}
     onChange={f}
-    required
   />
 );
 

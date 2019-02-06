@@ -8,7 +8,7 @@ import Home from '../views/Home/Home';
 import OurStory from '../views/OurStory/OurStory';
 import Publications from '../views/Publications/Publications';
 import Contact from '../views/Contact/Contact';
-import DataSubmit from '../views/DataSubmit/DataSubmit';
+import DataSubmitForm from '../views/DataSubmit/DataSubmitForm';
 import DataDetail from '../views/DataDetail/DataDetail';
 import TestView from '../tests/TestView/TestView';
 import NoMatch from '../views/NoMatch/NoMatch';
@@ -46,7 +46,7 @@ const MyRoutes = ({
     <Route
       exact
       path="/submit-data"
-      render={({ props }) => <DataSubmit {...{ props }} />}
+      render={({ props }) => <DataSubmitForm {...{ props }} />}
     />
     <Route
       path="/data/:dataURL"

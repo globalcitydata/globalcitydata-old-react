@@ -5,26 +5,30 @@ import { string, func, arrayOf } from 'prop-types';
 // TODO: Figure out how to dynamically add fields
 
 const Citation = ({ name, val, f }) => (
-  <Input s={12} name={name} label={name} value={val} onChange={f} required />
+  <Input s={12} name={name} placeholder={name} value={val} onChange={f} />
 );
 
-export const Citations = ({ citations, f }) => (
+export const Citations = ({ val: citations, f }) => (
   <Fragment>
     {citations.map((citation, i) => {
       const { val } = citation;
-      const name = `${i}) Citation`;
-      return <Citation name={name} val={val} f={f} />;
+      const name = `${i + 1}) Citation`;
+      return <Citation name={name} val={val} f={f} key={name} />;
     })}
   </Fragment>
 );
 
-Citations.propTypes = {
-  citations: arrayOf(string).isRequired,
-  f: func.isRequired,
+Citation.defaultProps = {
+  val: '',
 };
 
 Citation.propTypes = {
   name: string.isRequired,
-  val: string.isRequired,
+  val: string,
+  f: func.isRequired,
+};
+
+Citations.propTypes = {
+  val: arrayOf(string).isRequired,
   f: func.isRequired,
 };

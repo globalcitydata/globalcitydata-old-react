@@ -9,7 +9,6 @@ export const TechnicalDetails = ({ val, f }) => (
     label="Data format, other specifications, funding organization, use restrictions, copyright, etc."
     value={val}
     onChange={f}
-    required
   />
 );
 

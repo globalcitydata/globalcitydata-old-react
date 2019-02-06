@@ -5,26 +5,30 @@ import { string, func, arrayOf } from 'prop-types';
 // TODO: Figure out how to dynamically add fields
 
 const Data = ({ name, val, f }) => (
-  <Input s={12} name={name} label={name} value={val} onChange={f} required />
+  <Input s={12} name={name} placeholder={name} value={val} onChange={f} />
 );
 
-export const RelatedData = ({ data, f }) => (
+export const RelatedData = ({ val: data, f }) => (
   <Fragment>
     {data.map((d, i) => {
       const { val } = d;
-      const name = `${i}) Internal or external links`;
-      return <Citation name={name} val={val} f={f} />;
+      const name = `${i + 1}) Internal or external links`;
+      return <Data name={name} val={val} f={f} key={i} />;
     })}
   </Fragment>
 );
 
-RelatedData.propTypes = {
-  data: arrayOf(string).isRequired,
-  f: func.isRequired,
+Data.defaultProps = {
+  val: '',
 };
 
 Data.propTypes = {
   name: string.isRequired,
-  val: string.isRequired,
+  val: string,
+  f: func.isRequired,
+};
+
+RelatedData.propTypes = {
+  val: arrayOf(string).isRequired,
   f: func.isRequired,
 };

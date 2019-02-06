@@ -6,8 +6,6 @@ const config = require('./secret.json');
 // Initialize Firestore
 firebase.initializeApp(config);
 const db = firebase.firestore();
-const settings = { timestampsInSnapshots: true };
-db.settings(settings);
 let dataListRef = db.collection('dataList');
 if (process.env.NODE_ENV === 'development') {
   dataListRef = db.collection('testDataList');

@@ -10,7 +10,6 @@ export const DataType = ({ f }) => (
     type="select"
     name="dataType"
     label="Data Type"
-    defaultValue="dataset"
     onChange={f}
     required
   >
