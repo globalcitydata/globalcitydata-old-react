@@ -1,13 +1,14 @@
 import React from 'react';
 import { Button } from 'react-materialize';
-import { func } from 'prop-types';
+import { func, string } from 'prop-types';
 
-export const AddButton = ({ add }) => (
-  <Button waves="light" onClick={add}>
+export const AddButton = ({ f, name }) => (
+  <Button waves="light" onClick={f} value={name}>
     Add
   </Button>
 );
 
 AddButton.propTypes = {
-  add: func.isRequired,
+  f: func.isRequired,
+  name: string.isRequired,
 };

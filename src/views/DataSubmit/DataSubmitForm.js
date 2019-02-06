@@ -11,13 +11,11 @@ import { Title } from './FormFields/Title';
 import { DataType } from './FormFields/DataType';
 import { Authors } from './FormFields/Authors';
 import { Summary } from './FormFields/Summary';
-import { KeyHighlights } from './FormFields/KeyHighlights';
-import { Citations } from './FormFields/Citations';
 import { Description } from './FormFields/Description';
 import { TechnicalDetails } from './FormFields/TechnicalDetails';
-import { RelatedData } from './FormFields/RelatedData';
 import { AssociatedPublications } from './FormFields/AssociatedPublications';
 import { Tag } from './FormFields/Tag';
+import { DynamicStringArray } from './FormFields/DynamicStringArray';
 
 // Components
 import { SubmitButton } from './Components/SubmitButton';
@@ -38,7 +36,12 @@ class DataSubmitForm extends Component {
   state = dataState;
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    this.setState(prevState => {
+      const newState = prevState;
+      newState[name] = value;
+      return newState;
+    });
   };
 
   handleRadioChange = e => {
@@ -51,11 +54,31 @@ class DataSubmitForm extends Component {
     });
   };
 
+  handleStringArrayChange = e => {
+    const { name, placeholder, value } = e.target;
+    const i = placeholder.charAt(0) - 1;
+    this.setState(prevState => {
+      const newState = prevState;
+      newState[name][i] = value;
+      return newState;
+    });
+  };
+
   addAuthor = e => {
     e.preventDefault();
     this.setState(prevState => ({
       authors: [...prevState.authors, { name: '', email: '' }],
     }));
+  };
+
+  addToStringArray = e => {
+    e.preventDefault();
+    const { value: name } = e.target;
+    this.setState(prevState => {
+      const newState = prevState;
+      newState[name] = [...newState[name], ''];
+      return newState;
+    });
   };
 
   addHighlight = e => {
@@ -130,12 +153,25 @@ class DataSubmitForm extends Component {
             </div>
             <div>
               <h4>Key Highlights</h4>
-              <KeyHighlights val={keyHighlights} f={this.handleChange} />
-              <AddButton add={this.addHighlight} />
+              <p>
+                Key elements/highlights of the dataset/model, max 200 characters
+                each.
+              </p>
+              <DynamicStringArray
+                val={keyHighlights}
+                name="keyHighlights"
+                f={this.handleStringArrayChange}
+              />
+              <AddButton f={this.addToStringArray} name="keyHighlights" />
             </div>
             <div>
               <h4>Citations</h4>
-              <Citations val={citations} f={this.handleChange} />
+              <DynamicStringArray
+                val={citations}
+                name="citations"
+                f={this.handleStringArrayChange}
+              />
+              <AddButton f={this.addToStringArray} name="citations" />
             </div>
             <div>
               <h4>Detailed Description</h4>
@@ -147,7 +183,13 @@ class DataSubmitForm extends Component {
             </div>
             <div>
               <h4>Related datasets, models, or tutorials</h4>
-              <RelatedData val={relatedData} f={this.handleChange} />
+              <p>Internal or external links.</p>
+              <DynamicStringArray
+                val={relatedData}
+                name="relatedData"
+                f={this.handleStringArrayChange}
+              />
+              <AddButton f={this.addToStringArray} name="relatedData" />
             </div>
             <div>
               <h4>Associated Publications</h4>

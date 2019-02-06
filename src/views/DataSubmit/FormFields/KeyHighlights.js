@@ -4,16 +4,21 @@ import { string, func, arrayOf } from 'prop-types';
 
 // TODO: Figure out how to dynamically add fields
 
-const KeyHighlight = ({ name, val, f }) => (
-  <Input s={12} name={name} placeholder={name} value={val} onChange={f} />
+const KeyHighlight = ({ label, val, f }) => (
+  <Input
+    s={12}
+    name="keyHighlights"
+    placeholder={label}
+    value={val}
+    onChange={f}
+  />
 );
 
 export const KeyHighlights = ({ val: highlights, f }) => (
   <Fragment>
-    {highlights.map((highlight, i) => {
-      const { val } = highlight;
-      const name = `${i + 1}) Key Highlight`;
-      return <KeyHighlight name={name} val={val} f={f} key={name} />;
+    {highlights.map((val, i) => {
+      const label = `${i + 1}) Key Highlight`;
+      return <KeyHighlight label={label} val={val} f={f} key={label} />;
     })}
   </Fragment>
 );
@@ -23,7 +28,7 @@ KeyHighlight.defaultProps = {
 };
 
 KeyHighlight.propTypes = {
-  name: string.isRequired,
+  label: string.isRequired,
   val: string,
   f: func.isRequired,
 };
