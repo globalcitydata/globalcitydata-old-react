@@ -15,7 +15,7 @@ import { Description } from './FormFields/Description';
 import { TechnicalDetails } from './FormFields/TechnicalDetails';
 import { AssociatedPublications } from './FormFields/AssociatedPublications';
 import { Tag } from './FormFields/Tag';
-import { DynamicStringArray } from './FormFields/DynamicStringArray';
+import { StringArray } from './FormFields/StringArray';
 
 // Components
 import { SubmitButton } from './Components/SubmitButton';
@@ -24,9 +24,6 @@ import { AddButton } from './Components/AddButton';
 function preProcessSubmit(oldValue) {
   // split publications into array
   const value = oldValue;
-  let pubs = value.relevantPublications.split(';');
-  pubs = pubs.filter(pub => pub !== '' && pub !== ' ');
-  value.relevantPublications = pubs.map(pub => pub.trim());
   // add url
   value.url = value.title.split(' ').join('-');
   return value;
@@ -35,6 +32,10 @@ function preProcessSubmit(oldValue) {
 class DataSubmitForm extends Component {
   state = dataState;
 
+  /*
+   * General binding function to bind typed input with input field in state
+   * Used by most form fields like title, description, etc...
+   */
   handleChange = e => {
     const { name, value } = e.target;
     this.setState(prevState => {
@@ -44,6 +45,10 @@ class DataSubmitForm extends Component {
     });
   };
 
+  /*
+   * Binding function for mapping checkbox fields with state
+   * Only used by tags like determinants, world regions, etc...
+   */
   handleRadioChange = e => {
     const { name: group, value } = e.target;
     this.setState(oldState => {
@@ -54,6 +59,10 @@ class DataSubmitForm extends Component {
     });
   };
 
+  /*
+   * Binding function for dynamic string array fields
+   * Used by fields like Key Highlights, Related Data, etc...
+   */
   handleStringArrayChange = e => {
     const { name, placeholder, value } = e.target;
     const i = placeholder.charAt(0) - 1;
@@ -64,10 +73,33 @@ class DataSubmitForm extends Component {
     });
   };
 
-  handleObjectArrayChange = e => {
-    console.log(e.target);
+  handleAuthorsChange = e => {
+    e.preventDefault();
+    const { name, placeholder, value } = e.target;
+    const i = placeholder.charAt(0) - 1;
+    const tag = 'authors';
+    this.setState(prevState => {
+      const newState = prevState;
+      newState[tag][i][name] = value;
+      return newState;
+    });
   };
 
+  handlePublicationsChange = e => {
+    e.preventDefault();
+    const { name, placeholder, value } = e.target;
+    const i = placeholder.charAt(0) - 1;
+    const tag = 'associatedPublications';
+    this.setState(prevState => {
+      const newState = prevState;
+      newState[tag][i][name] = value;
+      return newState;
+    });
+  };
+
+  /*
+   * Function to append new author object to authors list in state
+   */
   addAuthor = e => {
     e.preventDefault();
     this.setState(prevState => ({
@@ -75,6 +107,33 @@ class DataSubmitForm extends Component {
     }));
   };
 
+  addPublication = e => {
+    e.preventDefault();
+    this.setState(prevState => ({
+      associatedPublications: [
+        ...prevState.associatedPublications,
+        { publication: '', url: '' },
+      ],
+    }));
+  };
+
+  /*
+   * Function to append new publication object to associatedPublications list in state
+   */
+  addPublication = e => {
+    e.preventDefault();
+    this.setState(prevState => ({
+      associatedPublications: [
+        ...prevState.associatedPublications,
+        { publication: '', url: '' },
+      ],
+    }));
+  };
+
+  /*
+   * General add function for string array field
+   * Simply appends new input line to array specified by tag name
+   */
   addToStringArray = e => {
     e.preventDefault();
     const { value: name } = e.target;
@@ -85,15 +144,39 @@ class DataSubmitForm extends Component {
     });
   };
 
-  addToObjectArray = e => {
+  /*
+   * General delete function for string array field
+   * Deletes input line in string array based on tag and index
+   */
+  deleteFromArray = e => {
     e.preventDefault();
-    console.log(e.target);
+    // get name of tag and index of deleted input in array
+    const { value: name, id: i } = e.target;
+    this.setState(prevState => {
+      const newState = prevState;
+      // only delete input if more than one input in array
+      if (newState[name].length > 1) {
+        newState[name].splice(i, 1);
+      } else {
+        // can't delete if only one input
+        window.Materialize.toast(
+          'At least one input is required for this field.',
+          2000
+        );
+      }
+      return newState;
+    });
   };
 
+  /*
+   * Function called by submit button
+   * Process state data and send to firebase database
+   */
   async handleSubmit(e) {
     e.preventDefault();
     try {
-      const value = preProcessSubmit(this.state);
+      // const value = preProcessSubmit(this.state);
+      const value = this.state;
       await addData(value);
       this.setState(dataState);
       window.Materialize.toast('Success! Your data is pending review.', 4000);
@@ -146,7 +229,11 @@ class DataSubmitForm extends Component {
             </div>
             <div>
               <h4>Corresponding Author(s)</h4>
-              <Authors val={authors} f={this.handleChange} />
+              <Authors
+                val={authors}
+                f={this.handleAuthorsChange}
+                del_f={this.deleteFromArray}
+              />
               <AddButton f={this.addAuthor} name="authors" />
             </div>
             <div>
@@ -159,19 +246,21 @@ class DataSubmitForm extends Component {
                 Key elements/highlights of the dataset/model, max 200 characters
                 each.
               </p>
-              <DynamicStringArray
+              <StringArray
                 val={keyHighlights}
                 name="keyHighlights"
                 f={this.handleStringArrayChange}
+                del_f={this.deleteFromArray}
               />
               <AddButton f={this.addToStringArray} name="keyHighlights" />
             </div>
             <div>
               <h4>Citations</h4>
-              <DynamicStringArray
+              <StringArray
                 val={citations}
                 name="citations"
                 f={this.handleStringArrayChange}
+                del_f={this.deleteFromArray}
               />
               <AddButton f={this.addToStringArray} name="citations" />
             </div>
@@ -186,10 +275,11 @@ class DataSubmitForm extends Component {
             <div>
               <h4>Related datasets, models, or tutorials</h4>
               <p>Internal or external links.</p>
-              <DynamicStringArray
+              <StringArray
                 val={relatedData}
                 name="relatedData"
                 f={this.handleStringArrayChange}
+                del_f={this.deleteFromArray}
               />
               <AddButton f={this.addToStringArray} name="relatedData" />
             </div>
@@ -208,7 +298,12 @@ class DataSubmitForm extends Component {
               </cite>
               <AssociatedPublications
                 val={associatedPublications}
-                f={this.handleChange}
+                f={this.handlePublicationsChange}
+                del_f={this.deleteFromArray}
+              />
+              <AddButton
+                f={this.addPublication}
+                name="associatedPublications"
               />
             </div>
             {/* Tags */}

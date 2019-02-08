@@ -7,7 +7,7 @@ import { startCase } from 'lodash';
 // These are exported to the dataSubmit form in /src/views/dataSubmit/
 
 // This tag not used in query bar but still used in data submit form
-export const DATA_TYPES = ['dataset', 'model', 'tutorial'];
+export const DATA_TYPES = ['dataset', 'model', 'tutorial', 'survey'];
 export const DETERMINANTS = [
   'socialAndEconomic',
   'environmentalCharacteristics',
