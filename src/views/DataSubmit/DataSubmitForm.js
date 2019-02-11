@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+// styles
+import './DataSubmitForm.css';
+
 // utils
 import { scroll } from '../../utils/scroll';
 import { dataState } from '../../utils/data';
@@ -20,14 +23,15 @@ import { StringArray } from './FormFields/StringArray';
 // Components
 import { SubmitButton } from './Components/SubmitButton';
 import { AddButton } from './Components/AddButton';
+import { ValidationFn } from './Components/ValidationFn';
 
-function preProcessSubmit(oldValue) {
+const preProcessSubmit = oldValue => {
   // split publications into array
   const value = oldValue;
   // add url
   value.url = value.title.split(' ').join('-');
   return value;
-}
+};
 
 class DataSubmitForm extends Component {
   state = dataState;
@@ -137,8 +141,10 @@ class DataSubmitForm extends Component {
   addToStringArray = e => {
     e.preventDefault();
     const { value: name } = e.target;
+    console.log(e.target);
     this.setState(prevState => {
       const newState = prevState;
+      console.log(newState);
       newState[name] = [...newState[name], ''];
       return newState;
     });
@@ -172,11 +178,10 @@ class DataSubmitForm extends Component {
    * Function called by submit button
    * Process state data and send to firebase database
    */
-  async handleSubmit(e) {
+  handleSubmit = async e => {
     e.preventDefault();
     try {
-      // const value = preProcessSubmit(this.state);
-      const value = this.state;
+      const value = preProcessSubmit(this.state);
       await addData(value);
       this.setState(dataState);
       window.Materialize.toast('Success! Your data is pending review.', 4000);
@@ -189,7 +194,7 @@ class DataSubmitForm extends Component {
     // scroll to top after submit
     const anchor = document.querySelector('#dataSubmit');
     scroll.animateScroll(anchor);
-  }
+  };
 
   render() {
     const {
@@ -205,17 +210,7 @@ class DataSubmitForm extends Component {
       associatedPublications,
     } = this.state;
 
-    // const isEnabled =
-    //   title.length > 0 &&
-    //   description.length > 0 &&
-    //   context.length > 0 &&
-    //   keyTakeaways.length > 0 &&
-    //   usesAndVisualizations.length > 0 &&
-    //   technicalDetails.length > 0 &&
-    //   applicableData.length > 0 &&
-    //   relevantPublications.length > 0 &&
-    //   owner.length > 0 &&
-    //   contact.length > 0;
+    const isValid = ValidationFn(this.state);
 
     return (
       <section className="dataSubmit" id="dataSubmit">
@@ -289,29 +284,39 @@ class DataSubmitForm extends Component {
                 Please enter your citations in the same format as the following
                 example:
               </strong>
-              <cite>
+              <br />
+              <br />
+              <i>
                 Boyer, D., & Ramaswami, A. (2017). What Is the Contribution of
                 City-Scale Actions to the Overall Food System’s Environmental
                 Impacts?: Assessing Water, Greenhouse Gas, and Land Impacts of
                 Future Urban Food Scenarios. Environmental Science and
                 Technology, 51(20).
-              </cite>
-              <AssociatedPublications
-                val={associatedPublications}
-                f={this.handlePublicationsChange}
-                del_f={this.deleteFromArray}
-              />
+              </i>
+              <div style={{ marginTop: '2rem' }}>
+                <AssociatedPublications
+                  val={associatedPublications}
+                  f={this.handlePublicationsChange}
+                  del_f={this.deleteFromArray}
+                />
+              </div>
               <AddButton
                 f={this.addPublication}
                 name="associatedPublications"
               />
             </div>
             {/* Tags */}
-            {tags.map(({ label, options }) => (
-              <Tag label={label} options={options} f={this.handleRadioChange} />
+            {tags.map(({ label, options, descriptions: descr }) => (
+              <Tag
+                label={label}
+                options={options}
+                descriptions={descr}
+                f={this.handleRadioChange}
+                key={label}
+              />
             ))}
 
-            <SubmitButton isEnabled f={this.handleSubmit} />
+            <SubmitButton isEnabled={isValid} f={this.handleSubmit} />
           </form>
         </div>
       </section>

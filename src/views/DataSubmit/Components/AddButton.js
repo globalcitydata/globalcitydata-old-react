@@ -7,8 +7,16 @@ import { func, string } from 'prop-types';
  * used by dynamic string arrays like Key Highlights or Related Data
  */
 export const AddButton = ({ f, name }) => (
-  <Button waves="light" onClick={f} value={name}>
-    Add
+  <Button
+    floating
+    large
+    className="blue"
+    waves="light"
+    onClick={f}
+    value={name}
+    style={{ fontSize: '1.8rem' }}
+  >
+    +
   </Button>
 );
 

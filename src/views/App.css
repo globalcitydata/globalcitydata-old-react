@@ -42,10 +42,10 @@ p {
 }
 
 .main {
-  min-height: 75vh
+  min-height: 75vh;
 }
 
-.btn {
+/* .btn {
   background-color: #2196f3;
   padding: 0.4rem 1.2rem 2.8rem;
   margin-top: 5px;
@@ -61,7 +61,7 @@ p {
 
 form .btn {
   margin-top: 15px;
-}
+} */
 
 /* Not sure */
 

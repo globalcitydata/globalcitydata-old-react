@@ -66,7 +66,7 @@ export function getPublications(dataList) {
   const publications = {};
   for (const data of dataList) {
     const { url } = data;
-    for (const pub of data.relevantPublications) {
+    for (const pub of data.associatedPublications) {
       publications[pub] = url;
     }
   }

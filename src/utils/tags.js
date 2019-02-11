@@ -82,31 +82,55 @@ const worldOptions = WORLD_REGIONS.map(t => ({
   group: 'worldRegions',
 }));
 
+// Descriptions
+// Paired with exported tags array below
+// Used in data submit form
+const determinantDescriptions = [
+  'population demographics, economy, households, policy',
+  'soil, temperature, vegetation, etc',
+  'supply of energy, shelter/buildings, transportation, water, sanitation & waste, communications, food, green/public spaces',
+  'density, spatial layout',
+  'action plans, city surveys, policy maps, etc',
+  'program participation rates, social networks',
+  'infrastructure, education, health, etc',
+];
+const spatialScaleDescriptions = [
+  'fine spatial detail within a city, census tract, block group or finer',
+  'aggregate data for one or more cities',
+  'aligned data for all cities or urban areas in a country',
+];
+
 // ACTUAL TAGS BEING EXPORTED TO QUERYBAR FOR FILTERING
 export const tags = [
   {
     label: 'Determinants',
     options: determinantOptions,
+    descriptions: determinantDescriptions,
   },
   {
     label: 'Sectors',
     options: sectorOptions,
+    descriptions: null,
   },
   {
     label: 'Spatial Scales',
     options: spatialOptions,
+    descriptions: spatialScaleDescriptions,
   },
   {
     label: 'Sustainability Outcomes',
     options: sustainabilityOptions,
+    descriptions: null,
   },
   {
     label: 'Temporal Scales',
     options: temporalOptions,
+    descriptions: null,
   },
   {
     label: 'World Regions',
     options: worldOptions,
+    descriptions: null,
   },
 ];
 

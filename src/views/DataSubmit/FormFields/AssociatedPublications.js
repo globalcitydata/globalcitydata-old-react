@@ -35,7 +35,7 @@ export const AssociatedPublications = ({ val: pubs, f, del_f }) => (
     {pubs.map(({ publication, url }, i) => {
       const title = `Associated Publication ${i + 1}`;
       return (
-        <Fragment>
+        <Fragment key={title}>
           <Row>
             <Col>
               <h6>{title}</h6>
@@ -43,13 +43,7 @@ export const AssociatedPublications = ({ val: pubs, f, del_f }) => (
             <DeleteButton name="associatedPublications" f={del_f} i={i} />
           </Row>
           <div style={{ padding: '0 2rem' }}>
-            <PublicationsGroup
-              pub={publication}
-              url={url}
-              f={f}
-              key={title}
-              i={i}
-            />
+            <PublicationsGroup pub={publication} url={url} f={f} i={i} />
           </div>
         </Fragment>
       );
